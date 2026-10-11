@@ -1,0 +1,8 @@
+/home/kevinadhaikal/Documents/vgmstudio/samples/02 Theme.vgz
+/home/kevinadhaikal/Documents/vgmstudio/samples/01 Theme.vgz
+/home/kevinadhaikal/Documents/vgmstudio/samples/01 - Japanese - European BIOS.vgz
+/home/kevinadhaikal/Documents/vgmstudio/samples/06 - Stardust Speedway Zone Past(1).vgz
+/home/kevinadhaikal/Documents/vgmstudio/samples/01 - Palmtree Panic Zone Past.vgz
+/home/kevinadhaikal/Documents/vgmstudio/samples/03 The King of Speed.vgz
+/home/kevinadhaikal/Documents/vgmstudio/samples/15 Victory Way (Ending).vgz
+/home/kevinadhaikal/Documents/vgmstudio/samples/40 ENDING.vgz

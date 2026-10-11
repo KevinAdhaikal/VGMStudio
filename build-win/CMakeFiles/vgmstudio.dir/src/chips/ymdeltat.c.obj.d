@@ -1,0 +1,23 @@
+CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj: \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymdeltat.c \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
+ /usr/x86_64-w64-mingw32/include/stdint.h \
+ /usr/x86_64-w64-mingw32/include/crtdefs.h \
+ /usr/x86_64-w64-mingw32/include/corecrt.h \
+ /usr/x86_64-w64-mingw32/include/_mingw.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ /usr/x86_64-w64-mingw32/include/vadefs.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h \
+ /usr/x86_64-w64-mingw32/include/stddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuHelper.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdbool.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymdeltat.h

@@ -1,0 +1,27 @@
+CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj: \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.c \
+ /usr/x86_64-w64-mingw32/include/stdio.h \
+ /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+ /usr/x86_64-w64-mingw32/include/corecrt.h \
+ /usr/x86_64-w64-mingw32/include/_mingw.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ /usr/x86_64-w64-mingw32/include/vadefs.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+ /usr/x86_64-w64-mingw32/include/swprintf.inl \
+ /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdarg.h \
+ /usr/x86_64-w64-mingw32/include/stdarg.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
+ /usr/x86_64-w64-mingw32/include/stdint.h \
+ /usr/x86_64-w64-mingw32/include/crtdefs.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h \
+ /usr/x86_64-w64-mingw32/include/stddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdbool.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h

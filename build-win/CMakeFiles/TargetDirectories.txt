@@ -1,0 +1,15 @@
+/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles/vgmstudio.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles/edit_cache.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles/rebuild_cache.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles/list_install_components.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles/install.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles/install/local.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles/install/strip.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/zlib.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/zlibstatic.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/edit_cache.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/rebuild_cache.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/list_install_components.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/install.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/install/local.dir
+/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/CMakeFiles/install/strip.dir

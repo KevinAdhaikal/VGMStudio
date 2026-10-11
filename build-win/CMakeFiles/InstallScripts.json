@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/kevinadhaikal/Documents/vgmstudio/build-win/cmake_install.cmake",
+		"/home/kevinadhaikal/Documents/vgmstudio/build-win/third_party/zlib/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

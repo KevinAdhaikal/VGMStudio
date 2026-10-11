@@ -1,0 +1,25 @@
+CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj: \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.c \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h \
+ /usr/x86_64-w64-mingw32/include/stddef.h \
+ /usr/x86_64-w64-mingw32/include/crtdefs.h \
+ /usr/x86_64-w64-mingw32/include/corecrt.h \
+ /usr/x86_64-w64-mingw32/include/_mingw.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ /usr/x86_64-w64-mingw32/include/vadefs.h \
+ /usr/x86_64-w64-mingw32/include/stdlib.h \
+ /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/limits.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/syslimits.h \
+ /usr/x86_64-w64-mingw32/include/limits.h \
+ /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+ /usr/x86_64-w64-mingw32/include/malloc.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm_malloc.h \
+ /usr/x86_64-w64-mingw32/include/errno.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
+ /usr/x86_64-w64-mingw32/include/stdint.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.h

@@ -1,0 +1,36 @@
+CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj: \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/c140.c \
+ /usr/x86_64-w64-mingw32/include/stdlib.h \
+ /usr/x86_64-w64-mingw32/include/corecrt.h \
+ /usr/x86_64-w64-mingw32/include/_mingw.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+ /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ /usr/x86_64-w64-mingw32/include/vadefs.h \
+ /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/limits.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/syslimits.h \
+ /usr/x86_64-w64-mingw32/include/limits.h \
+ /usr/x86_64-w64-mingw32/include/crtdefs.h \
+ /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+ /usr/x86_64-w64-mingw32/include/malloc.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm_malloc.h \
+ /usr/x86_64-w64-mingw32/include/errno.h \
+ /usr/x86_64-w64-mingw32/include/string.h \
+ /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h \
+ /usr/x86_64-w64-mingw32/include/stddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
+ /usr/x86_64-w64-mingw32/include/stdint.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuHelper.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
+ /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdbool.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/c140.h
