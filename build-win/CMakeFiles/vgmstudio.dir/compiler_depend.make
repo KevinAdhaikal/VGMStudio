@@ -24,6 +24,7 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.obj: /home/kevinadhaikal/Documents/vgms
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/backends/imgui_impl_opengl3.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/backends/imgui_impl_sdl2.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/channel_rack.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/disassembly_view.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/edit_song_dialog.hpp \
@@ -35,6 +36,8 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.obj: /home/kevinadhaikal/Documents/vgms
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/song_info.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/speed_pitch_view.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/transport_bar.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/app/app.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/app/theme.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
@@ -284,6 +287,7 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.obj: /home/kevinadhaikal/Documents/vgms
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_allocator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_except.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream_insert.h \
@@ -315,9 +319,12 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.obj: /home/kevinadhaikal/Documents/vgms
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_funcs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_pair.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_raw_storage_iter.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_uninitialized.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_vector.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/streambuf.tcc \
@@ -366,6 +373,7 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.obj: /home/kevinadhaikal/Documents/vgms
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/istream \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/locale \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/math.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/mutex \
@@ -853,6 +861,7 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/char_traits.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/charconv.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/chrono.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/codecvt.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/concept_check.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cpp_type_traits.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cxxabi_forced.h \
@@ -861,6 +870,10 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_defines.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_dir.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_path.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functexcept.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functional_hash.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hash_bytes.h \
@@ -869,8 +882,11 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/istream.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_conv.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets_nonio.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets_nonio.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/localefwd.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memory_resource.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memoryfwd.h \
@@ -888,6 +904,7 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/postypes.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/predefined_ops.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/quoted_string.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/range_access.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/refwrap.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/requires_hosted.h \
@@ -895,6 +912,7 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_atomic.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_base.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/sstream.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_abs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_mutex.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_except.h \
@@ -933,6 +951,7 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/cerrno \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/clocale \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/codecvt \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/compare \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/concepts \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstddef \
@@ -953,12 +972,15 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/numeric_traits.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/string_conversions.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/filesystem \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/iomanip \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/ios \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/iosfwd \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/iostream \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/istream \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/locale \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/mutex \
@@ -969,6 +991,7 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/glue_memory_defs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/pstl_config.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/sstream \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/stdexcept \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/stdlib.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/streambuf \
@@ -1001,7 +1024,9 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Doc
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/error_constants.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/messages_members.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/time_members.h \
   /usr/x86_64-w64-mingw32/include/corecrt.h \
   /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
   /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
@@ -1157,6 +1182,8 @@ CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj: /home/kevinadhaikal/Documents/
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG_private.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
@@ -1255,6 +1282,8 @@ CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj: /home/kevinadhaikal/Docu
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ay8910.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/ay8910.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/ayintf.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
@@ -1444,6 +1473,8 @@ CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj: /home/kevinadhaikal/Documents/vgm
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280_mame.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280_mame.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuHelper.h \
@@ -1883,6 +1914,7 @@ CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj: /home/kevinadhaikal/Documents/
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/k051649.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/k051649.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuHelper.h \
@@ -2196,6 +2228,8 @@ CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj: /home/kevinadhaikal/Documents/
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/RatioCntr.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
@@ -2224,6 +2258,8 @@ CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj: /home/kevinadhaikal/Documen
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_dmc.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_dmc.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/RatioCntr.h \
@@ -2253,6 +2289,8 @@ CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj: /home/kevinadhaikal/Documen
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_fds.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_fds.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/RatioCntr.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
@@ -2613,6 +2651,8 @@ CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj: /home/kevinadhaikal/Documents/vgms
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuHelper.h \
@@ -2785,6 +2825,8 @@ CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj: /home/kevinadhaikal/Docum
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/saa1099_vb.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/saa1099_vb.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuHelper.h \
@@ -3037,6 +3079,8 @@ CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj: /home/kevinadhaikal/Documents/
   /usr/x86_64-w64-mingw32/include/vadefs.h
 
 CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.c \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn764intf.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
@@ -4086,6 +4130,7 @@ CMakeFiles/vgmstudio.dir/src/main.cpp.obj: /home/kevinadhaikal/Documents/vgmstud
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/channel_rack.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/disassembly_view.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/edit_song_dialog.hpp \
@@ -4097,6 +4142,8 @@ CMakeFiles/vgmstudio.dir/src/main.cpp.obj: /home/kevinadhaikal/Documents/vgmstud
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/song_info.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/speed_pitch_view.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/transport_bar.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/app/app.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
@@ -4336,6 +4383,7 @@ CMakeFiles/vgmstudio.dir/src/main.cpp.obj: /home/kevinadhaikal/Documents/vgmstud
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_allocator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_except.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.tcc \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream_insert.h \
@@ -4367,9 +4415,12 @@ CMakeFiles/vgmstudio.dir/src/main.cpp.obj: /home/kevinadhaikal/Documents/vgmstud
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_funcs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_pair.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_raw_storage_iter.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_uninitialized.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_vector.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/streambuf.tcc \
@@ -4417,6 +4468,7 @@ CMakeFiles/vgmstudio.dir/src/main.cpp.obj: /home/kevinadhaikal/Documents/vgmstud
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/istream \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/locale \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/mutex \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/new \
@@ -7570,6 +7622,7 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj: /home/kevinadhaikal/D
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imconfig.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.h \
@@ -7839,9 +7892,12 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj: /home/kevinadhaikal/D
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_funcs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_pair.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_raw_storage_iter.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_uninitialized.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_vector.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/string_view.tcc \
@@ -7881,6 +7937,8 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj: /home/kevinadhaikal/D
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/initializer_list \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/iosfwd \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/math.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/mutex \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/new \
@@ -8688,6 +8746,8 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj: /home/kevinadhaikal/Docum
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_funcs.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multiset.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_pair.h \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_raw_storage_iter.h \
@@ -8744,6 +8804,7 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj: /home/kevinadhaikal/Docum
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/istream \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/locale \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/mutex \
   /usr/x86_64-w64-mingw32/include/c++/16.2.0/new \
@@ -10460,6 +10521,843 @@ CMakeFiles/vgmstudio.dir/src/ui/transport_bar.cpp.obj: /home/kevinadhaikal/Docum
   /usr/x86_64-w64-mingw32/include/winapifamily.h \
   /usr/x86_64-w64-mingw32/include/winsdkver.h
 
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.cpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imconfig.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/FileLoader.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/StrUtils.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/dblk_compr.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/helper.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/note_tracker.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_assert.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_atomic.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_audio.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_blendmode.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_clipboard.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_config.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_cpuinfo.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_endian.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_error.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_events.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_filesystem.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_gamecontroller.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_gesture.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_guid.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_haptic.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_hidapi.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_hints.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_joystick.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keyboard.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keycode.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_loadso.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_locale.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_log.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_main.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_messagebox.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_metal.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_misc.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_mouse.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_mutex.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_pixels.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_platform.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_power.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_quit.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_rect.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_render.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_rwops.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_scancode.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_sensor.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_shape.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_stdinc.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_surface.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_system.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_thread.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_timer.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_touch.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_version.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_video.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/begin_code.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/close_code.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/adxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/ammintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxavx512intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxbf16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxcomplexintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxfp16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxfp8intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxint8intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxmovrsintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxtf32intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxtileintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2bf16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2convertintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2copyintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2mediaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2minmaxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2satcvtintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx2intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bf16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bf16vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bitalgintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bitalgvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bwintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512cdintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512dqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fp16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fp16vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512ifmaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512ifmavlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmi2intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmi2vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmiintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmivlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlbwintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vldqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vnniintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vnnivlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vp2intersectintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vp2intersectvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vpopcntdqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vpopcntdqvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxifmaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxneconvertintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxvnniint16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxvnniint8intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxvnniintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/bmi2intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/bmiintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cetintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cldemoteintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/clflushoptintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/clwbintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/clzerointrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cmpccxaddintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cpuid.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/enqcmdintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/f16cintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/float.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/fma4intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/fmaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/fxsrintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/gfniintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/hresetintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/ia32intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/immintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/keylockerintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/limits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lwpintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lzcntintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm3dnow.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/movdirintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/movrsintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mwaitintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mwaitxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pconfigintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pkuintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/popcntintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/prfchiintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/prfchwintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/raointintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/rdseedintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/rtmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/serializeintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sgxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sha512intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/shaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sm3intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sm4intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/smmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdbool.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/syslimits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/tbmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/tmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/tsxldtrkintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/uintrintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/usermsrintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/vaesintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/vpclmulqdqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/waitpkgintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/wbnoinvdintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/wmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/x86gprintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/x86intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xopintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsavecintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsaveintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsaveoptintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsavesintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xtestintrin.h \
+  /usr/x86_64-w64-mingw32/include/_mingw.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+  /usr/x86_64-w64-mingw32/include/_timeval.h \
+  /usr/x86_64-w64-mingw32/include/assert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/algorithm \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/array \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/atomic \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/auto_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bit \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/algorithmfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/align.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocated_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_string.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/char_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/charconv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/chrono.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/concept_check.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cpp_type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cxxabi_forced.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cxxabi_init_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/erase_if.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functexcept.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functional_hash.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hash_bytes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/invoke.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/localefwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memory_resource.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memoryfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/move.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/nested_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream_insert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/parse_numbers.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/postypes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/predefined_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/range_access.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/refwrap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_atomic.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_abs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_mutex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_throwfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algo.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_bvector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_construct.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_heap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_funcs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_pair.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_raw_storage_iter.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_vector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/string_view.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uniform_int_dist.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/unique_lock.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/unique_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uses_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uses_allocator_args.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/utility.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/vector.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/version.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cerrno \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/clocale \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/compare \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstddef \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdint \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdio \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdlib \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstring \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ctime \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cwchar \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/debug/assertions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/debug/debug.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/exception \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/aligned_buffer.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/atomicity.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/concurrence.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/numeric_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/string_conversions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/iosfwd \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/math.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/mutex \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/new \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/execution_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/glue_algorithm_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/glue_memory_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/pstl_config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/string \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/string_view \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/bessel_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/beta_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/ell_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/exp_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/gamma.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/hypergeometric.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/legendre_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/modified_bessel_func.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_hermite.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_laguerre.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/riemann_zeta.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/special_function_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tuple \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/type_traits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/typeinfo \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/vector \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/error_constants.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/corecrt.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  /usr/x86_64-w64-mingw32/include/crtdefs.h \
+  /usr/x86_64-w64-mingw32/include/ctype.h \
+  /usr/x86_64-w64-mingw32/include/errno.h \
+  /usr/x86_64-w64-mingw32/include/float.h \
+  /usr/x86_64-w64-mingw32/include/intrin.h \
+  /usr/x86_64-w64-mingw32/include/limits.h \
+  /usr/x86_64-w64-mingw32/include/locale.h \
+  /usr/x86_64-w64-mingw32/include/malloc.h \
+  /usr/x86_64-w64-mingw32/include/math.h \
+  /usr/x86_64-w64-mingw32/include/process.h \
+  /usr/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h \
+  /usr/x86_64-w64-mingw32/include/pthread.h \
+  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+  /usr/x86_64-w64-mingw32/include/pthread_time.h \
+  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+  /usr/x86_64-w64-mingw32/include/sched.h \
+  /usr/x86_64-w64-mingw32/include/sdkddkver.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
+  /usr/x86_64-w64-mingw32/include/setjmp.h \
+  /usr/x86_64-w64-mingw32/include/signal.h \
+  /usr/x86_64-w64-mingw32/include/stdarg.h \
+  /usr/x86_64-w64-mingw32/include/stddef.h \
+  /usr/x86_64-w64-mingw32/include/stdint.h \
+  /usr/x86_64-w64-mingw32/include/stdio.h \
+  /usr/x86_64-w64-mingw32/include/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/string.h \
+  /usr/x86_64-w64-mingw32/include/swprintf.inl \
+  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+  /usr/x86_64-w64-mingw32/include/sys/types.h \
+  /usr/x86_64-w64-mingw32/include/time.h \
+  /usr/x86_64-w64-mingw32/include/vadefs.h \
+  /usr/x86_64-w64-mingw32/include/wchar.h \
+  /usr/x86_64-w64-mingw32/include/winapifamily.h \
+  /usr/x86_64-w64-mingw32/include/winsdkver.h
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.cpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imconfig.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/FileLoader.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/StrUtils.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/dblk_compr.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/helper.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/note_tracker.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_assert.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_atomic.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_audio.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_blendmode.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_clipboard.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_config.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_cpuinfo.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_endian.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_error.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_events.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_filesystem.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_gamecontroller.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_gesture.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_guid.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_haptic.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_hidapi.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_hints.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_joystick.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keyboard.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keycode.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_loadso.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_locale.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_log.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_main.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_messagebox.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_metal.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_misc.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_mouse.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_mutex.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_pixels.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_platform.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_power.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_quit.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_rect.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_render.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_rwops.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_scancode.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_sensor.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_shape.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_stdinc.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_surface.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_system.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_thread.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_timer.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_touch.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_version.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_video.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/begin_code.h \
+  /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/close_code.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/adxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/ammintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxavx512intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxbf16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxcomplexintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxfp16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxfp8intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxint8intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxmovrsintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxtf32intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxtileintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2bf16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2convertintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2copyintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2mediaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2minmaxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2satcvtintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx2intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bf16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bf16vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bitalgintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bitalgvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bwintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512cdintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512dqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fp16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fp16vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512ifmaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512ifmavlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmi2intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmi2vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmiintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmivlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlbwintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vldqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vnniintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vnnivlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vp2intersectintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vp2intersectvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vpopcntdqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vpopcntdqvlintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxifmaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxneconvertintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxvnniint16intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxvnniint8intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avxvnniintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/bmi2intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/bmiintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cetintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cldemoteintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/clflushoptintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/clwbintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/clzerointrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cmpccxaddintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cpuid.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/enqcmdintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/f16cintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/float.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/fma4intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/fmaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/fxsrintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/gfniintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/hresetintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/ia32intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/immintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/keylockerintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/limits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lwpintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lzcntintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm3dnow.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/movdirintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/movrsintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mwaitintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mwaitxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pconfigintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pkuintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/popcntintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/prfchiintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/prfchwintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/raointintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/rdseedintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/rtmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/serializeintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sgxintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sha512intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/shaintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sm3intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sm4intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/smmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdarg.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdbool.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/syslimits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/tbmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/tmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/tsxldtrkintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/uintrintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/usermsrintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/vaesintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/vpclmulqdqintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/waitpkgintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/wbnoinvdintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/wmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/x86gprintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/x86intrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xopintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsavecintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsaveintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsaveoptintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsavesintrin.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xtestintrin.h \
+  /usr/x86_64-w64-mingw32/include/_mingw.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stdarg.h \
+  /usr/x86_64-w64-mingw32/include/_timeval.h \
+  /usr/x86_64-w64-mingw32/include/assert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/algorithm \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/array \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/atomic \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/auto_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bit \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/algorithmfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/align.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocated_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_ios.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_ios.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_string.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/char_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/charconv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/chrono.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/codecvt.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/concept_check.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cpp_type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cxxabi_forced.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cxxabi_init_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/erase_if.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_dir.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_path.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functexcept.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functional_hash.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hash_bytes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/invoke.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ios_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/istream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_conv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets_nonio.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets_nonio.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/localefwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memory_resource.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memoryfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/move.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/nested_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream_insert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream_print.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/parse_numbers.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/postypes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/predefined_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/quoted_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/range_access.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/refwrap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_atomic.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/sstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_abs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_mutex.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_throwfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algo.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_bvector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_construct.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_heap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_funcs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_pair.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_raw_storage_iter.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_vector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/streambuf.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/streambuf_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/string_view.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uniform_int_dist.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/unique_lock.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/unique_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uses_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uses_allocator_args.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/utility.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/vector.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/version.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cerrno \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/clocale \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/codecvt \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/compare \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstddef \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdint \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdio \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdlib \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ctime \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cwchar \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cwctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/debug/assertions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/debug/debug.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/exception \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/aligned_buffer.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/atomicity.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/concurrence.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/numeric_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/string_conversions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/filesystem \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/iomanip \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ios \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/iosfwd \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/istream \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/locale \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/mutex \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/new \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/execution_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/glue_algorithm_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/glue_memory_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/pstl_config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ratio \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/sstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/stdexcept \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/streambuf \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/string \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/string_view \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/system_error \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/bessel_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/beta_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/ell_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/exp_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/gamma.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/hypergeometric.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/legendre_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/modified_bessel_func.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_hermite.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_laguerre.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/riemann_zeta.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/special_function_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tuple \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/type_traits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/typeinfo \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/vector \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/error_constants.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/messages_members.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/time_members.h \
+  /usr/x86_64-w64-mingw32/include/corecrt.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  /usr/x86_64-w64-mingw32/include/crtdefs.h \
+  /usr/x86_64-w64-mingw32/include/ctype.h \
+  /usr/x86_64-w64-mingw32/include/errno.h \
+  /usr/x86_64-w64-mingw32/include/float.h \
+  /usr/x86_64-w64-mingw32/include/intrin.h \
+  /usr/x86_64-w64-mingw32/include/limits.h \
+  /usr/x86_64-w64-mingw32/include/locale.h \
+  /usr/x86_64-w64-mingw32/include/malloc.h \
+  /usr/x86_64-w64-mingw32/include/math.h \
+  /usr/x86_64-w64-mingw32/include/process.h \
+  /usr/x86_64-w64-mingw32/include/psdk_inc/intrin-impl.h \
+  /usr/x86_64-w64-mingw32/include/pthread.h \
+  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+  /usr/x86_64-w64-mingw32/include/pthread_time.h \
+  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+  /usr/x86_64-w64-mingw32/include/sched.h \
+  /usr/x86_64-w64-mingw32/include/sdkddkver.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
+  /usr/x86_64-w64-mingw32/include/setjmp.h \
+  /usr/x86_64-w64-mingw32/include/signal.h \
+  /usr/x86_64-w64-mingw32/include/stdarg.h \
+  /usr/x86_64-w64-mingw32/include/stddef.h \
+  /usr/x86_64-w64-mingw32/include/stdint.h \
+  /usr/x86_64-w64-mingw32/include/stdio.h \
+  /usr/x86_64-w64-mingw32/include/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/string.h \
+  /usr/x86_64-w64-mingw32/include/swprintf.inl \
+  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+  /usr/x86_64-w64-mingw32/include/sys/types.h \
+  /usr/x86_64-w64-mingw32/include/time.h \
+  /usr/x86_64-w64-mingw32/include/vadefs.h \
+  /usr/x86_64-w64-mingw32/include/wchar.h \
+  /usr/x86_64-w64-mingw32/include/wctype.h \
+  /usr/x86_64-w64-mingw32/include/winapifamily.h \
+  /usr/x86_64-w64-mingw32/include/winsdkver.h
+
 CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.c \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.h \
@@ -11574,6 +12472,224 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj: /home/kevinadhaikal/Documents
   /usr/x86_64-w64-mingw32/include/wchar.h \
   /usr/x86_64-w64-mingw32/include/wctype.h
 
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.cpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/limits.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm_malloc.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
+  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/syslimits.h \
+  /usr/x86_64-w64-mingw32/include/_mingw.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_mac.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_off_t.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_secapi.h \
+  /usr/x86_64-w64-mingw32/include/_mingw_stat64.h \
+  /usr/x86_64-w64-mingw32/include/_timeval.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/algorithm \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/auto_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/binders.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bit \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/algorithmfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/align.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocated_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/atomic_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/atomic_lockfree_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_ios.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_ios.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_string.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_string.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/char_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/charconv.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/codecvt.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/concept_check.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cpp_type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cxxabi_forced.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/cxxabi_init_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/erase_if.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functexcept.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functional_hash.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hash_bytes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/invoke.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ios_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/istream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/localefwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memory_resource.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/memoryfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/move.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/nested_exception.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream_insert.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream_print.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/postypes.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/predefined_ops.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ptr_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/range_access.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/refwrap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/requires_hosted.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_atomic.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/shared_ptr_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/specfun.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/sstream.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_abs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_except.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_throw.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stdexcept_throwfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algo.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algobase.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_bvector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_construct.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_function.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_heap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_funcs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_iterator_base_types.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_pair.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_raw_storage_iter.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tempbuf.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_uninitialized.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_vector.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/streambuf.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/streambuf_iterator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/string_view.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stringfwd.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uniform_int_dist.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/unique_ptr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uses_allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/uses_allocator_args.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/utility.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/vector.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/version.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cerrno \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/clocale \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cmath \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/concepts \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstddef \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdint \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdio \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdlib \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstring \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cwchar \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cwctype \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/debug/assertions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/debug/debug.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/exception \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/aligned_buffer.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/alloc_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/atomicity.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/concurrence.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/numeric_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/string_conversions.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/type_traits.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/fstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/initializer_list \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ios \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/iosfwd \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/istream \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/limits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/memory \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/new \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ostream \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/execution_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/glue_algorithm_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/glue_memory_defs.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/pstl/pstl_config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/sstream \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/stdexcept \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/streambuf \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/string \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/string_view \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/system_error \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/bessel_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/beta_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/ell_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/exp_integral.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/gamma.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/hypergeometric.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/legendre_function.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/modified_bessel_func.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_hermite.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_laguerre.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/riemann_zeta.tcc \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/special_function_util.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/tuple \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/type_traits \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/typeinfo \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/vector \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/atomic_word.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++config.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++io.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++locale.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/ctype_base.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/ctype_inline.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/error_constants.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/gthr.h \
+  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/os_defines.h \
+  /usr/x86_64-w64-mingw32/include/corecrt.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_startup.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wconio.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wctype.h \
+  /usr/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+  /usr/x86_64-w64-mingw32/include/crtdefs.h \
+  /usr/x86_64-w64-mingw32/include/ctype.h \
+  /usr/x86_64-w64-mingw32/include/errno.h \
+  /usr/x86_64-w64-mingw32/include/limits.h \
+  /usr/x86_64-w64-mingw32/include/locale.h \
+  /usr/x86_64-w64-mingw32/include/malloc.h \
+  /usr/x86_64-w64-mingw32/include/math.h \
+  /usr/x86_64-w64-mingw32/include/process.h \
+  /usr/x86_64-w64-mingw32/include/pthread.h \
+  /usr/x86_64-w64-mingw32/include/pthread_compat.h \
+  /usr/x86_64-w64-mingw32/include/pthread_signal.h \
+  /usr/x86_64-w64-mingw32/include/pthread_time.h \
+  /usr/x86_64-w64-mingw32/include/pthread_unistd.h \
+  /usr/x86_64-w64-mingw32/include/sched.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
+  /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h \
+  /usr/x86_64-w64-mingw32/include/signal.h \
+  /usr/x86_64-w64-mingw32/include/stddef.h \
+  /usr/x86_64-w64-mingw32/include/stdint.h \
+  /usr/x86_64-w64-mingw32/include/stdio.h \
+  /usr/x86_64-w64-mingw32/include/stdlib.h \
+  /usr/x86_64-w64-mingw32/include/string.h \
+  /usr/x86_64-w64-mingw32/include/swprintf.inl \
+  /usr/x86_64-w64-mingw32/include/sys/timeb.h \
+  /usr/x86_64-w64-mingw32/include/sys/types.h \
+  /usr/x86_64-w64-mingw32/include/time.h \
+  /usr/x86_64-w64-mingw32/include/vadefs.h \
+  /usr/x86_64-w64-mingw32/include/wchar.h \
+  /usr/x86_64-w64-mingw32/include/wctype.h
+
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.cpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
@@ -11909,6 +13025,8 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /home/kevinadhaikal/Documents/vgmstudio/third_party/zlib/zlib.h:
 
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.cpp:
+
 /home/kevinadhaikal/Documents/vgmstudio/src/ui/speed_pitch_view.cpp:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/ui/song_info.cpp:
@@ -11916,6 +13034,8 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/set:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_set.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.cpp:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multiset.h:
 
@@ -12253,14 +13373,6 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/2151intf.c:
 
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/map:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h:
-
 /home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/pokey.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h:
@@ -12355,17 +13467,9 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/swprintf.inl:
 
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++config.h:
+/usr/x86_64-w64-mingw32/include/stringapiset.h:
 
-/usr/x86_64-w64-mingw32/include/psdk_inc/_socket_types.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/vsu.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/vsu.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fstream.tcc:
+/usr/x86_64-w64-mingw32/include/stdio.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/auto_ptr.h:
 
@@ -12383,13 +13487,11 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/lzexpand.h:
 
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/map:
+
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bit:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/backward/binders.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_ops.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/atomic:
 
 /usr/x86_64-w64-mingw32/include/GL/gl.h:
 
@@ -12398,10 +13500,6 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/emu2413.c:
 
 /usr/x86_64-w64-mingw32/include/basetsd.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h:
-
-/usr/x86_64-w64-mingw32/include/_mingw_stdarg.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/compare:
 
@@ -12436,6 +13534,10 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/iostream:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.tcc:
+
+/usr/x86_64-w64-mingw32/include/_mingw_stdarg.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/mikey.h:
 
@@ -12499,6 +13601,8 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/raointintrin.h:
 
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h:
+
 /usr/x86_64-w64-mingw32/include/processenv.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/emu2413.h:
@@ -12559,6 +13663,12 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_ios.h:
 
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_mame.c:
+
+/usr/x86_64-w64-mingw32/include/string.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/nested_exception.h:
+
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/tuple:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pmmintrin.h:
@@ -12595,6 +13705,14 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/realtimeapiset.h:
 
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/atomic:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_ops.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++config.h:
+
+/usr/x86_64-w64-mingw32/include/psdk_inc/_socket_types.h:
+
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/pconfigintrin.h:
 
 /usr/x86_64-w64-mingw32/include/inaddr.h:
@@ -12611,33 +13729,27 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vnnivlintrin.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.c:
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.c:
 
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h:
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vnniintrin.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/ymfmintf.h:
+/usr/x86_64-w64-mingw32/include/ole2.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keyboard.h:
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vldqintrin.h:
 
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sha512intrin.h:
+/usr/x86_64-w64-mingw32/include/psdk_inc/_ip_mreq1.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/ym3438.c:
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlintrin.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/type_traits.h:
-
-/usr/x86_64-w64-mingw32/include/_mingw.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512dqintrin.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/vector.tcc:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/bmi2intrin.h:
-
-/usr/x86_64-w64-mingw32/include/combaseapi.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/ui/oscilloscope_view.hpp:
+/usr/x86_64-w64-mingw32/include/reason.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cetintrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280intf.c:
+
+/usr/x86_64-w64-mingw32/include/stdint.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxfp16intrin.h:
 
@@ -12671,6 +13783,14 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_metal.h:
 
+/home/kevinadhaikal/Documents/vgmstudio/src/vgm/StrUtils.c:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lwpintrin.h:
+
+/usr/x86_64-w64-mingw32/include/pthread.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmiintrin.h:
+
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocated_ptr.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/algorithmfwd.h:
@@ -12683,17 +13803,21 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /home/kevinadhaikal/Documents/vgmstudio/src/vgm/StrUtils.h:
 
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/sha512intrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/ymfmintf.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keyboard.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/ym3438.c:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/type_traits.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/oscilloscope_view.hpp:
+
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/wbnoinvdintrin.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bf16vlintrin.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlbwintrin.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_audio.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_thread.h:
-
-/usr/x86_64-w64-mingw32/include/pthread_compat.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/x86gprintrin.h:
 
@@ -12707,35 +13831,9 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/chrono.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_loadso.h:
-
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xsavecintrin.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bf16intrin.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlintrin.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/vgm/StrUtils.c:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lwpintrin.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vbmiintrin.h:
-
-/usr/x86_64-w64-mingw32/include/pthread.h:
-
-/usr/x86_64-w64-mingw32/include/reason.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/usermsrintrin.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_events.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/cstring:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/close_code.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/gb_mame.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keycode.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets.tcc:
 
@@ -12759,17 +13857,15 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/cerrno:
 
+/usr/x86_64-w64-mingw32/include/windows.h:
+
+/usr/x86_64-w64-mingw32/include/_mingw_stat64.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_gamecontroller.h:
+
 /home/kevinadhaikal/Documents/vgmstudio/src/app/app.cpp:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_uninitialized.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/bsmt2000.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_dir.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_filesystem.h:
-
-/usr/x86_64-w64-mingw32/include/dpapi.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym2612.h:
 
@@ -12782,6 +13878,36 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/multipcm.c:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxtileintrin.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vlbwintrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_audio.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_thread.h:
+
+/usr/x86_64-w64-mingw32/include/pthread_compat.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/disassembly_view.hpp:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx2intrin.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512ifmavlintrin.h:
+
+/usr/x86_64-w64-mingw32/include/unistd.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/edit_song_dialog.cpp:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.h:
+
+/usr/x86_64-w64-mingw32/include/pthread_signal.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdint:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/numeric_traits.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/pokey.h:
 
@@ -12802,6 +13928,32 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 /home/kevinadhaikal/Documents/vgmstudio/src/ui/channel_rack.hpp:
 
 /usr/x86_64-w64-mingw32/include/pthread_unistd.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.hpp:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.c:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stddef.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_render.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/movrsintrin.h:
+
+/usr/x86_64-w64-mingw32/include/mmiscapi.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lzcntintrin.h:
+
+/usr/x86_64-w64-mingw32/include/handleapi.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmintrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_sensor.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/stdexcept:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.c:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_misc.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h:
 
@@ -12837,12 +13989,6 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/bessel_function.tcc:
 
-/usr/x86_64-w64-mingw32/include/windows.h:
-
-/usr/x86_64-w64-mingw32/include/_mingw_stat64.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_gamecontroller.h:
-
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/charconv.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_mouse.h:
@@ -12861,21 +14007,13 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/localefwd.h:
 
-/usr/x86_64-w64-mingw32/include/unistd.h:
+third_party/zlib/zconf.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h:
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_messagebox.h:
 
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512ifmavlintrin.h:
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_hermite.tcc:
 
-/home/kevinadhaikal/Documents/vgmstudio/src/ui/edit_song_dialog.cpp:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.h:
-
-/usr/x86_64-w64-mingw32/include/pthread_signal.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdint:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/numeric_traits.h:
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmvlintrin.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp:
 
@@ -12895,9 +14033,9 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopl.h:
 
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm_malloc.h:
-
 /usr/x86_64-w64-mingw32/include/stddef.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/mm_malloc.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/vgm/helper.h:
 
@@ -12939,83 +14077,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaik
 
 /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_render.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/movrsintrin.h:
-
-/usr/x86_64-w64-mingw32/include/mmiscapi.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/lzcntintrin.h:
-
-/usr/x86_64-w64-mingw32/include/handleapi.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmintrin.h:
-
-/usr/x86_64-w64-mingw32/include/wincontypes.h:
-
-/usr/x86_64-w64-mingw32/include/apiset.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_error.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fp16vlintrin.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp:
-
-/usr/x86_64-w64-mingw32/include/winioctl.h:
-
-/usr/x86_64-w64-mingw32/include/bcrypt.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algo.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512bmmvlintrin.h:
-
-third_party/zlib/zconf.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_messagebox.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/tr1/poly_hermite.tcc:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_sensor.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/stdexcept:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280intf.c:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.h:
-
-/usr/x86_64-w64-mingw32/include/stdint.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.c:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_misc.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.tcc:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_mame.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/ui/speed_pitch_view.hpp:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xopintrin.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.c:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vnniintrin.h:
-
-/usr/x86_64-w64-mingw32/include/ole2.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vldqintrin.h:
-
-/usr/x86_64-w64-mingw32/include/psdk_inc/_ip_mreq1.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/emu/dac_control.c:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_bvector.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/es5503.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/exception:
-
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_rect.h:
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.hpp:
 
 /usr/x86_64-w64-mingw32/include/bemapiset.h:
 
@@ -13036,6 +14098,64 @@ third_party/zlib/zconf.h:
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/functexcept.h:
 
 /usr/x86_64-w64-mingw32/include/mmeapi.h:
+
+/usr/x86_64-w64-mingw32/include/wincontypes.h:
+
+/usr/x86_64-w64-mingw32/include/apiset.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_error.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fp16vlintrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp:
+
+/usr/x86_64-w64-mingw32/include/winioctl.h:
+
+/usr/x86_64-w64-mingw32/include/bcrypt.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_algo.h:
+
+/usr/x86_64-w64-mingw32/include/_mingw.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512dqintrin.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/vector.tcc:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/bmi2intrin.h:
+
+/usr/x86_64-w64-mingw32/include/combaseapi.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/usermsrintrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_events.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/cstring:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/close_code.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/gb_mame.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_keycode.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_loadso.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_mame.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/xopintrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/speed_pitch_view.hpp:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_classes.tcc:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/emu/dac_control.c:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_bvector.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/es5503.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/exception:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_rect.h:
 
 /usr/x86_64-w64-mingw32/include/wchar.h:
 
@@ -13121,6 +14241,8 @@ third_party/zlib/zconf.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_cpuinfo.h:
 
+/home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.cpp:
+
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/nukedopm.c:
 
 /usr/x86_64-w64-mingw32/include/winsock.h:
@@ -13133,8 +14255,6 @@ third_party/zlib/zconf.h:
 
 /usr/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/src/ui/disassembly_view.hpp:
-
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/vpclmulqdqintrin.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx10_2mediaintrin.h:
@@ -13142,8 +14262,6 @@ third_party/zlib/zconf.h:
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/specfun.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_gesture.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx2intrin.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512cdintrin.h:
 
@@ -13159,9 +14277,9 @@ third_party/zlib/zconf.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imconfig.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_log.h:
-
 /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_platform.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_log.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_timer.h:
 
@@ -13170,6 +14288,22 @@ third_party/zlib/zconf.h:
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/segapcm.h:
 
 /usr/x86_64-w64-mingw32/include/profileapi.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/bsmt2000.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/include/SDL2/SDL_filesystem.h:
+
+/usr/x86_64-w64-mingw32/include/dpapi.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_dir.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/vsu.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/vsu.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fstream.tcc:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_path.h:
 
@@ -13222,6 +14356,8 @@ third_party/zlib/zconf.h:
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512fintrin.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/new_throw.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h:
 
 /usr/x86_64-w64-mingw32/include/corecrt_startup.h:
 
@@ -13291,13 +14427,19 @@ third_party/zlib/zconf.h:
 
 /usr/x86_64-w64-mingw32/include/intrin.h:
 
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/iosfwd:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/cpu_defines.h:
+
 /usr/x86_64-w64-mingw32/include/cguid.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_vector.h:
 
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/vector:
-
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/iomanip:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/vector:
 
 /usr/x86_64-w64-mingw32/include/joystickapi.h:
 
@@ -13358,6 +14500,16 @@ third_party/zlib/zconf.h:
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdlib:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/atomic_word.h:
+
+/usr/x86_64-w64-mingw32/include/stralign.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/popcntintrin.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cldemoteintrin.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/vgm/FileLoader.h:
+
+/usr/x86_64-w64-mingw32/include/math.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/ctime:
 
@@ -13445,9 +14597,9 @@ third_party/zlib/zconf.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/type_traits:
 
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_defines.h:
-
 /usr/x86_64-w64-mingw32/include/stdlib.h:
+
+/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_defines.h:
 
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/typeinfo:
 
@@ -13456,10 +14608,6 @@ third_party/zlib/zconf.h:
 /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++io.h:
 
 /usr/x86_64-w64-mingw32/include/namespaceapi.h:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/iosfwd:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/cpu_defines.h:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/emu/cores/c219.h:
 
@@ -13494,6 +14642,14 @@ third_party/zlib/zconf.h:
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/amxbf16intrin.h:
 
 /usr/x86_64-w64-mingw32/include/concurrencysal.h:
+
+/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.cpp:
+
+/usr/x86_64-w64-mingw32/include/stdarg.h:
+
+/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdarg.h:
+
+/usr/x86_64-w64-mingw32/include/consoleapi.h:
 
 /usr/x86_64-w64-mingw32/include/consoleapi2.h:
 
@@ -13569,8 +14725,6 @@ third_party/zlib/zconf.h:
 
 /usr/x86_64-w64-mingw32/include/objidl.h:
 
-/usr/x86_64-w64-mingw32/include/stdio.h:
-
 /usr/x86_64-w64-mingw32/include/objidlbase.h:
 
 /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/avx512vpopcntdqvlintrin.h:
@@ -13633,21 +14787,7 @@ third_party/zlib/zconf.h:
 
 /usr/x86_64-w64-mingw32/include/sec_api/string_s.h:
 
-/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.cpp:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdarg.h:
-
-/usr/x86_64-w64-mingw32/include/consoleapi.h:
-
-/usr/x86_64-w64-mingw32/include/stdarg.h:
-
 /usr/x86_64-w64-mingw32/include/sec_api/wconio_s.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_mame.c:
-
-/usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/nested_exception.h:
-
-/usr/x86_64-w64-mingw32/include/string.h:
 
 /usr/x86_64-w64-mingw32/include/fibersapi.h:
 
@@ -13666,15 +14806,3 @@ third_party/zlib/zconf.h:
 /usr/x86_64-w64-mingw32/include/oleidl.h:
 
 /usr/x86_64-w64-mingw32/include/specstrings.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/popcntintrin.h:
-
-/usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/cldemoteintrin.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/vgm/FileLoader.h:
-
-/usr/x86_64-w64-mingw32/include/math.h:
-
-/usr/x86_64-w64-mingw32/include/stralign.h:
-
-/usr/x86_64-w64-mingw32/include/stringapiset.h:

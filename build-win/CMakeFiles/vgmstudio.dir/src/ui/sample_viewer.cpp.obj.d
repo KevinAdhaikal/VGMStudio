@@ -433,6 +433,9 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_set.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multiset.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/filesystem \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_path.h \

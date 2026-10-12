@@ -373,7 +373,9 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.o: \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/16/bits/fstream.tcc /usr/include/c++/16/set \
  /usr/include/c++/16/bits/stl_tree.h /usr/include/c++/16/bits/stl_set.h \
- /usr/include/c++/16/bits/stl_multiset.h /usr/include/c++/16/filesystem \
+ /usr/include/c++/16/bits/stl_multiset.h /usr/include/c++/16/map \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h /usr/include/c++/16/filesystem \
  /usr/include/c++/16/bits/fs_fwd.h /usr/include/c++/16/bits/fs_path.h \
  /usr/include/c++/16/locale \
  /usr/include/c++/16/bits/locale_facets_nonio.h \

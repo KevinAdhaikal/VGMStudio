@@ -48,6 +48,8 @@
 #include "EmuCores.h"
 #include "EmuHelper.h"
 #include "c6280_mame.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 
 static void c6280mame_w(void *chip, UINT8 offset, UINT8 data);
@@ -327,6 +329,7 @@ static void c6280mame_update(void* param, UINT32 samples, DEV_SMPL **outputs)
 					chan->noise_counter &= 0x7FF;
 					outputs[0][i] += (vll * (data - 16));
 					outputs[1][i] += (vlr * (data - 16));
+					ChannelMixer_PushSample(DEVID_C6280, 0, ch, (float)(((vll + vlr) >> 1) * (data - 16)));
 				}
 			}
 			else if (chan->control & 0x40)
@@ -336,6 +339,7 @@ static void c6280mame_update(void* param, UINT32 samples, DEV_SMPL **outputs)
 				{
 					outputs[0][i] += (vll * (chan->dda - 16));
 					outputs[1][i] += (vlr * (chan->dda - 16));
+					ChannelMixer_PushSample(DEVID_C6280, 0, ch, (float)(((vll + vlr) >> 1) * (chan->dda - 16)));
 				}
 			}
 			else
@@ -373,6 +377,7 @@ static void c6280mame_update(void* param, UINT32 samples, DEV_SMPL **outputs)
 							lfo_dstchan->index = (lfo_dstchan->counter >> 12) & 0x1F;
 							outputs[0][i] += (vll * (data - 16));
 							outputs[1][i] += (vlr * (data - 16));
+							ChannelMixer_PushSample(DEVID_C6280, 0, ch, (float)(((vll + vlr) >> 1) * (data - 16)));
 						}
 					}
 				}
@@ -389,8 +394,16 @@ static void c6280mame_update(void* param, UINT32 samples, DEV_SMPL **outputs)
 						chan->index = (chan->counter >> 12) & 0x1F;
 						outputs[0][i] += (vll * (data - 16));
 						outputs[1][i] += (vlr * (data - 16));
+						ChannelMixer_PushSample(DEVID_C6280, 0, ch, (float)(((vll + vlr) >> 1) * (data - 16)));
 					}
 				}
+			}
+		}
+		else
+		{
+			for (i = 0; i < samples; i++)
+			{
+				ChannelMixer_PushSample(DEVID_C6280, 0, ch, 0.0f);
 			}
 		}
 	}

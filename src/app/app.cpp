@@ -174,6 +174,8 @@ bool App::Init(const char* title, int width, int height, const char* initialFile
             if (std::filesystem::exists(initialFile)) {
                 if (m_audioEngine.LoadFile(initialFile)) {
                     m_pianoRoll.ResetView(m_audioEngine.GetNoteTracker());
+                    m_vgmEventsMixer.Reset();
+                    m_patchViewer.ScanSong(m_audioEngine);
                     AddRecentFile(initialFile);
                 } else {
                     m_corruptedFilePath = initialFile;
@@ -205,6 +207,20 @@ bool App::Init(const char* title, int width, int height, const char* initialFile
     if (std::getenv("VGMSTUDIO_OPEN_EDIT_TAB")) {
         m_editSongDialog.Open(m_audioEngine.GetCurrentInfo());
     }
+    if (std::getenv("VGMSTUDIO_OPEN_EVENTS_MIXER")) {
+        m_showVgmEventsMixer = true;
+    }
+    if (std::getenv("VGMSTUDIO_OPEN_PATCH_VIEWER")) {
+        m_showPatchViewer = true;
+        if (const char* chFilter = std::getenv("VGMSTUDIO_PATCH_CHANNEL_FILTER")) {
+            m_patchViewer.ScanSong(m_audioEngine);
+            m_patchViewer.SetChannelFilter(chFilter);
+        }
+    }
+    if (std::getenv("VGMSTUDIO_OPEN_SAMPLE_VIEWER")) {
+        m_showSampleViewer = true;
+        m_sampleViewer.RequestFocus();
+    }
 
     m_running = true;
     return true;
@@ -220,6 +236,25 @@ void App::Run() {
             if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE &&
                 event.window.windowID == SDL_GetWindowID(m_window))
                 m_running = false;
+            if (event.type == SDL_DROPFILE) {
+                char* droppedFile = event.drop.file;
+                if (droppedFile) {
+                    std::string filePath(droppedFile);
+                    SDL_free(droppedFile);
+                    if (!std::filesystem::exists(filePath)) {
+                        m_fileNotFoundPath = filePath;
+                        m_showFileNotFoundAlert = true;
+                    } else if (m_audioEngine.LoadFile(filePath)) {
+                        m_pianoRoll.ResetView(m_audioEngine.GetNoteTracker());
+                        m_vgmEventsMixer.Reset();
+                        m_patchViewer.ScanSong(m_audioEngine);
+                        AddRecentFile(filePath);
+                    } else {
+                        m_corruptedFilePath = filePath;
+                        m_showFileCorruptedAlert = true;
+                    }
+                }
+            }
         }
 
         // Start Dear ImGui frame
@@ -253,19 +288,29 @@ void App::Run() {
             }
             // Ctrl+Shift+O: Oscilloscope Visualizer
             if (io.KeyCtrl && io.KeyShift && ImGui::IsKeyPressed(ImGuiKey_O, false)) {
-                m_showOscilloscopeView = !m_showOscilloscopeView;
-                if (m_showOscilloscopeView) m_oscilloscopeView.RequestFocus();
+                m_showOscilloscopeView = true;
+                m_oscilloscopeView.RequestFocus();
+            }
+            // Ctrl+Shift+E: VGM Events Mixer
+            if (io.KeyCtrl && io.KeyShift && ImGui::IsKeyPressed(ImGuiKey_E, false)) {
+                m_showVgmEventsMixer = true;
+                m_vgmEventsMixer.RequestFocus();
+            }
+            // Ctrl+Shift+P: VGM Preset / Patch Viewer
+            if (io.KeyCtrl && io.KeyShift && ImGui::IsKeyPressed(ImGuiKey_P, false)) {
+                m_showPatchViewer = true;
+                m_patchViewer.RequestFocus();
             }
             // Ctrl+O: Open file
             else if (io.KeyCtrl && !io.KeyShift && ImGui::IsKeyPressed(ImGuiKey_O, false)) {
                 m_fileDialog.Open("samples");
             }
             // Ctrl+,: Preferences / Settings
-            if (io.KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_Comma, false)) {
+            if (io.KeyCtrl && !io.KeyShift && ImGui::IsKeyPressed(ImGuiKey_Comma, false)) {
                 m_settingsDialog.Open();
             }
-            // Ctrl+E: Edit Song Info
-            if (io.KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_E, false)) {
+            // Ctrl+E: Edit Song Info (only when Shift is NOT pressed!)
+            if (io.KeyCtrl && !io.KeyShift && ImGui::IsKeyPressed(ImGuiKey_E, false)) {
                 if (m_audioEngine.IsLoaded()) {
                     m_editSongDialog.Open(m_audioEngine.GetCurrentInfo());
                 }
@@ -293,6 +338,8 @@ void App::Run() {
             std::cout << "[App] Loading selected VGM file: " << selectedVgm << std::endl;
             if (m_audioEngine.LoadFile(selectedVgm)) {
                 m_pianoRoll.ResetView(m_audioEngine.GetNoteTracker());
+                m_vgmEventsMixer.Reset();
+                m_patchViewer.ScanSong(m_audioEngine);
                 AddRecentFile(selectedVgm);
             } else {
                 m_corruptedFilePath = selectedVgm;
@@ -363,6 +410,8 @@ void App::RenderDockSpace() {
                             } else {
                                 if (m_audioEngine.LoadFile(rFile)) {
                                     m_pianoRoll.ResetView(m_audioEngine.GetNoteTracker());
+                                    m_vgmEventsMixer.Reset();
+                                    m_patchViewer.ScanSong(m_audioEngine);
                                     AddRecentFile(rFile);
                                 } else {
                                     m_corruptedFilePath = rFile;
@@ -444,6 +493,12 @@ void App::RenderDockSpace() {
             if (ImGui::MenuItem("Oscilloscope Visualizer", "Ctrl+Shift+O", &m_showOscilloscopeView)) {
                 if (m_showOscilloscopeView) m_oscilloscopeView.RequestFocus();
             }
+            if (ImGui::MenuItem("VGM Events Mixer", "Ctrl+Shift+E", &m_showVgmEventsMixer)) {
+                if (m_showVgmEventsMixer) m_vgmEventsMixer.RequestFocus();
+            }
+            if (ImGui::MenuItem("VGM Preset / Patch Viewer", "Ctrl+Shift+P", &m_showPatchViewer)) {
+                if (m_showPatchViewer) m_patchViewer.RequestFocus();
+            }
             ImGui::Separator();
             if (ImGui::MenuItem("Reset Layout to Default")) {
                 m_showResetLayoutDialog = true;
@@ -484,8 +539,10 @@ void App::SetupDefaultDockLayout(unsigned int dockspace_id, const ImVec2& size) 
     ImGui::DockBuilderDockWindow("Player Control", dock_top);
     ImGui::DockBuilderDockWindow("Piano Roll", dock_main_id);
     ImGui::DockBuilderDockWindow("Oscilloscope Visualizer", dock_main_id);
+    ImGui::DockBuilderDockWindow("VGM Preset / Patch Viewer", dock_main_id);
     ImGui::DockBuilderDockWindow("VGM Instruction Disassembly", dock_down);
     ImGui::DockBuilderDockWindow("Channels / Mixer", dock_down);
+    ImGui::DockBuilderDockWindow("VGM Events Mixer", dock_down);
     ImGui::DockBuilderDockWindow("Sample Viewer", dock_down);
     ImGui::DockBuilderDockWindow("Song Info", dock_right);
 
@@ -540,6 +597,16 @@ void App::RenderUI(bool* pPlayToggled) {
     // 8. Oscilloscope Visualizer Window
     if (m_showOscilloscopeView) {
         m_oscilloscopeView.Render(m_audioEngine, &m_showOscilloscopeView);
+    }
+
+    // 9. VGM Events Mixer Window
+    if (m_showVgmEventsMixer) {
+        m_vgmEventsMixer.Render(m_audioEngine, &m_showVgmEventsMixer);
+    }
+
+    // 10. VGM Preset / Patch Viewer Window
+    if (m_showPatchViewer) {
+        m_patchViewer.Render(m_audioEngine, &m_showPatchViewer);
     }
 
     // About Dialog
@@ -683,6 +750,7 @@ void App::RenderUI(bool* pPlayToggled) {
         ImGui::OpenPopup("File Not Found##AlertModal");
         m_showFileNotFoundAlert = false;
     }
+    ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
     if (ImGui::BeginPopupModal("File Not Found##AlertModal", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove)) {
         ImGui::Spacing();
         ImGui::TextColored(ImVec4(1.0f, 0.40f, 0.35f, 1.0f), "File Not Found");
@@ -711,6 +779,7 @@ void App::RenderUI(bool* pPlayToggled) {
         ImGui::OpenPopup("File Corrupted or Invalid##AlertModal");
         m_showFileCorruptedAlert = false;
     }
+    ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
     if (ImGui::BeginPopupModal("File Corrupted or Invalid##AlertModal", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove)) {
         ImGui::Spacing();
         ImGui::TextColored(ImVec4(1.0f, 0.40f, 0.35f, 1.0f), "File Corrupted or Invalid");
@@ -719,6 +788,15 @@ void App::RenderUI(bool* pPlayToggled) {
         ImGui::TextDisabled("%s", m_corruptedFilePath.c_str());
         ImGui::Spacing();
         ImGui::TextWrapped("The file is either not a valid VGM/VGZ audio file or the header data is corrupted.");
+
+        std::string errDetail = m_audioEngine.GetLastLoadError();
+        if (!errDetail.empty()) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(1.0f, 0.70f, 0.35f, 1.0f), "Details:");
+            ImGui::SameLine();
+            ImGui::TextWrapped("%s", errDetail.c_str());
+        }
+
         ImGui::Spacing();
         ImGui::Separator();
         ImGui::Spacing();
@@ -741,6 +819,7 @@ void App::RenderUI(bool* pPlayToggled) {
         ImGui::OpenPopup("Clear Recent Files Confirmation##Modal");
         m_showClearRecentDialog = false;
     }
+    ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
     if (ImGui::BeginPopupModal("Clear Recent Files Confirmation##Modal", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove)) {
         ImGui::Spacing();
         ImGui::Text("Are you sure you want to clear the recent files list?");

@@ -110,6 +110,12 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cerrno \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/charconv.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/basic_string.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/aligned_buffer.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstdint \
  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdint.h \
  /usr/x86_64-w64-mingw32/include/stdint.h \
@@ -335,7 +341,6 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/typeinfo \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/allocated_ptr.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/refwrap.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/aligned_buffer.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ext/concurrence.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/exception \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/exception_ptr.h \
@@ -398,4 +403,5 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hashtable.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hashtable_policy.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/enable_special_members.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/math.h

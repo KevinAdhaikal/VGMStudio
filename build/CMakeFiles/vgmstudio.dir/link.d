@@ -24,6 +24,9 @@ vgmstudio: \
   CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.o \
   CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.o \
   CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.o \
+  CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.o \
+  CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.o \
+  CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.o \
   CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.o \
   CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.o \
   CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.o \
@@ -220,6 +223,12 @@ CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.o:
 CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.o:
 
 CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.o:
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.o:
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.o:
+
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.o:
 
 CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.o:
 

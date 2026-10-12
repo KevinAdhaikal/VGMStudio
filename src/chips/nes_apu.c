@@ -753,9 +753,28 @@ void nes_apu_update(void* chip, UINT32 samples, DEV_SMPL **outputs)
 			tri  = (apu->tri.output + 0x10) / 2;
 			noi  = (apu->noi.output >= 0) ? apu->noi.output : 0;
 			dpcm = apu->dpcm.output;
-			bufL[i] = square_lut[squ1 + squ2];
-			bufL[i] += tnd_lut[tri][noi][dpcm];
-			bufR[i] = bufL[i];
+
+			float gL0 = 1.0f, gR0 = 1.0f;
+			float gL1 = 1.0f, gR1 = 1.0f;
+			float gL2 = 1.0f, gR2 = 1.0f;
+			float gL3 = 1.0f, gR3 = 1.0f;
+			float gL4 = 1.0f, gR4 = 1.0f;
+			ChannelMixer_GetGains(DEVID_NES_APU, 0, 0, &gL0, &gR0);
+			ChannelMixer_GetGains(DEVID_NES_APU, 0, 1, &gL1, &gR1);
+			ChannelMixer_GetGains(DEVID_NES_APU, 0, 2, &gL2, &gR2);
+			ChannelMixer_GetGains(DEVID_NES_APU, 0, 3, &gL3, &gR3);
+			ChannelMixer_GetGains(DEVID_NES_APU, 0, 4, &gL4, &gR4);
+
+			ChannelMixer_PushSample(DEVID_NES_APU, 0, 0, (float)(squ1 * 0x100));
+			ChannelMixer_PushSample(DEVID_NES_APU, 0, 1, (float)(squ2 * 0x100));
+			ChannelMixer_PushSample(DEVID_NES_APU, 0, 2, (float)(tri * 0xC0));
+			ChannelMixer_PushSample(DEVID_NES_APU, 0, 3, (float)(noi * 0xC0));
+			ChannelMixer_PushSample(DEVID_NES_APU, 0, 4, (float)(dpcm * 0xC0));
+
+			DEV_SMPL sq = square_lut[squ1 + squ2];
+			DEV_SMPL tnd = tnd_lut[tri][noi][dpcm];
+			bufL[i] = (DEV_SMPL)(sq * ((gL0 + gL1) * 0.5f) + tnd * ((gL2 + gL3 + gL4) / 3.0f));
+			bufR[i] = (DEV_SMPL)(sq * ((gR0 + gR1) * 0.5f) + tnd * ((gR2 + gR3 + gR4) / 3.0f));
 		}
 		else
 		{

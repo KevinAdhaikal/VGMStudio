@@ -54,6 +54,9 @@ set(APP_SRCS
     src/ui/speed_pitch_view.cpp
     src/ui/sample_viewer.cpp
     src/ui/oscilloscope_view.cpp
+    src/ui/vgm_events_mixer.cpp
+    src/ui/vgm_patch_viewer.cpp
+    src/vgm/vgm_patch_extractor.cpp
     src/audio/audio_engine.cpp
 )
 

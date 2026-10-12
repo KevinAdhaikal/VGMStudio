@@ -122,7 +122,9 @@ void FileDialog::Open(const std::string& startDir) {
     m_selectedIdx = -1;
     m_previewInfo = VgmInfo();
 
-    if (!startDir.empty() && std::filesystem::exists(startDir)) {
+    if (!m_currentDir.empty() && std::filesystem::exists(m_currentDir)) {
+        RefreshDirectory();
+    } else if (!startDir.empty() && std::filesystem::exists(startDir)) {
         SetDirectory(startDir);
     } else {
         SetDirectory(std::filesystem::current_path().string());

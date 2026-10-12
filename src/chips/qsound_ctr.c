@@ -19,6 +19,8 @@
 #include "snddef.h"
 #include "EmuHelper.h"
 #include "qsound_ctr.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 #define CLAMP(x, low, high)  (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
 
@@ -285,6 +287,10 @@ static void qsoundc_update(void* param, UINT32 samples, DEV_SMPL** outputs)
 	for (curSmpl = 0; curSmpl < samples; curSmpl ++)
 	{
 		update_sample(chip);
+		for (int v = 0; v < 19; v++)
+		{
+			ChannelMixer_PushSample(DEVID_QSOUND, 0, v, (float)chip->voice_output[v]);
+		}
 		outputs[0][curSmpl] = chip->out[0];
 		outputs[1][curSmpl] = chip->out[1];
 	}

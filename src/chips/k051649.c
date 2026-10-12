@@ -41,6 +41,7 @@
 #include "snddef.h"
 #include "EmuHelper.h"
 #include "k051649.h"
+#include "../emu/channel_mixer.h"
 
 typedef struct _k051649_state k051649_state;
 
@@ -178,6 +179,8 @@ static void k051649_update(void *param, UINT32 samples, DEV_SMPL **outputs)
 		if (voice[j].frequency > 8 && ! voice[j].Muted)
 		{
 			UINT32 step = (UINT32)(((INT64)info->mclock * (1 << FREQ_BITS)) / (float)((voice[j].frequency + 1) * info->rate / 2.0f) + 0.5f);
+			float gL = 1.0f, gR = 1.0f;
+			ChannelMixer_GetGains(DEVID_K051649, 0, (int)j, &gL, &gR);
 
 			for (i = 0; i < samples; i++)
 			{
@@ -189,8 +192,20 @@ static void k051649_update(void *param, UINT32 samples, DEV_SMPL **outputs)
 					DEV_SMPL smpl = voice[j].waveram[offs] * voice[j].volume;
 					// scale to 11 bit digital output on chip
 					smpl >>= 4;	// results in [-600 .. +600]
-					buffer[i] += smpl;
+					buffer[i] += (DEV_SMPL)(smpl * gL);
+					ChannelMixer_PushSample(DEVID_K051649, 0, (int)j, (float)(smpl * 32));
 				}
+				else
+				{
+					ChannelMixer_PushSample(DEVID_K051649, 0, (int)j, 0.0f);
+				}
+			}
+		}
+		else
+		{
+			for (i = 0; i < samples; i++)
+			{
+				ChannelMixer_PushSample(DEVID_K051649, 0, (int)j, 0.0f);
 			}
 		}
 	}

@@ -2816,6 +2816,54 @@ src/ui/transport_bar.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/ui/transport_bar.cpp.s
 .PHONY : src/ui/transport_bar.cpp.s
 
+src/ui/vgm_events_mixer.obj: src/ui/vgm_events_mixer.cpp.obj
+.PHONY : src/ui/vgm_events_mixer.obj
+
+# target to build an object file
+src/ui/vgm_events_mixer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj
+.PHONY : src/ui/vgm_events_mixer.cpp.obj
+
+src/ui/vgm_events_mixer.i: src/ui/vgm_events_mixer.cpp.i
+.PHONY : src/ui/vgm_events_mixer.i
+
+# target to preprocess a source file
+src/ui/vgm_events_mixer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.i
+.PHONY : src/ui/vgm_events_mixer.cpp.i
+
+src/ui/vgm_events_mixer.s: src/ui/vgm_events_mixer.cpp.s
+.PHONY : src/ui/vgm_events_mixer.s
+
+# target to generate assembly for a file
+src/ui/vgm_events_mixer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.s
+.PHONY : src/ui/vgm_events_mixer.cpp.s
+
+src/ui/vgm_patch_viewer.obj: src/ui/vgm_patch_viewer.cpp.obj
+.PHONY : src/ui/vgm_patch_viewer.obj
+
+# target to build an object file
+src/ui/vgm_patch_viewer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj
+.PHONY : src/ui/vgm_patch_viewer.cpp.obj
+
+src/ui/vgm_patch_viewer.i: src/ui/vgm_patch_viewer.cpp.i
+.PHONY : src/ui/vgm_patch_viewer.i
+
+# target to preprocess a source file
+src/ui/vgm_patch_viewer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.i
+.PHONY : src/ui/vgm_patch_viewer.cpp.i
+
+src/ui/vgm_patch_viewer.s: src/ui/vgm_patch_viewer.cpp.s
+.PHONY : src/ui/vgm_patch_viewer.s
+
+# target to generate assembly for a file
+src/ui/vgm_patch_viewer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.s
+.PHONY : src/ui/vgm_patch_viewer.cpp.s
+
 src/vgm/DataLoader.obj: src/vgm/DataLoader.c.obj
 .PHONY : src/vgm/DataLoader.obj
 
@@ -3055,6 +3103,30 @@ src/vgm/vgm_info.s: src/vgm/vgm_info.cpp.s
 src/vgm/vgm_info.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.s
 .PHONY : src/vgm/vgm_info.cpp.s
+
+src/vgm/vgm_patch_extractor.obj: src/vgm/vgm_patch_extractor.cpp.obj
+.PHONY : src/vgm/vgm_patch_extractor.obj
+
+# target to build an object file
+src/vgm/vgm_patch_extractor.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj
+.PHONY : src/vgm/vgm_patch_extractor.cpp.obj
+
+src/vgm/vgm_patch_extractor.i: src/vgm/vgm_patch_extractor.cpp.i
+.PHONY : src/vgm/vgm_patch_extractor.i
+
+# target to preprocess a source file
+src/vgm/vgm_patch_extractor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.i
+.PHONY : src/vgm/vgm_patch_extractor.cpp.i
+
+src/vgm/vgm_patch_extractor.s: src/vgm/vgm_patch_extractor.cpp.s
+.PHONY : src/vgm/vgm_patch_extractor.s
+
+# target to generate assembly for a file
+src/vgm/vgm_patch_extractor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/vgmstudio.dir/build.make CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.s
+.PHONY : src/vgm/vgm_patch_extractor.cpp.s
 
 src/vgm/vgmplayer.obj: src/vgm/vgmplayer.cpp.obj
 .PHONY : src/vgm/vgmplayer.obj
@@ -3446,6 +3518,12 @@ help:
 	@echo "... src/ui/transport_bar.obj"
 	@echo "... src/ui/transport_bar.i"
 	@echo "... src/ui/transport_bar.s"
+	@echo "... src/ui/vgm_events_mixer.obj"
+	@echo "... src/ui/vgm_events_mixer.i"
+	@echo "... src/ui/vgm_events_mixer.s"
+	@echo "... src/ui/vgm_patch_viewer.obj"
+	@echo "... src/ui/vgm_patch_viewer.i"
+	@echo "... src/ui/vgm_patch_viewer.s"
 	@echo "... src/vgm/DataLoader.obj"
 	@echo "... src/vgm/DataLoader.i"
 	@echo "... src/vgm/DataLoader.s"
@@ -3476,6 +3554,9 @@ help:
 	@echo "... src/vgm/vgm_info.obj"
 	@echo "... src/vgm/vgm_info.i"
 	@echo "... src/vgm/vgm_info.s"
+	@echo "... src/vgm/vgm_patch_extractor.obj"
+	@echo "... src/vgm/vgm_patch_extractor.i"
+	@echo "... src/vgm/vgm_patch_extractor.s"
 	@echo "... src/vgm/vgmplayer.obj"
 	@echo "... src/vgm/vgmplayer.i"
 	@echo "... src/vgm/vgmplayer.s"

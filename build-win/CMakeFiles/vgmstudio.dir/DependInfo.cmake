@@ -123,10 +123,13 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/kevinadhaikal/Documents/vgmstudio/src/ui/song_info.cpp" "CMakeFiles/vgmstudio.dir/src/ui/song_info.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/ui/song_info.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/ui/speed_pitch_view.cpp" "CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/ui/transport_bar.cpp" "CMakeFiles/vgmstudio.dir/src/ui/transport_bar.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/ui/transport_bar.cpp.obj.d"
+  "/home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.cpp" "CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj.d"
+  "/home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.cpp" "CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/vgm/note_tracker.cpp" "CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.cpp" "CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.cpp" "CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.cpp" "CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj.d"
+  "/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.cpp" "CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.cpp" "CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj.d"
   "/home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer_cmdhandler.cpp" "CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj" "gcc" "CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj.d"
   )

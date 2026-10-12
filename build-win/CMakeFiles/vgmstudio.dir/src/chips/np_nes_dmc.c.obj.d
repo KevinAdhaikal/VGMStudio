@@ -28,4 +28,6 @@ CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_dmc.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_dmc.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/channel_mixer.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/SoundDevs.h

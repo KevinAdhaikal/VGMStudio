@@ -11,6 +11,8 @@
 #include "snddef.h"
 #include "RatioCntr.h"
 #include "np_nes_fds.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 
 #define DEFAULT_CLOCK	1789772.0
@@ -403,8 +405,11 @@ UINT32 NES_FDS_Render(void* chip, INT32 b[2])
 
 	// output mix
 	m = fds->mask ? 0 : v;
-	b[0] = (m * fds->sm[0]) >> (7-2);
-	b[1] = (m * fds->sm[1]) >> (7-2);
+	float gL5 = 1.0f, gR5 = 1.0f;
+	ChannelMixer_GetGains(DEVID_NES_APU, 0, 5, &gL5, &gR5);
+	ChannelMixer_PushSample(DEVID_NES_APU, 0, 5, (float)(m << 3));
+	b[0] = (INT32)(((m * fds->sm[0]) >> (7-2)) * gL5);
+	b[1] = (INT32)(((m * fds->sm[1]) >> (7-2)) * gR5);
 	return 2;
 }
 

@@ -415,5 +415,22 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/filesystem \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_path.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/locale \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets_nonio.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/time_members.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/messages_members.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/codecvt.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_facets_nonio.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/locale_conv.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/iomanip \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/quoted_string.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/sstream \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/sstream.tcc \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/codecvt \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_dir.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_ops.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h

@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstring>
 #include <map>
+#include <filesystem>
 #include "emu/channel_mixer.h"
 #include "emu/SoundDevs.h"
 
@@ -61,7 +62,11 @@ void AudioEngine::Shutdown() {
 }
 
 bool AudioEngine::LoadFile(const std::string& path) {
-    if (m_deviceId == 0) return false;
+    m_lastLoadError.clear();
+    if (m_deviceId == 0) {
+        m_lastLoadError = "Audio device not initialized.";
+        return false;
+    }
 
     SDL_LockAudioDevice(m_deviceId);
 
@@ -79,13 +84,20 @@ bool AudioEngine::LoadFile(const std::string& path) {
         m_loaded.store(false);
     }
 
+#ifdef _WIN32
+    std::filesystem::path fsPath(std::filesystem::u8path(path));
+    m_dLoad = FileLoader_InitW(fsPath.wstring().c_str());
+#else
     m_dLoad = FileLoader_Init(path.c_str());
+#endif
     if (!m_dLoad) {
+        m_lastLoadError = "Could not initialize file loader for path: " + path;
         SDL_UnlockAudioDevice(m_deviceId);
         return false;
     }
 
     if (DataLoader_Load(m_dLoad)) {
+        m_lastLoadError = "Failed to open or decompress file data.";
         DataLoader_Deinit(m_dLoad);
         m_dLoad = nullptr;
         SDL_UnlockAudioDevice(m_deviceId);
@@ -94,6 +106,13 @@ bool AudioEngine::LoadFile(const std::string& path) {
 
     UINT8 err = m_player->LoadFile(m_dLoad);
     if (err) {
+        if (err == 0xF0) {
+            m_lastLoadError = "Invalid file signature or corrupted header (must be a valid VGM stream).";
+        } else {
+            char errBuf[64];
+            snprintf(errBuf, sizeof(errBuf), "VGM player engine rejected file (error code 0x%02X).", err);
+            m_lastLoadError = errBuf;
+        }
         DataLoader_Deinit(m_dLoad);
         m_dLoad = nullptr;
         SDL_UnlockAudioDevice(m_deviceId);
@@ -823,6 +842,10 @@ void AudioEngine::ProcessAudio(int16_t* outStream, int frames) {
                 } else {
                     previewSample = (2.0f * m_previewPhase - 1.0f) * 0.3f;
                 }
+            } else if (previewMode == 4) { // Noise
+                static uint16_t lfsr = 0x7FFF;
+                lfsr = (lfsr >> 1) ^ (-(lfsr & 1) & (pParam1 > 0.5f ? 0x6000 : 0x4000));
+                previewSample = ((lfsr & 1) ? 0.3f : -0.3f);
             }
         }
 

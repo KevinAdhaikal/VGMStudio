@@ -33,4 +33,5 @@ CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
  /usr/lib/gcc/x86_64-w64-mingw32/16.2.0/include/stdbool.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/chips/k051649.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/k051649.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/channel_mixer.h

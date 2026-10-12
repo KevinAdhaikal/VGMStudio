@@ -59,6 +59,8 @@ Copyright(C)2006-2021 Kitao Nakamura.
 #include "EmuHelper.h"
 #include "Ootake_PSG.h"
 #include "Ootake_PSG_private.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 
 static DEVDEF_RWFUNC devFunc[] =
@@ -652,66 +654,49 @@ OPSG_Mix(
 		for (i=0; i<N_CHANNEL; i++)
 		{
 			PSGChn = &info->Psg[i];
+			Sint32 chL = 0, chR = 0;
 			
 			if ((PSGChn->bOn)&&((i != 1)||(info->LfoCtrl == 0))&&(!info->bPsgMute[i])) //Kitao更新
 			{
 				if (PSGChn->bDDA)
 				{
 					smp = PSGChn->ddaSample * PSGChn->outVolumeL;
-					//smp = PSGChn->ddaSample * PSGChn->outVolumeL * (Sint32)OVERSAMPLE_RATE; //オーバーサンプリング用
-					sampleAllL += smp + (smp >> 3) + (smp >> 4) + (smp >> 5) + (smp >> 7) + (smp >> 12) + (smp >> 14) + (smp >> 15); //Kitao更新。サンプリング音の音量を実機並みに調整。v2.39,v2.40,v2.62,v2.65再調整した。
+					chL = smp + (smp >> 3) + (smp >> 4) + (smp >> 5) + (smp >> 7) + (smp >> 12) + (smp >> 14) + (smp >> 15);
 					smp = PSGChn->ddaSample * PSGChn->outVolumeR;
-					//smp = PSGChn->ddaSample * PSGChn->outVolumeR * (Sint32)OVERSAMPLE_RATE; //オーバーサンプリング用
-					sampleAllR += smp + (smp >> 3) + (smp >> 4) + (smp >> 5) + (smp >> 7) + (smp >> 12) + (smp >> 14) + (smp >> 15); //Kitao更新。サンプリング音の音量を実機並みに調整。v2.39,v2.40,v2.62,v2.65再調整した。
+					chR = smp + (smp >> 3) + (smp >> 4) + (smp >> 5) + (smp >> 7) + (smp >> 12) + (smp >> 14) + (smp >> 15);
 				}
 				else if (PSGChn->bNoiseOn)
 				{
 					sample = _NoiseTable[PSGChn->phase >> 17];
 					PSGChn->phase += PSGChn->deltaNoisePhase; //Kitao更新
-					/*
-					for (k = 2; k<=OVERSAMPLE_RATE; k++) //オーバーサンプリング用
-					{
-						sample += _NoiseTable[PSGChn->phase>>17];
-						PSGChn->phase += PSGChn->deltaNoisePhase;
-					}
-					*/
 					
-					if (PSGChn->noiseFrq == 0) //Kitao追加。noiseFrq=0(dataに0x1Fが書き込まれた)のときは音量が通常の半分とした。（ファイヤープロレスリング３、パックランド、桃太郎活劇、がんばれゴルフボーイズなど）
+					if (PSGChn->noiseFrq == 0)
 					{
 						smp = sample * PSGChn->outVolumeL;
-						sampleAllL += (smp >> 1) + (smp >> 12) + (smp >> 14); //(1/2 + 1/4096 + (1/32768 + 1/32768))
+						chL = (smp >> 1) + (smp >> 12) + (smp >> 14);
 						smp = sample * PSGChn->outVolumeR;
-						sampleAllR += (smp >> 1) + (smp >> 12) + (smp >> 14);
+						chR = (smp >> 1) + (smp >> 12) + (smp >> 14);
 					}
 					else //通常
 					{
 						smp = sample * PSGChn->outVolumeL;
-						sampleAllL += smp + (smp >> 11) + (smp >> 14) + (smp >> 15); //Kitao更新。ノイズの音量を実機並みに調整(1 + 1/2048 + 1/16384 + 1/32768)。この"+1/32768"で絶妙(主観。大魔界村,ソルジャーブレイドなど)になる。v2.62更新
+						chL = smp + (smp >> 11) + (smp >> 14) + (smp >> 15);
 						smp = sample * PSGChn->outVolumeR;
-						sampleAllR += smp + (smp >> 11) + (smp >> 14) + (smp >> 15); //Kitao更新。ノイズの音量を実機並みに調整
+						chR = smp + (smp >> 11) + (smp >> 14) + (smp >> 15);
 					}
 				}
 				else if (PSGChn->deltaPhase)
 				{
-					//Kitao更新。オーバーサンプリングしないようにした。
 					sample = PSGChn->wave[PSGChn->phase >> 27];
 					inc_phase(info, i); //v2.73更新
-					/*
-					for (k = 2; k<=OVERSAMPLE_RATE; k++) //オーバーサンプリング用
-					{
-						sample += PSGChn->wave[PSGChn->phase >> 27];
-						inc_phase(i); //v2.73更新
-					}
-					*/
 					if (PSGChn->frq < 128)
-						sample -= sample >> 2; //低周波域の音量を制限。ブラッドギアのスタート時などで実機と同様の音に。ソルジャーブレイドなども実機に近くなった。v2.03
+						sample -= sample >> 2;
 
-					sampleAllL += sample * PSGChn->outVolumeL; //Kitao更新
-					sampleAllR += sample * PSGChn->outVolumeR; //Kitao更新
+					chL = sample * PSGChn->outVolumeL;
+					chR = sample * PSGChn->outVolumeR;
 				}
 			}
 			//Kitao追加。DDA消音時はノイズ軽減のためフェードアウトで消音する。
-			//			 ベラボーマン(「わしがばくだはかせじゃ」から数秒後)やパワーテニス(タイトル曲終了から数秒後。点数コール)，将棋初心者無用(音声)等で効果あり。
 			if (info->DdaFadeOutL[i] > 0)
 				--info->DdaFadeOutL[i];
 			else if (info->DdaFadeOutL[i] < 0)
@@ -720,10 +705,15 @@ OPSG_Mix(
 				--info->DdaFadeOutR[i];
 			else if (info->DdaFadeOutR[i] < 0)
 				++info->DdaFadeOutR[i];
-			sampleAllL += info->DdaFadeOutL[i];
-			//sampleAllL += info->DdaFadeOutL[i] * OVERSAMPLE_RATE; //オーバーサンプリング用
-			sampleAllR += info->DdaFadeOutR[i];
-			//sampleAllR += info->DdaFadeOutR[i] * OVERSAMPLE_RATE; //オーバーサンプリング用
+			chL += info->DdaFadeOutL[i];
+			chR += info->DdaFadeOutR[i];
+
+			float gL = 1.0f, gR = 1.0f;
+			ChannelMixer_GetGains(DEVID_C6280, 0, (int)i, &gL, &gR);
+			ChannelMixer_PushSample(DEVID_C6280, 0, (int)i, (float)((chL + chR) * 0.5f));
+
+			sampleAllL += (Sint32)(chL * gL);
+			sampleAllR += (Sint32)(chR * gR);
 		}
 		//Kitao更新。6ch合わさったところで、ボリューム調整してバッファに書き込む。
 		bufL[j] = (DEV_SMPL)((double)sampleAllL * info->VOL);

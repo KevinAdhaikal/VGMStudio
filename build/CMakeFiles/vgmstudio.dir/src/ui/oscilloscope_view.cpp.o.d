@@ -102,7 +102,12 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.o: \
  /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
  /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/16/bits/charconv.h \
- /usr/include/c++/16/bits/basic_string.tcc /usr/include/c++/16/cstdint \
+ /usr/include/c++/16/bits/basic_string.tcc /usr/include/c++/16/map \
+ /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/ext/aligned_buffer.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h /usr/include/c++/16/cstdint \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h \
@@ -306,10 +311,8 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.o: \
  /usr/include/c++/16/bits/shared_ptr.h \
  /usr/include/c++/16/bits/shared_ptr_base.h /usr/include/c++/16/typeinfo \
  /usr/include/c++/16/bits/allocated_ptr.h \
- /usr/include/c++/16/bits/refwrap.h \
- /usr/include/c++/16/ext/aligned_buffer.h \
- /usr/include/c++/16/ext/concurrence.h /usr/include/c++/16/exception \
- /usr/include/c++/16/bits/exception_ptr.h \
+ /usr/include/c++/16/bits/refwrap.h /usr/include/c++/16/ext/concurrence.h \
+ /usr/include/c++/16/exception /usr/include/c++/16/bits/exception_ptr.h \
  /usr/include/c++/16/bits/cxxabi_init_exception.h \
  /usr/include/c++/16/bits/nested_exception.h \
  /usr/include/c++/16/bits/shared_ptr_atomic.h \
@@ -351,4 +354,4 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.o: \
  /usr/include/c++/16/bits/hashtable.h \
  /usr/include/c++/16/bits/hashtable_policy.h \
  /usr/include/c++/16/bits/enable_special_members.h \
- /usr/include/c++/16/bits/node_handle.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h

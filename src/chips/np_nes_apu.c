@@ -14,6 +14,8 @@
 #include "snddef.h"
 #include "RatioCntr.h"
 #include "np_nes_apu.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 
 // Master Clock: 21477272 (NTSC)
@@ -267,13 +269,21 @@ UINT32 NES_APU_np_Render(void* chip, INT32 b[2])
 		m[1] = (apu->out[1] * apu->square_linear) / 15;
 	}
 
+	float gL0 = 1.0f, gR0 = 1.0f;
+	float gL1 = 1.0f, gR1 = 1.0f;
+	ChannelMixer_GetGains(DEVID_NES_APU, 0, 0, &gL0, &gR0);
+	ChannelMixer_GetGains(DEVID_NES_APU, 0, 1, &gL1, &gR1);
+
+	ChannelMixer_PushSample(DEVID_NES_APU, 0, 0, (float)(m[0] << 3));
+	ChannelMixer_PushSample(DEVID_NES_APU, 0, 1, (float)(m[1] << 3));
+
 	// Shifting is (x-2) to match the volume of MAME's NES APU sound core
-	b[0]  = m[0] * apu->sm[0][0];
-	b[0] += m[1] * apu->sm[0][1];
+	b[0]  = (INT32)(m[0] * apu->sm[0][0] * gL0);
+	b[0] += (INT32)(m[1] * apu->sm[0][1] * gL1);
 	b[0] >>= 7-2;	// was 7, but is now 8 for bipolar square
 
-	b[1]  = m[0] * apu->sm[1][0];
-	b[1] += m[1] * apu->sm[1][1];
+	b[1]  = (INT32)(m[0] * apu->sm[1][0] * gR0);
+	b[1] += (INT32)(m[1] * apu->sm[1][1] * gR1);
 	b[1] >>= 7-2;	// see above
 
 	return 2;

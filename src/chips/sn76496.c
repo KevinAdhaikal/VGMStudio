@@ -147,6 +147,8 @@
 #include "logging.h"
 #include "sn764intf.h"
 #include "sn76496.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 
 static UINT8 sn76496_ready_r(void *chip, UINT8 offset);
@@ -461,6 +463,10 @@ static void sn76496_update(void* param, UINT32 samples, DEV_SMPL** outputs)
 				vol[i] &= R->MuteMsk[i];
 				// --- Preparation End ---
 				
+				float gL = 1.0f, gR = 1.0f;
+				ChannelMixer_GetGains(DEVID_SN76496, 0, i, &gL, &gR);
+				ChannelMixer_PushSample(DEVID_SN76496, 0, i, (float)(vol[i] * R->volume[i]));
+
 				if (R->stereo)
 				{
 					ggst[0] = (R->stereo_mask & (0x10 << i)) ? 1 : 0;
@@ -468,14 +474,14 @@ static void sn76496_update(void* param, UINT32 samples, DEV_SMPL** outputs)
 				}
 				if (R->period[i] > 1 || i == 3)
 				{
-					out += vol[i] * R->volume[i] * ggst[0];
-					out2 += vol[i] * R->volume[i] * ggst[1];
+					out += (INT32)(vol[i] * R->volume[i] * ggst[0] * gL);
+					out2 += (INT32)(vol[i] * R->volume[i] * ggst[1] * gR);
 				}
 				else if (R->MuteMsk[i])
 				{
 					// Make Bipolar Output with PCM possible
-					out += R->volume[i] * ggst[0];
-					out2 += R->volume[i] * ggst[1];
+					out += (INT32)(R->volume[i] * ggst[0] * gL);
+					out2 += (INT32)(R->volume[i] * ggst[1] * gR);
 				}
 			}
 		}

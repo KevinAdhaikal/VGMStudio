@@ -109,8 +109,6 @@ static UINT8 FileLoader_dopen(void *context)
 		fseek(loader->hLoad.hFileRaw, -4, SEEK_END);
 		readBytes = fread(sizeBuffer, 0x04, 1, loader->hLoad.hFileRaw);
 		loader->bytesTotal = (readBytes > 0) ? ReadLE32(sizeBuffer) : 0;
-		if (loader->bytesTotal < (UINT32)ftell(loader->hLoad.hFileRaw) / 2)	// catch "decompressed size too small"
-			loader->bytesTotal = 0;
 		fclose(loader->hLoad.hFileRaw);
 		loader->hLoad.hFileRaw = NULL;
 
@@ -121,7 +119,21 @@ static UINT8 FileLoader_dopen(void *context)
 #endif
 			loader->hLoad.hFileGZ = gzopen(loader->fileName, "rb");
 		if (loader->hLoad.hFileGZ == NULL)
-			return 0x01;	// TODO: separate error code for "invalid .gz file"
+			return 0x01;
+
+		if (loader->bytesTotal == 0)
+		{
+			UINT8 tempBuf[8192];
+			int r;
+			UINT32 actualSize = 0;
+			while ((r = gzread(loader->hLoad.hFileGZ, tempBuf, sizeof(tempBuf))) > 0)
+			{
+				actualSize += (UINT32)r;
+			}
+			loader->bytesTotal = actualSize;
+			gzrewind(loader->hLoad.hFileGZ);
+		}
+
 		loader->modeCompr = FLMODE_CMP_GZ;
 		loader->Read = &FileLoader_ReadGZ;
 		loader->Seek = &FileLoader_SeekGZ;

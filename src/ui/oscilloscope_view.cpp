@@ -1,5 +1,6 @@
 #include "oscilloscope_view.hpp"
 #include "icons.hpp"
+#include <imgui_internal.h>
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -16,8 +17,19 @@ OscilloscopeView::~OscilloscopeView() = default;
 
 void OscilloscopeView::Render(AudioEngine& audioEngine, bool* pOpen) {
     if (m_focusRequested) {
-        ImGui::SetNextWindowFocus();
         m_focusRequested = false;
+        ImGui::SetNextWindowFocus();
+        ImGuiWindow* win = ImGui::FindWindowByName("Oscilloscope Visualizer");
+        if (win) {
+            ImGui::FocusWindow(win);
+            if (win->DockNode) {
+                win->DockNode->SelectedTabId = win->TabId;
+                if (win->DockNode->TabBar) {
+                    win->DockNode->TabBar->SelectedTabId = win->TabId;
+                    win->DockNode->TabBar->NextSelectedTabId = win->TabId;
+                }
+            }
+        }
     }
 
     ImGui::SetNextWindowSize(ImVec2(880, 520), ImGuiCond_FirstUseEver);
@@ -63,6 +75,74 @@ void OscilloscopeView::Render(AudioEngine& audioEngine, bool* pOpen) {
     const char* colModes[] = { "Auto", "1 Col", "2 Cols", "3 Cols", "4 Cols", "6 Cols" };
     ImGui::Combo("##ColMode", &m_columnMode, colModes, IM_ARRAYSIZE(colModes));
     if (ImGui::IsItemHovered()) ImGui::SetTooltip("Grid column count layout");
+
+    // Sound Chips selector filter (Dropdown with checkboxes)
+    std::vector<std::string> uniqueChips;
+    for (const auto& ch : channels) {
+        if (!ch.chipName.empty() && 
+            std::find(uniqueChips.begin(), uniqueChips.end(), ch.chipName) == uniqueChips.end()) {
+            uniqueChips.push_back(ch.chipName);
+            if (m_chipFilter.find(ch.chipName) == m_chipFilter.end()) {
+                m_chipFilter[ch.chipName] = true;
+            }
+        }
+    }
+
+    size_t selectedCount = 0;
+    std::string singleSelectedName;
+    for (const auto& chip : uniqueChips) {
+        if (m_chipFilter[chip]) {
+            selectedCount++;
+            singleSelectedName = chip;
+        }
+    }
+
+    std::string chipPreview;
+    if (uniqueChips.empty()) {
+        chipPreview = "None";
+    } else if (selectedCount == uniqueChips.size()) {
+        chipPreview = "All Chips";
+    } else if (selectedCount == 0) {
+        chipPreview = "None";
+    } else if (selectedCount == 1) {
+        chipPreview = singleSelectedName;
+    } else {
+        chipPreview = std::to_string(selectedCount) + " of " + std::to_string(uniqueChips.size()) + " Chips";
+    }
+
+    ImGui::SameLine();
+    ImGui::AlignTextToFramePadding();
+    ImGui::TextDisabled("Chips:");
+    ImGui::SameLine(0, 4);
+    ImGui::SetNextItemWidth(125.0f);
+    if (ImGui::BeginCombo("##ChipFilter", chipPreview.c_str())) {
+        if (ImGui::Button("All", ImVec2(55, 0))) {
+            for (const auto& chip : uniqueChips) {
+                m_chipFilter[chip] = true;
+            }
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("None", ImVec2(55, 0))) {
+            for (const auto& chip : uniqueChips) {
+                m_chipFilter[chip] = false;
+            }
+        }
+        ImGui::Separator();
+        for (const auto& chip : uniqueChips) {
+            int chipChCount = 0;
+            for (const auto& ch : channels) {
+                if (ch.chipName == chip) chipChCount++;
+            }
+            char label[64];
+            std::snprintf(label, sizeof(label), "%s (%d ch)", chip.c_str(), chipChCount);
+            bool isChecked = m_chipFilter[chip];
+            if (ImGui::Checkbox(label, &isChecked)) {
+                m_chipFilter[chip] = isChecked;
+            }
+        }
+        ImGui::EndCombo();
+    }
+    if (ImGui::IsItemHovered()) ImGui::SetTooltip("Filter visible sound chips");
 
     // Style selector
     ImGui::SameLine();
@@ -147,11 +227,13 @@ void OscilloscopeView::Render(AudioEngine& audioEngine, bool* pOpen) {
     visibleIndices.reserve(channels.size());
     for (size_t i = 0; i < channels.size(); ++i) {
         if (m_hideMuted && channels[i].muted) continue;
+        auto it = m_chipFilter.find(channels[i].chipName);
+        if (it != m_chipFilter.end() && !it->second) continue;
         visibleIndices.push_back(i);
     }
 
     if (visibleIndices.empty()) {
-        ImGui::TextDisabled("All channels are currently muted and hidden.");
+        ImGui::TextDisabled("No channels match the current filter. Enable chips in the Chips filter dropdown.");
         ImGui::End();
         return;
     }
@@ -224,33 +306,19 @@ void OscilloscopeView::Render(AudioEngine& audioEngine, bool* pOpen) {
             dl->AddText(ImVec2(bp0.x + (badgeW - idTextSz.x) * 0.5f, bp0.y + (badgeH - idTextSz.y) * 0.5f),
                         IM_COL32(10, 15, 20, 255), idBuf);
 
-            // 2. Chip & Channel Name
+            // Right-aligned Mute & Solo buttons (vertically centered with header text)
+            float buttonsW = 35.0f;
+            float buttonsStartX = cardP1.x - 7.0f - buttonsW;
+
+            // 2. Chip & Channel Name (clipped before M/S buttons)
             char titleBuf[64];
             std::snprintf(titleBuf, sizeof(titleBuf), "%s  %s", ch.chipName.c_str(), ch.name.c_str());
+            dl->PushClipRect(ImVec2(bp1.x + 6.0f, cardP0.y), ImVec2(buttonsStartX - 4.0f, cardP0.y + 22.0f), true);
             dl->AddText(ImVec2(bp1.x + 6.0f, cardP0.y + 5.0f), IM_COL32(230, 238, 248, 255), titleBuf);
+            dl->PopClipRect();
 
-            // 3. Right side header items: Note badge pill, Mute, Solo
-            float rightItemsW = 76.0f;
-            float rightStartX = cardP1.x - 6.0f - rightItemsW;
-
-            // Note pill
-            ImVec2 np0 = ImVec2(rightStartX, cardP0.y + 4.0f);
-            ImVec2 np1 = ImVec2(np0.x + 34.0f, np0.y + 17.0f);
-            if (ch.active && ch.curNoteName[0] != '-' && ch.curNoteName[0] != '\0') {
-                dl->AddRectFilled(np0, np1, IM_COL32(24, 90, 48, 220), 3.0f);
-                dl->AddRect(np0, np1, IM_COL32(40, 160, 80, 220), 3.0f, 0, 1.0f);
-                ImVec2 nSz = ImGui::CalcTextSize(ch.curNoteName);
-                dl->AddText(ImVec2(np0.x + (34.0f - nSz.x) * 0.5f, np0.y + (17.0f - nSz.y) * 0.5f),
-                            IM_COL32(165, 255, 185, 255), ch.curNoteName);
-            } else {
-                dl->AddRectFilled(np0, np1, IM_COL32(20, 26, 36, 180), 3.0f);
-                ImVec2 nSz = ImGui::CalcTextSize("--");
-                dl->AddText(ImVec2(np0.x + (34.0f - nSz.x) * 0.5f, np0.y + (17.0f - nSz.y) * 0.5f),
-                            IM_COL32(85, 100, 120, 200), "--");
-            }
-
-            // Interactive Mute & Solo buttons
-            ImGui::SetCursorScreenPos(ImVec2(np1.x + 4.0f, cardP0.y + 3.0f));
+            // 3. Interactive Mute & Solo buttons (shifted down to cardP0.y + 6.0f)
+            ImGui::SetCursorScreenPos(ImVec2(buttonsStartX, cardP0.y + 6.0f));
             ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(3.0f, 0.0f));
 
             auto drawMuteIcon = [ch](ImDrawList* d, ImVec2 pos, float size, ImU32 col) {

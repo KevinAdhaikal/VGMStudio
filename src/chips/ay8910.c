@@ -544,6 +544,8 @@ YM2203 Japanese datasheet contents, translated: http://www.larwe.com/technical/c
 #include "logging.h"
 #include "ayintf.h"
 #include "ay8910.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 
 static DEVDEF_RWFUNC devFunc[] =
@@ -1209,7 +1211,11 @@ void ay8910_update_one(void *param, UINT32 samples, DEV_SMPL **outputs)
 			for (chan = 0; chan < NUM_CHANNELS; chan++)
 			{
 				if (! psg->MuteMsk[chan])
+				{
+					ChannelMixer_PushSample(DEVID_AY8910, 0, chan, 0.0f);
+					ChannelMixer_PushSample(DEVID_YM2203, 0, 3 + chan, 0.0f);
 					continue;
+				}
 				if (TONE_ENVELOPE(psg, chan) != 0)
 				{
 					if (psg->chip_type == AYTYPE_AY8914) // AY8914 Has a two bit tone_envelope field
@@ -1225,10 +1231,16 @@ void ay8910_update_one(void *param, UINT32 samples, DEV_SMPL **outputs)
 				{
 					chnout = psg->vol_table[chan][psg->vol_enabled[chan] ? TONE_VOLUME(psg, chan) : 0];
 				}
+
+				float gL = 1.0f, gR = 1.0f;
+				ChannelMixer_GetGains(DEVID_AY8910, 0, chan, &gL, &gR);
+				ChannelMixer_PushSample(DEVID_AY8910, 0, chan, (float)chnout);
+				ChannelMixer_PushSample(DEVID_YM2203, 0, 3 + chan, (float)chnout);
+
 				if (psg->StereoMask[chan] & 0x01)
-					bufL[cur_smpl] += chnout;
+					bufL[cur_smpl] += (DEV_SMPL)(chnout * gL);
 				if (psg->StereoMask[chan] & 0x02)
-					bufR[cur_smpl] += chnout;
+					bufR[cur_smpl] += (DEV_SMPL)(chnout * gR);
 			}
 		}
 #if ENABLE_CUSTOM_OUTPUTS

@@ -48,4 +48,6 @@ CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.o: \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG_private.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG_private.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/channel_mixer.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/SoundDevs.h

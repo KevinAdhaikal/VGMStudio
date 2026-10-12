@@ -47,4 +47,6 @@ CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/_stdbool.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/channel_mixer.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/SoundDevs.h

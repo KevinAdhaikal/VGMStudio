@@ -53,6 +53,7 @@ public:
 
     const VgmInfo& GetCurrentInfo() const { return m_currentInfo; }
     void UpdateSongInfo(const VgmInfo& newInfo) { m_currentInfo = newInfo; }
+    std::string GetLastLoadError() const { return m_lastLoadError; }
 
     // Playback Speed & Pitch Shifting
     void SetPlaybackSpeed(float speed);
@@ -222,6 +223,7 @@ private:
     std::atomic<float> m_peakR{0.0f};
 
     mutable std::mutex m_audioMutex;
+    std::string m_lastLoadError;
 };
 
 } // namespace vgmstudio

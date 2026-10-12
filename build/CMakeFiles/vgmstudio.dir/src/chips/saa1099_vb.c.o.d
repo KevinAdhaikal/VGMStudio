@@ -35,6 +35,8 @@ CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/channel_mixer.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/SoundDevs.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuCores.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuHelper.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \

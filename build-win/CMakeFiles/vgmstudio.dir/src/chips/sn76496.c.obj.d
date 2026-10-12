@@ -35,4 +35,6 @@ CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn764intf.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/channel_mixer.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/SoundDevs.h

@@ -14,6 +14,8 @@
 #include "../ui/speed_pitch_view.hpp"
 #include "../ui/sample_viewer.hpp"
 #include "../ui/oscilloscope_view.hpp"
+#include "../ui/vgm_events_mixer.hpp"
+#include "../ui/vgm_patch_viewer.hpp"
 
 namespace vgmstudio {
 
@@ -51,6 +53,8 @@ private:
     SpeedPitchView m_speedPitchView;
     SampleViewer m_sampleViewer;
     OscilloscopeView m_oscilloscopeView;
+    VgmEventsMixer m_vgmEventsMixer;
+    VgmPatchViewer m_patchViewer;
 
     void LoadRecentFiles();
     void SaveRecentFiles();
@@ -72,6 +76,8 @@ private:
     bool m_showSpeedWindow = false;
     bool m_showSampleViewer = true;
     bool m_showOscilloscopeView = true;
+    bool m_showVgmEventsMixer = false;
+    bool m_showPatchViewer = false;
 };
 
 } // namespace vgmstudio

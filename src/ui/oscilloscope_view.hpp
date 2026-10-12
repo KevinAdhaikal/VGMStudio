@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <map>
 #include <cstdint>
 #include <imgui.h>
 #include "../audio/audio_engine.hpp"
@@ -33,6 +34,9 @@ private:
     bool m_showGrid = true;
     bool m_showOnlyActive = false;
     bool m_hideMuted = false;
+
+    // Sound chip filter (chip name -> visible)
+    std::map<std::string, bool> m_chipFilter;
 
     // Buffer for fetching waveform samples from AudioEngine
     std::vector<float> m_waveBuffer;

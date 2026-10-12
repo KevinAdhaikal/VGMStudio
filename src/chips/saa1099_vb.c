@@ -23,6 +23,8 @@
 #include "stdtype.h"
 #include "snddef.h"
 #include "EmuStructs.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 #include "EmuCores.h"
 #include "EmuHelper.h"
 #include "RatioCntr.h"
@@ -575,7 +577,10 @@ static void saa1099v_update(void* param, UINT32 samples, DEV_SMPL** outputs)
 		{
 			saaCh = &saa->channels[curChn];
 			if (saaCh->muted)
+			{
+				ChannelMixer_PushSample(DEVID_SAA1099, 0, curChn, 0.0f);
 				continue;
+			}
 			neChn = curChn / 3;
 			noDCremove = 0;
 			
@@ -611,24 +616,29 @@ static void saa1099v_update(void* param, UINT32 samples, DEV_SMPL** outputs)
 			
 			// tone XOR noise enabled: outState can be: 0 [off], 2 [on]
 			// tone + noise enabled: outState can be: 0 [both off], 1 [only tone on], 2 [both on]
+			DEV_SMPL curChnSample = 0;
 			if (! noDCremove)
 			{
 				outState = outState - 1;	// DC offset removal and make bipolar
 				outputs[0][curSmpl] += outState * outVolL;
 				outputs[1][curSmpl] += outState * outVolR;
+				curChnSample = outState * outVolL;
 			}
 			else if (noDCremove == 1)
 			{
 				// just ignore offset removal (makes software-PCM work)
 				outputs[0][curSmpl] += outState * outVolL;
 				outputs[1][curSmpl] += outState * outVolR;
+				curChnSample = outState * outVolL;
 			}
 			else //if (noDCremove == 2)
 			{
 				// set "center" based on current volume level (for EnvGen-based sounds)
 				outputs[0][curSmpl] += outState * outVolL - saa->volTbl[saaCh->volL & ~0x01];
 				outputs[1][curSmpl] += outState * outVolR - saa->volTbl[saaCh->volR & ~0x01];
+				curChnSample = outState * outVolL - saa->volTbl[saaCh->volL & ~0x01];
 			}
+			ChannelMixer_PushSample(DEVID_SAA1099, 0, curChn, (float)(curChnSample * 8));
 		}
 		
 		// Updating after calculating the sample output improves emulation of a few artifacts.

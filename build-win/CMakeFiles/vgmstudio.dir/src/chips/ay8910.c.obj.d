@@ -35,4 +35,6 @@ CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/chips/ayintf.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/chips/ay8910.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/ay8910.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/channel_mixer.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/../emu/SoundDevs.h

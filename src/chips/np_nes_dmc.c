@@ -13,6 +13,8 @@
 #include "RatioCntr.h"
 #include "np_nes_apu.h"	// for NES_APU_np_FrameSequence
 #include "np_nes_dmc.h"
+#include "../emu/channel_mixer.h"
+#include "../emu/SoundDevs.h"
 
 
 // Master Clock: 21477272 (NTSC)
@@ -539,14 +541,25 @@ UINT32 NES_DMC_np_Render(void* chip, INT32 b[2])
 		else if (dmc->dmc_pop_offset < 0) ++dmc->dmc_pop_offset;
 	}
 
-	b[0]  = m[0] * dmc->sm[0][0];
-	b[0] += m[1] * dmc->sm[0][1];
-	b[0] +=-m[2] * dmc->sm[0][2];
+	float gL2 = 1.0f, gR2 = 1.0f;
+	float gL3 = 1.0f, gR3 = 1.0f;
+	float gL4 = 1.0f, gR4 = 1.0f;
+	ChannelMixer_GetGains(DEVID_NES_APU, 0, 2, &gL2, &gR2);
+	ChannelMixer_GetGains(DEVID_NES_APU, 0, 3, &gL3, &gR3);
+	ChannelMixer_GetGains(DEVID_NES_APU, 0, 4, &gL4, &gR4);
+
+	ChannelMixer_PushSample(DEVID_NES_APU, 0, 2, (float)(m[0] << 3));
+	ChannelMixer_PushSample(DEVID_NES_APU, 0, 3, (float)(m[1] << 3));
+	ChannelMixer_PushSample(DEVID_NES_APU, 0, 4, (float)(m[2] << 3));
+
+	b[0]  = (INT32)(m[0] * dmc->sm[0][0] * gL2);
+	b[0] += (INT32)(m[1] * dmc->sm[0][1] * gL3);
+	b[0] += (INT32)(-m[2] * dmc->sm[0][2] * gL4);
 	b[0] >>= 7-2;
 
-	b[1]  = m[0] * dmc->sm[1][0];
-	b[1] += m[1] * dmc->sm[1][1];
-	b[1] +=-m[2] * dmc->sm[1][2];
+	b[1]  = (INT32)(m[0] * dmc->sm[1][0] * gR2);
+	b[1] += (INT32)(m[1] * dmc->sm[1][1] * gR3);
+	b[1] += (INT32)(-m[2] * dmc->sm[1][2] * gR4);
 	b[1] >>= 7-2;
 
 	return 2;

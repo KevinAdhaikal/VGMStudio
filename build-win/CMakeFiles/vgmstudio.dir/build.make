@@ -402,11 +402,56 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.s"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kevinadhaikal/Documents/vgmstudio/src/ui/oscilloscope_view.cpp -o CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.s
 
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj: CMakeFiles/vgmstudio.dir/flags.make
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.cpp
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.cpp
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.cpp > CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.i
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.cpp -o CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.s
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj: CMakeFiles/vgmstudio.dir/flags.make
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.cpp
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.cpp
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.cpp > CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.i
+
+CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_patch_viewer.cpp -o CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.s
+
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj: CMakeFiles/vgmstudio.dir/flags.make
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.cpp
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.cpp
+
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.i"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.cpp > CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.i
+
+CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.s"
+	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.cpp -o CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.s
+
 CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: CMakeFiles/vgmstudio.dir/flags.make
 CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.cpp
 CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.cpp
 
 CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.i: cmake_force
@@ -421,7 +466,7 @@ CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/2151intf.c
 CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/2151intf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.i: cmake_force
@@ -436,7 +481,7 @@ CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/2413intf.c
 CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/2413intf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.i: cmake_force
@@ -451,7 +496,7 @@ CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/2612intf.c
 CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/2612intf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/2612intf.c.i: cmake_force
@@ -466,7 +511,7 @@ CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/262intf.c
 CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/262intf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/262intf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/262intf.c.i: cmake_force
@@ -481,7 +526,7 @@ CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG.c
 CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/Ootake_PSG.c
 
 CMakeFiles/vgmstudio.dir/src/chips/Ootake_PSG.c.i: cmake_force
@@ -496,7 +541,7 @@ CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj: CMakeFiles/vgmstudio.dir
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/adlibemu_opl2.c
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/adlibemu_opl2.c
 
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl2.c.i: cmake_force
@@ -511,7 +556,7 @@ CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj: CMakeFiles/vgmstudio.dir
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/adlibemu_opl3.c
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/adlibemu_opl3.c
 
 CMakeFiles/vgmstudio.dir/src/chips/adlibemu_opl3.c.i: cmake_force
@@ -526,7 +571,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ay8910.c
 CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ay8910.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ay8910.c.i: cmake_force
@@ -541,7 +586,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ayintf.c
 CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ayintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ayintf.c.i: cmake_force
@@ -556,7 +601,7 @@ CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/bsmt2000.c
 CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/bsmt2000.c
 
 CMakeFiles/vgmstudio.dir/src/chips/bsmt2000.c.i: cmake_force
@@ -571,7 +616,7 @@ CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj: CMakeFiles/vgmstudio.dir/flags.ma
 CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/c140.c
 CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/c140.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/c140.c
 
 CMakeFiles/vgmstudio.dir/src/chips/c140.c.i: cmake_force
@@ -586,7 +631,7 @@ CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj: CMakeFiles/vgmstudio.dir/flags.ma
 CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/c219.c
 CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/c219.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/c219.c
 
 CMakeFiles/vgmstudio.dir/src/chips/c219.c.i: cmake_force
@@ -601,7 +646,7 @@ CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj: CMakeFiles/vgmstudio.dir/flags.ma
 CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/c352.c
 CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/c352.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/c352.c
 
 CMakeFiles/vgmstudio.dir/src/chips/c352.c.i: cmake_force
@@ -616,7 +661,7 @@ CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280_mame.c
 CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280_mame.c
 
 CMakeFiles/vgmstudio.dir/src/chips/c6280_mame.c.i: cmake_force
@@ -631,7 +676,7 @@ CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj: CMakeFiles/vgmstudio.dir/fla
 CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280intf.c
 CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/c6280intf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/c6280intf.c.i: cmake_force
@@ -646,7 +691,7 @@ CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/emu2149.c
 CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/emu2149.c
 
 CMakeFiles/vgmstudio.dir/src/chips/emu2149.c.i: cmake_force
@@ -661,7 +706,7 @@ CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/emu2413.c
 CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/emu2413.c
 
 CMakeFiles/vgmstudio.dir/src/chips/emu2413.c.i: cmake_force
@@ -676,7 +721,7 @@ CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/es5503.c
 CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/es5503.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/es5503.c
 
 CMakeFiles/vgmstudio.dir/src/chips/es5503.c.i: cmake_force
@@ -691,7 +736,7 @@ CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/es5506.c
 CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/es5506.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/es5506.c
 
 CMakeFiles/vgmstudio.dir/src/chips/es5506.c.i: cmake_force
@@ -706,7 +751,7 @@ CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj: CMakeFiles/vgmstudio.dir/flags.m
 CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopl.c
 CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopl.c
 
 CMakeFiles/vgmstudio.dir/src/chips/fmopl.c.i: cmake_force
@@ -721,7 +766,7 @@ CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj: CMakeFiles/vgmstudio.dir/flags.m
 CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopn.c
 CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopn.c
 
 CMakeFiles/vgmstudio.dir/src/chips/fmopn.c.i: cmake_force
@@ -736,7 +781,7 @@ CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/gb_mame.c
 CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/gb_mame.c
 
 CMakeFiles/vgmstudio.dir/src/chips/gb_mame.c.i: cmake_force
@@ -751,7 +796,7 @@ CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/gbintf.c
 CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/gbintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/gbintf.c.i: cmake_force
@@ -766,7 +811,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ics2115.c
 CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ics2115.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ics2115.c.i: cmake_force
@@ -781,7 +826,7 @@ CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/iremga20.c
 CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/iremga20.c
 
 CMakeFiles/vgmstudio.dir/src/chips/iremga20.c.i: cmake_force
@@ -796,7 +841,7 @@ CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/k005289.c
 CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/k005289.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/k005289.c
 
 CMakeFiles/vgmstudio.dir/src/chips/k005289.c.i: cmake_force
@@ -811,7 +856,7 @@ CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/k007232.c
 CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/k007232.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/k007232.c
 
 CMakeFiles/vgmstudio.dir/src/chips/k007232.c.i: cmake_force
@@ -826,7 +871,7 @@ CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/k051649.c
 CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/k051649.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/k051649.c
 
 CMakeFiles/vgmstudio.dir/src/chips/k051649.c.i: cmake_force
@@ -841,7 +886,7 @@ CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/k053260.c
 CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/k053260.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/k053260.c
 
 CMakeFiles/vgmstudio.dir/src/chips/k053260.c.i: cmake_force
@@ -856,7 +901,7 @@ CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/k054539.c
 CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/k054539.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/k054539.c
 
 CMakeFiles/vgmstudio.dir/src/chips/k054539.c.i: cmake_force
@@ -871,7 +916,7 @@ CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj: CMakeFiles/vgmstudio.dir/flags.m
 CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/mikey.c
 CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/mikey.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/mikey.c
 
 CMakeFiles/vgmstudio.dir/src/chips/mikey.c.i: cmake_force
@@ -886,7 +931,7 @@ CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/msm5205.c
 CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/msm5205.c
 
 CMakeFiles/vgmstudio.dir/src/chips/msm5205.c.i: cmake_force
@@ -901,7 +946,7 @@ CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/msm5232.c
 CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/msm5232.c
 
 CMakeFiles/vgmstudio.dir/src/chips/msm5232.c.i: cmake_force
@@ -916,7 +961,7 @@ CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/multipcm.c
 CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/multipcm.c
 
 CMakeFiles/vgmstudio.dir/src/chips/multipcm.c.i: cmake_force
@@ -931,7 +976,7 @@ CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/nes_apu.c
 CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/nes_apu.c
 
 CMakeFiles/vgmstudio.dir/src/chips/nes_apu.c.i: cmake_force
@@ -946,7 +991,7 @@ CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/nesintf.c
 CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/nesintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/nesintf.c.i: cmake_force
@@ -961,7 +1006,7 @@ CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.c
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_apu.c
 
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_apu.c.i: cmake_force
@@ -976,7 +1021,7 @@ CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_dmc.c
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_dmc.c
 
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_dmc.c.i: cmake_force
@@ -991,7 +1036,7 @@ CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_fds.c
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/np_nes_fds.c
 
 CMakeFiles/vgmstudio.dir/src/chips/np_nes_fds.c.i: cmake_force
@@ -1006,7 +1051,7 @@ CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj: CMakeFiles/vgmstudio.dir/fla
 CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/nukedopl3.c
 CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/nukedopl3.c
 
 CMakeFiles/vgmstudio.dir/src/chips/nukedopl3.c.i: cmake_force
@@ -1021,7 +1066,7 @@ CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj: CMakeFiles/vgmstudio.dir/fla
 CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/nukedopll.c
 CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/nukedopll.c
 
 CMakeFiles/vgmstudio.dir/src/chips/nukedopll.c.i: cmake_force
@@ -1036,7 +1081,7 @@ CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/nukedopm.c
 CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/nukedopm.c
 
 CMakeFiles/vgmstudio.dir/src/chips/nukedopm.c.i: cmake_force
@@ -1051,7 +1096,7 @@ CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/okiadpcm.c
 CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/okiadpcm.c
 
 CMakeFiles/vgmstudio.dir/src/chips/okiadpcm.c.i: cmake_force
@@ -1066,7 +1111,7 @@ CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/okim6258.c
 CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/okim6258.c
 
 CMakeFiles/vgmstudio.dir/src/chips/okim6258.c.i: cmake_force
@@ -1081,7 +1126,7 @@ CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/okim6295.c
 CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/okim6295.c
 
 CMakeFiles/vgmstudio.dir/src/chips/okim6295.c.i: cmake_force
@@ -1096,7 +1141,7 @@ CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/oplintf.c
 CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/oplintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/oplintf.c.i: cmake_force
@@ -1111,7 +1156,7 @@ CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/opnintf.c
 CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/opnintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/opnintf.c.i: cmake_force
@@ -1126,7 +1171,7 @@ CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj: CMakeFiles/vgmstudio.dir/flags.m
 CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/pokey.c
 CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/pokey.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/pokey.c
 
 CMakeFiles/vgmstudio.dir/src/chips/pokey.c.i: cmake_force
@@ -1141,7 +1186,7 @@ CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj: CMakeFiles/vgmstudio.dir/flags.mak
 CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/pwm.c
 CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/pwm.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/pwm.c
 
 CMakeFiles/vgmstudio.dir/src/chips/pwm.c.i: cmake_force
@@ -1156,7 +1201,7 @@ CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.c
 CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_ctr.c
 
 CMakeFiles/vgmstudio.dir/src/chips/qsound_ctr.c.i: cmake_force
@@ -1171,7 +1216,7 @@ CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj: CMakeFiles/vgmstudio.dir/f
 CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_mame.c
 CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsound_mame.c
 
 CMakeFiles/vgmstudio.dir/src/chips/qsound_mame.c.i: cmake_force
@@ -1186,7 +1231,7 @@ CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsoundintf.c
 CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/qsoundintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/qsoundintf.c.i: cmake_force
@@ -1201,7 +1246,7 @@ CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/rf5c68.c
 CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/rf5c68.c
 
 CMakeFiles/vgmstudio.dir/src/chips/rf5c68.c.i: cmake_force
@@ -1216,7 +1261,7 @@ CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/rf5cintf.c
 CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/rf5cintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/rf5cintf.c.i: cmake_force
@@ -1231,7 +1276,7 @@ CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj: CMakeFiles/vgmstudio.dir/
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/saa1099_mame.c
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/saa1099_mame.c
 
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_mame.c.i: cmake_force
@@ -1246,7 +1291,7 @@ CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/saa1099_vb.c
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/saa1099_vb.c
 
 CMakeFiles/vgmstudio.dir/src/chips/saa1099_vb.c.i: cmake_force
@@ -1261,7 +1306,7 @@ CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/saaintf.c
 CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/saaintf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/saaintf.c.i: cmake_force
@@ -1276,7 +1321,7 @@ CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj: CMakeFiles/vgmstudio.dir/f
 CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/sameboy_apu.c
 CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/sameboy_apu.c
 
 CMakeFiles/vgmstudio.dir/src/chips/sameboy_apu.c.i: cmake_force
@@ -1291,7 +1336,7 @@ CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/scd_pcm.c
 CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/scd_pcm.c
 
 CMakeFiles/vgmstudio.dir/src/chips/scd_pcm.c.i: cmake_force
@@ -1306,7 +1351,7 @@ CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj: CMakeFiles/vgmstudio.dir/flags.ma
 CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/scsp.c
 CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/scsp.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/scsp.c
 
 CMakeFiles/vgmstudio.dir/src/chips/scsp.c.i: cmake_force
@@ -1321,7 +1366,7 @@ CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/scspdsp.c
 CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/scspdsp.c
 
 CMakeFiles/vgmstudio.dir/src/chips/scspdsp.c.i: cmake_force
@@ -1336,7 +1381,7 @@ CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/segapcm.c
 CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/segapcm.c
 
 CMakeFiles/vgmstudio.dir/src/chips/segapcm.c.i: cmake_force
@@ -1351,7 +1396,7 @@ CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76489.c
 CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76489.c
 
 CMakeFiles/vgmstudio.dir/src/chips/sn76489.c.i: cmake_force
@@ -1366,7 +1411,7 @@ CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.c
 CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn76496.c
 
 CMakeFiles/vgmstudio.dir/src/chips/sn76496.c.i: cmake_force
@@ -1381,7 +1426,7 @@ CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj: CMakeFiles/vgmstudio.dir/fla
 CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn764intf.c
 CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/sn764intf.c
 
 CMakeFiles/vgmstudio.dir/src/chips/sn764intf.c.i: cmake_force
@@ -1396,7 +1441,7 @@ CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/upd7759.c
 CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/upd7759.c
 
 CMakeFiles/vgmstudio.dir/src/chips/upd7759.c.i: cmake_force
@@ -1411,7 +1456,7 @@ CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj: CMakeFiles/vgmstudio.dir/flags.mak
 CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/vsu.c
 CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/vsu.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/vsu.c
 
 CMakeFiles/vgmstudio.dir/src/chips/vsu.c.i: cmake_force
@@ -1426,7 +1471,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ws_audio.c
 CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ws_audio.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ws_audio.c.i: cmake_force
@@ -1441,7 +1486,7 @@ CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/x1_010.c
 CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/x1_010.c
 
 CMakeFiles/vgmstudio.dir/src/chips/x1_010.c.i: cmake_force
@@ -1456,7 +1501,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym2151.c
 CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym2151.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ym2151.c.i: cmake_force
@@ -1471,7 +1516,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym2413.c
 CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym2413.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ym2413.c.i: cmake_force
@@ -1486,7 +1531,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym2612.c
 CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym2612.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ym2612.c.i: cmake_force
@@ -1501,7 +1546,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym3438.c
 CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ym3438.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ym3438.c.i: cmake_force
@@ -1516,7 +1561,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymdeltat.c
 CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymdeltat.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ymdeltat.c.i: cmake_force
@@ -1531,7 +1576,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymf262.c
 CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymf262.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ymf262.c.i: cmake_force
@@ -1546,7 +1591,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymf271.c
 CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymf271.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ymf271.c.i: cmake_force
@@ -1561,7 +1606,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymf278b.c
 CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymf278b.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ymf278b.c.i: cmake_force
@@ -1576,7 +1621,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymz280b.c
 CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymz280b.c
 
 CMakeFiles/vgmstudio.dir/src/chips/ymz280b.c.i: cmake_force
@@ -1591,7 +1636,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymfmintf.cpp
 CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymfmintf.cpp
 
 CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.i: cmake_force
@@ -1606,7 +1651,7 @@ CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj: CMakeFiles/vgmstudio.d
 CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymfm/ymfm_opz.cpp
 CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/chips/ymfm/ymfm_opz.cpp
 
 CMakeFiles/vgmstudio.dir/src/chips/ymfm/ymfm_opz.cpp.i: cmake_force
@@ -1621,7 +1666,7 @@ CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundEmu.c
 CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj -MF CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj.d -o CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundEmu.c
 
 CMakeFiles/vgmstudio.dir/src/emu/SoundEmu.c.i: cmake_force
@@ -1636,7 +1681,7 @@ CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj: CMakeFiles/vgmstudio.dir/flags
 CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.c
 CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj -MF CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj.d -o CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/emu/Resampler.c
 
 CMakeFiles/vgmstudio.dir/src/emu/Resampler.c.i: cmake_force
@@ -1651,7 +1696,7 @@ CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj: CMakeFiles/vgmstudio.dir/fla
 CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/emu/dac_control.c
 CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj -MF CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj.d -o CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/emu/dac_control.c
 
 CMakeFiles/vgmstudio.dir/src/emu/dac_control.c.i: cmake_force
@@ -1666,7 +1711,7 @@ CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj: CMakeFiles/vgmstudio.dir/flags.m
 CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/emu/panning.c
 CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj -MF CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj.d -o CMakeFiles/vgmstudio.dir/src/emu/panning.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/emu/panning.c
 
 CMakeFiles/vgmstudio.dir/src/emu/panning.c.i: cmake_force
@@ -1681,7 +1726,7 @@ CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj: CMakeFiles/vgmstudio.dir/flags.m
 CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.c
 CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj -MF CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj.d -o CMakeFiles/vgmstudio.dir/src/emu/logging.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/emu/logging.c
 
 CMakeFiles/vgmstudio.dir/src/emu/logging.c.i: cmake_force
@@ -1696,7 +1741,7 @@ CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj: CMakeFiles/vgmstudio.dir/f
 CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.c
 CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj -MF CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj.d -o CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.c
 
 CMakeFiles/vgmstudio.dir/src/emu/channel_mixer.c.i: cmake_force
@@ -1711,7 +1756,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/dblk_compr.c
 CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/dblk_compr.c
 
 CMakeFiles/vgmstudio.dir/src/vgm/dblk_compr.c.i: cmake_force
@@ -1726,7 +1771,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj: CMakeFiles/vgmstudio.dir/flags.ma
 CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/helper.c
 CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/helper.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/helper.c
 
 CMakeFiles/vgmstudio.dir/src/vgm/helper.c.i: cmake_force
@@ -1741,7 +1786,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.c
 CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/DataLoader.c
 
 CMakeFiles/vgmstudio.dir/src/vgm/DataLoader.c.i: cmake_force
@@ -1756,7 +1801,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/FileLoader.c
 CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/FileLoader.c
 
 CMakeFiles/vgmstudio.dir/src/vgm/FileLoader.c.i: cmake_force
@@ -1771,7 +1816,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/MemoryLoader.c
 CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/MemoryLoader.c
 
 CMakeFiles/vgmstudio.dir/src/vgm/MemoryLoader.c.i: cmake_force
@@ -1786,7 +1831,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj: CMakeFiles/vgmstudio.dir/flags.
 CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj: CMakeFiles/vgmstudio.dir/includes_C.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/StrUtils.c
 CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj"
 	/usr/bin/x86_64-w64-mingw32-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/StrUtils.c
 
 CMakeFiles/vgmstudio.dir/src/vgm/StrUtils.c.i: cmake_force
@@ -1801,7 +1846,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj: CMakeFiles/vgmstudio.dir/fla
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.cpp
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.cpp
 
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer.cpp.i: cmake_force
@@ -1816,7 +1861,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: CMakeFiles/vgmstu
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer_cmdhandler.cpp
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer_cmdhandler.cpp
 
 CMakeFiles/vgmstudio.dir/src/vgm/vgmplayer_cmdhandler.cpp.i: cmake_force
@@ -1831,7 +1876,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj: CMakeFiles/vgmstudio.dir/fl
 CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.cpp
 CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.cpp
 
 CMakeFiles/vgmstudio.dir/src/vgm/playerbase.cpp.i: cmake_force
@@ -1846,7 +1891,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj: CMakeFiles/vgmstudio.dir/flag
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.cpp
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.cpp
 
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_info.cpp.i: cmake_force
@@ -1861,7 +1906,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj: CMakeFiles/vgmstudio.d
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.cpp
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.cpp
 
 CMakeFiles/vgmstudio.dir/src/vgm/vgm_disassembly.cpp.i: cmake_force
@@ -1876,7 +1921,7 @@ CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj: CMakeFiles/vgmstudio.dir/
 CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj: CMakeFiles/vgmstudio.dir/includes_CXX.rsp
 CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj: /home/kevinadhaikal/Documents/vgmstudio/src/vgm/note_tracker.cpp
 CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj: CMakeFiles/vgmstudio.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building CXX object CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj"
 	/usr/bin/x86_64-w64-mingw32-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj -MF CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj.d -o CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.obj -c /home/kevinadhaikal/Documents/vgmstudio/src/vgm/note_tracker.cpp
 
 CMakeFiles/vgmstudio.dir/src/vgm/note_tracker.cpp.i: cmake_force
@@ -1911,6 +1956,9 @@ vgmstudio_OBJECTS = \
 "CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.obj" \
 "CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj" \
 "CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj" \
+"CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj" \
+"CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj" \
+"CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj" \
 "CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj" \
 "CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj" \
 "CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj" \
@@ -2036,6 +2084,9 @@ vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/ui/settings_dialog.cpp.obj
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.obj
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.obj
+vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.obj
+vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/ui/vgm_patch_viewer.cpp.obj
+vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/vgm/vgm_patch_extractor.cpp.obj
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/chips/2151intf.c.obj
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/src/chips/2413intf.c.obj
@@ -2140,7 +2191,7 @@ vgmstudio.exe: third_party/zlib/libzlibstatic.a
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/linkLibs.rsp
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/objects1.rsp
 vgmstudio.exe: CMakeFiles/vgmstudio.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Linking CXX executable vgmstudio.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kevinadhaikal/Documents/vgmstudio/build-win/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Linking CXX executable vgmstudio.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vgmstudio.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Copying SDL2.dll to binary directory"
 	/home/kevinadhaikal/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E copy_if_different /home/kevinadhaikal/Documents/vgmstudio/third_party/sdl2-windows/x86_64-w64-mingw32/bin/SDL2.dll /home/kevinadhaikal/Documents/vgmstudio/build-win/SDL2.dll

@@ -48,7 +48,12 @@ VgmInfo InspectVgmFile(const std::string& path) {
         info.fileSizeBytes = (size_t)st.st_size;
     }
 
+#ifdef _WIN32
+    std::filesystem::path fsPath(std::filesystem::u8path(path));
+    DATA_LOADER* dLoad = FileLoader_InitW(fsPath.wstring().c_str());
+#else
     DATA_LOADER* dLoad = FileLoader_Init(path.c_str());
+#endif
     if (!dLoad) {
         return info;
     }
