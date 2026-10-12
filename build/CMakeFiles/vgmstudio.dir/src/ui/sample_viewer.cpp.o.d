@@ -339,6 +339,11 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imconfig.h \
@@ -349,9 +354,9 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.o: \
  /usr/include/c++/16/bits/hashtable.h \
  /usr/include/c++/16/bits/hashtable_policy.h \
  /usr/include/c++/16/bits/enable_special_members.h \
- /usr/include/c++/16/bits/node_handle.h /usr/include/c++/16/cstring \
- /usr/include/c++/16/fstream /usr/include/c++/16/istream \
- /usr/include/c++/16/ios /usr/include/c++/16/bits/ios_base.h \
+ /usr/include/c++/16/cstring /usr/include/c++/16/fstream \
+ /usr/include/c++/16/istream /usr/include/c++/16/ios \
+ /usr/include/c++/16/bits/ios_base.h \
  /usr/include/c++/16/bits/locale_classes.h \
  /usr/include/c++/16/bits/locale_classes.tcc \
  /usr/include/c++/16/system_error /usr/include/c++/16/stdexcept \
@@ -372,10 +377,8 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.o: \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/16/bits/fstream.tcc /usr/include/c++/16/set \
- /usr/include/c++/16/bits/stl_tree.h /usr/include/c++/16/bits/stl_set.h \
- /usr/include/c++/16/bits/stl_multiset.h /usr/include/c++/16/map \
- /usr/include/c++/16/bits/stl_map.h \
- /usr/include/c++/16/bits/stl_multimap.h /usr/include/c++/16/filesystem \
+ /usr/include/c++/16/bits/stl_set.h \
+ /usr/include/c++/16/bits/stl_multiset.h /usr/include/c++/16/filesystem \
  /usr/include/c++/16/bits/fs_fwd.h /usr/include/c++/16/bits/fs_path.h \
  /usr/include/c++/16/locale \
  /usr/include/c++/16/bits/locale_facets_nonio.h \

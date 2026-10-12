@@ -383,6 +383,12 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/app/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../ui/file_dialog.hpp \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/filesystem \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h \
@@ -442,14 +448,8 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../ui/speed_pitch_view.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../ui/sample_viewer.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../ui/oscilloscope_view.hpp \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../ui/vgm_events_mixer.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../ui/vgm_patch_viewer.hpp \
- /home/kevinadhaikal/Documents/vgmstudio/src/app/../ui/../vgm/vgm_patch_extractor.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/theme.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/app/../third_party/imgui/imgui_internal.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/math.h \

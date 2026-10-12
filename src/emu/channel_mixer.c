@@ -21,6 +21,11 @@ typedef struct {
 
 static CmChannel s_channels[CM_MAX_CHIPS][CM_MAX_INSTANCES][CM_MAX_CHANNELS];
 static int s_initialized = 0;
+static int s_captureEnabled = 1;
+
+void ChannelMixer_EnableCapture(int enable) {
+    s_captureEnabled = enable;
+}
 
 static void CalcGains(CmChannel* ch) {
     float vol = ch->vol;
@@ -108,6 +113,11 @@ void ChannelMixer_Get(int chipType, int chipInst, int channel, float* outVol, fl
 }
 
 void ChannelMixer_GetGains(int chipType, int chipInst, int channel, float* gainL, float* gainR) {
+    if (!s_captureEnabled) {
+        if (gainL) *gainL = 1.0f;
+        if (gainR) *gainR = 1.0f;
+        return;
+    }
     if (!s_initialized) {
         if (gainL) *gainL = 1.0f;
         if (gainR) *gainR = 1.0f;
@@ -127,6 +137,7 @@ void ChannelMixer_GetGains(int chipType, int chipInst, int channel, float* gainL
 }
 
 void ChannelMixer_PushSample(int chipType, int chipInst, int channel, float sample) {
+    if (!s_captureEnabled) return;
     if (!s_initialized) ChannelMixer_Reset();
     if (chipType < 0 || chipType >= CM_MAX_CHIPS) return;
     if (chipInst < 0 || chipInst >= CM_MAX_INSTANCES) return;

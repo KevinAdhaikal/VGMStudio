@@ -343,6 +343,11 @@ CMakeFiles/vgmstudio.dir/src/ui/disassembly_view.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h \
  /usr/include/c++/16/cstring /usr/include/c++/16/sstream \
  /usr/include/c++/16/istream /usr/include/c++/16/ios \

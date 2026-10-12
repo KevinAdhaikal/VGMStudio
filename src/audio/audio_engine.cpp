@@ -7,6 +7,13 @@
 #include <filesystem>
 #include "emu/channel_mixer.h"
 #include "emu/SoundDevs.h"
+#include "emu/stdtype.h"
+#ifndef SNDDEV_YM2203
+#define SNDDEV_YM2203
+#endif
+extern "C" {
+#include "chips/fmopn.h"
+}
 
 namespace vgmstudio {
 
@@ -48,12 +55,23 @@ bool AudioEngine::Init(int sampleRate, int bufferSize) {
     // Start audio device thread (starts unpaused in SDL, but our flag controls playback)
     SDL_PauseAudioDevice(m_deviceId, 0);
 
+    // Initialize preview FM synthesizer core (Yamaha OPN hardware engine)
+    m_previewFmClock = 4000000;
+    m_previewFmChip = ym2203_init(NULL, m_previewFmClock, m_sampleRate, NULL, NULL);
+    if (m_previewFmChip) ym2203_reset_chip(m_previewFmChip);
+    m_previewFmKeyOn.store(false);
+    m_previewFmReleaseFrames = 0;
+
     std::cout << "[AudioEngine] Audio initialized: " << m_sampleRate << " Hz, " 
               << m_bufferFrames << " frames buffer." << std::endl;
     return true;
 }
 
 void AudioEngine::Shutdown() {
+    if (m_previewFmChip) {
+        ym2203_shutdown(m_previewFmChip);
+        m_previewFmChip = nullptr;
+    }
     if (m_deviceId != 0) {
         SDL_CloseAudioDevice(m_deviceId);
         m_deviceId = 0;
@@ -753,99 +771,68 @@ void AudioEngine::ProcessAudio(int16_t* outStream, int frames) {
     float pParam1 = m_previewParam1.load();
     float pParam2 = m_previewParam2.load();
 
+    std::vector<DEV_SMPL> fmBufL;
+    std::vector<DEV_SMPL> fmBufR;
+    bool hasFmSamples = false;
+
+    if (previewActive && previewMode == 0 && m_previewFmChip) {
+        fmBufL.resize(frames, 0);
+        fmBufR.resize(frames, 0);
+        DEV_SMPL* bufs[2] = { fmBufL.data(), fmBufR.data() };
+
+        ChannelMixer_EnableCapture(0);
+        ym2203_update_one(m_previewFmChip, (UINT32)frames, bufs);
+        ChannelMixer_EnableCapture(1);
+        hasFmSamples = true;
+
+        if (!m_previewFmKeyOn.load()) {
+            m_previewFmReleaseFrames += frames;
+            int maxReleaseSamples = m_sampleRate * 2; // 2.0s max release
+            int maxPeak = 0;
+            for (int f = 0; f < frames; ++f) {
+                int a = std::abs((int)fmBufL[f]);
+                if (a > maxPeak) maxPeak = a;
+            }
+            if (maxPeak < 25 || m_previewFmReleaseFrames > (uint32_t)maxReleaseSamples) {
+                m_previewActive.store(false);
+            }
+        }
+    }
+
     for (UINT32 i = 0; i < (UINT32)frames; ++i) {
         float previewSample = 0.0f;
-        if (previewActive) {
+        if (hasFmSamples) {
+            float vol = (pParam2 > 0.0f) ? pParam2 : (pParam1 > 0.0f ? pParam1 : 1.0f);
+            previewSample = ((float)fmBufL[i] / 8192.0f) * vol;
+        } else if (previewActive) {
             float dt = previewFreq / (float)m_sampleRate;
             m_previewPhase += dt;
             if (m_previewPhase >= 1.0f) m_previewPhase -= 1.0f;
 
-            if (previewMode == 0) { // FM 4-op simulation
-                // Advance operator phases
-                float mults[4];
-                float gains[4];
-                for (int k = 0; k < 4; ++k) {
-                    mults[k] = (m_previewOpMult[k] > 0.0f) ? m_previewOpMult[k] : 0.5f;
-                    gains[k] = std::exp(-m_previewOpTL[k] * 0.055f);
-                    m_previewOpPhase[k] += dt * mults[k];
-                    if (m_previewOpPhase[k] >= 1.0f) m_previewOpPhase[k] -= 1.0f;
-                }
-
-                float fbVal = std::sin(m_previewOpPhase[0] * 6.2831853f) * ((float)m_previewFmFb * 0.45f);
-                float o0 = std::sin((m_previewOpPhase[0] + fbVal) * 6.2831853f) * gains[0];
-                float o1 = 0.0f, o2 = 0.0f, o3 = 0.0f;
-
-                switch (m_previewFmAlg) {
-                    case 0: // 0 -> 1 -> 2 -> 3
-                        o1 = std::sin((m_previewOpPhase[1] + o0 * 1.5f) * 6.2831853f) * gains[1];
-                        o2 = std::sin((m_previewOpPhase[2] + o1 * 1.5f) * 6.2831853f) * gains[2];
-                        o3 = std::sin((m_previewOpPhase[3] + o2 * 1.5f) * 6.2831853f) * gains[3];
-                        previewSample = o3 * 0.4f;
-                        break;
-                    case 1: // (0+1) -> 2 -> 3
-                        o1 = std::sin(m_previewOpPhase[1] * 6.2831853f) * gains[1];
-                        o2 = std::sin((m_previewOpPhase[2] + (o0 + o1) * 1.2f) * 6.2831853f) * gains[2];
-                        o3 = std::sin((m_previewOpPhase[3] + o2 * 1.5f) * 6.2831853f) * gains[3];
-                        previewSample = o3 * 0.4f;
-                        break;
-                    case 2: // (0->1 + 2) -> 3
-                        o1 = std::sin((m_previewOpPhase[1] + o0 * 1.5f) * 6.2831853f) * gains[1];
-                        o2 = std::sin(m_previewOpPhase[2] * 6.2831853f) * gains[2];
-                        o3 = std::sin((m_previewOpPhase[3] + (o1 + o2) * 1.2f) * 6.2831853f) * gains[3];
-                        previewSample = o3 * 0.4f;
-                        break;
-                    case 3: // (0->1) + (0->2) -> 3
-                        o1 = std::sin((m_previewOpPhase[1] + o0 * 1.5f) * 6.2831853f) * gains[1];
-                        o2 = std::sin((m_previewOpPhase[2] + o0 * 1.5f) * 6.2831853f) * gains[2];
-                        o3 = std::sin((m_previewOpPhase[3] + (o1 + o2) * 1.0f) * 6.2831853f) * gains[3];
-                        previewSample = o3 * 0.4f;
-                        break;
-                    case 4: // (0->1) + (2->3)
-                        o1 = std::sin((m_previewOpPhase[1] + o0 * 1.5f) * 6.2831853f) * gains[1];
-                        o2 = std::sin(m_previewOpPhase[2] * 6.2831853f) * gains[2];
-                        o3 = std::sin((m_previewOpPhase[3] + o2 * 1.5f) * 6.2831853f) * gains[3];
-                        previewSample = (o1 + o3) * 0.28f;
-                        break;
-                    case 5: // 0 -> (1+2+3)
-                        o1 = std::sin((m_previewOpPhase[1] + o0 * 1.5f) * 6.2831853f) * gains[1];
-                        o2 = std::sin((m_previewOpPhase[2] + o0 * 1.5f) * 6.2831853f) * gains[2];
-                        o3 = std::sin((m_previewOpPhase[3] + o0 * 1.5f) * 6.2831853f) * gains[3];
-                        previewSample = (o1 + o2 + o3) * 0.22f;
-                        break;
-                    case 6: // (0->1) + 2 + 3
-                        o1 = std::sin((m_previewOpPhase[1] + o0 * 1.5f) * 6.2831853f) * gains[1];
-                        o2 = std::sin(m_previewOpPhase[2] * 6.2831853f) * gains[2];
-                        o3 = std::sin(m_previewOpPhase[3] * 6.2831853f) * gains[3];
-                        previewSample = (o1 + o2 + o3) * 0.22f;
-                        break;
-                    case 7: // 0 + 1 + 2 + 3
-                    default:
-                        o1 = std::sin(m_previewOpPhase[1] * 6.2831853f) * gains[1];
-                        o2 = std::sin(m_previewOpPhase[2] * 6.2831853f) * gains[2];
-                        o3 = std::sin(m_previewOpPhase[3] * 6.2831853f) * gains[3];
-                        previewSample = (o0 + o1 + o2 + o3) * 0.18f;
-                        break;
-                }
-            } else if (previewMode == 1) { // Square / Pulse
+            if (previewMode == 1) { // Square / Pulse
                 float duty = (pParam1 > 0.05f && pParam1 < 0.95f) ? pParam1 : 0.5f;
-                previewSample = (m_previewPhase < duty ? 0.3f : -0.3f);
+                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
+                previewSample = (m_previewPhase < duty ? 0.3f : -0.3f) * vol;
             } else if (previewMode == 2) { // Triangle
                 float p = m_previewPhase;
-                previewSample = (p < 0.5f ? (4.0f * p - 1.0f) : (3.0f - 4.0f * p)) * 0.4f;
+                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
+                previewSample = (p < 0.5f ? (4.0f * p - 1.0f) : (3.0f - 4.0f * p)) * 0.4f * vol;
             } else if (previewMode == 3) { // Wavetable / Custom RAM
+                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
                 if (!m_previewWavetable.empty()) {
                     float pos = m_previewPhase * (float)m_previewWavetable.size();
                     size_t idx0 = (size_t)pos % m_previewWavetable.size();
                     size_t idx1 = (idx0 + 1) % m_previewWavetable.size();
                     float frac = pos - (float)(size_t)pos;
-                    previewSample = (m_previewWavetable[idx0] * (1.0f - frac) + m_previewWavetable[idx1] * frac) * 0.4f;
+                    previewSample = (m_previewWavetable[idx0] * (1.0f - frac) + m_previewWavetable[idx1] * frac) * 0.4f * vol;
                 } else {
-                    previewSample = (2.0f * m_previewPhase - 1.0f) * 0.3f;
+                    previewSample = (2.0f * m_previewPhase - 1.0f) * 0.3f * vol;
                 }
             } else if (previewMode == 4) { // Noise
                 static uint16_t lfsr = 0x7FFF;
                 lfsr = (lfsr >> 1) ^ (-(lfsr & 1) & (pParam1 > 0.5f ? 0x6000 : 0x4000));
-                previewSample = ((lfsr & 1) ? 0.3f : -0.3f);
+                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
+                previewSample = ((lfsr & 1) ? 0.3f : -0.3f) * vol;
             }
         }
 
@@ -1058,15 +1045,69 @@ size_t AudioEngine::GetVgmDataSize() const {
 }
 
 void AudioEngine::StartPreview(float freq, int mode, float param1, float param2) {
+    if (m_deviceId != 0) SDL_LockAudioDevice(m_deviceId);
     m_previewFreq.store(freq);
     m_previewMode.store(mode);
     m_previewParam1.store(param1);
     m_previewParam2.store(param2);
     m_previewActive.store(true);
+    m_previewPhase = 0.0f;
+    for (int i = 0; i < 4; ++i) m_previewOpPhase[i] = 0.0f;
+
+    if (mode == 0 && m_previewFmChip) {
+        // If already keyed on, send Key-Off first to retrigger note attack cleanly
+        if (m_previewFmKeyOn.load()) {
+            ym2203_write(m_previewFmChip, 0, 0x28);
+            ym2203_write(m_previewFmChip, 1, 0x00);
+        }
+
+        // Calculate Block & F-Number: F-Num = (144 * freq * 2^20 / clock) / 2^(Block - 1)
+        double k = (144.0 * (double)freq * 1048576.0) / (double)m_previewFmClock;
+        int blk = 4;
+        int fn = 1000;
+        for (int b = 0; b <= 7; ++b) {
+            double div = (b == 0) ? 0.5 : (double)(1 << (b - 1));
+            double fVal = k / div;
+            if (fVal >= 250.0 && fVal <= 2047.0) {
+                blk = b;
+                fn = (int)(fVal + 0.5);
+                break;
+            }
+            if (b == 7) {
+                blk = 7;
+                fn = std::clamp((int)(fVal + 0.5), 0, 2047);
+            }
+        }
+
+        // Write Channel 0 frequency
+        ym2203_write(m_previewFmChip, 0, 0xA4);
+        ym2203_write(m_previewFmChip, 1, (blk << 3) | ((fn >> 8) & 7));
+        ym2203_write(m_previewFmChip, 0, 0xA0);
+        ym2203_write(m_previewFmChip, 1, fn & 0xFF);
+
+        // Key-On (All 4 slots active for Channel 0)
+        ym2203_write(m_previewFmChip, 0, 0x28);
+        ym2203_write(m_previewFmChip, 1, 0xF0);
+
+        m_previewFmKeyOn.store(true);
+        m_previewFmReleaseFrames = 0;
+    }
+
+    if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
 }
 
 void AudioEngine::StopPreview() {
-    m_previewActive.store(false);
+    if (m_deviceId != 0) SDL_LockAudioDevice(m_deviceId);
+    if (m_previewMode.load() == 0 && m_previewFmChip && m_previewFmKeyOn.load()) {
+        // Send Key-Off, letting release envelope ring out naturally
+        ym2203_write(m_previewFmChip, 0, 0x28);
+        ym2203_write(m_previewFmChip, 1, 0x00);
+        m_previewFmKeyOn.store(false);
+        m_previewFmReleaseFrames = 0;
+    } else if (m_previewMode.load() != 0) {
+        m_previewActive.store(false);
+    }
+    if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
 }
 
 void AudioEngine::PlayPreviewSampleBuffer(const std::vector<float>& pcmData) {
@@ -1132,18 +1173,107 @@ void AudioEngine::SetPreviewWavetable(const std::vector<float>& wavetable) {
     if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
 }
 
-void AudioEngine::SetPreviewFmParams(int alg, int fb, float mult1, float tl1, float mult2, float tl2, float mult3, float tl3, float mult4, float tl4) {
+void AudioEngine::SetPreviewFmPatch(const FmPresetData& fm, const std::string& chipName) {
     if (m_deviceId != 0) SDL_LockAudioDevice(m_deviceId);
-    m_previewFmAlg = std::clamp(alg, 0, 7);
-    m_previewFmFb = std::clamp(fb, 0, 7);
-    m_previewOpMult[0] = mult1; m_previewOpTL[0] = tl1;
-    m_previewOpMult[1] = mult2; m_previewOpTL[1] = tl2;
-    m_previewOpMult[2] = mult3; m_previewOpTL[2] = tl3;
-    m_previewOpMult[3] = mult4; m_previewOpTL[3] = tl4;
-    for (int i = 0; i < 4; ++i) {
-        m_previewOpPhase[i] = 0.0f;
+
+    m_previewFmPatch = fm;
+    m_previewFmChipName = chipName;
+
+    uint32_t targetClock = 4000000;
+    if (chipName == "YM2612") {
+        targetClock = 7670453;
+        for (const auto& chp : m_currentInfo.chips) {
+            if (chp.name == "YM2612" && chp.clock > 0) {
+                targetClock = chp.clock;
+                break;
+            }
+        }
+    } else if (chipName == "YM2203") {
+        targetClock = 4000000;
+        for (const auto& chp : m_currentInfo.chips) {
+            if (chp.name == "YM2203" && chp.clock > 0) {
+                targetClock = chp.clock;
+                break;
+            }
+        }
+    } else if (chipName == "YM2151") {
+        targetClock = 3579545;
+        for (const auto& chp : m_currentInfo.chips) {
+            if (chp.name == "YM2151" && chp.clock > 0) {
+                targetClock = chp.clock;
+                break;
+            }
+        }
     }
+
+    if (!m_previewFmChip || m_previewFmClock != targetClock) {
+        if (m_previewFmChip) ym2203_shutdown(m_previewFmChip);
+        m_previewFmClock = targetClock;
+        m_previewFmChip = ym2203_init(NULL, m_previewFmClock, m_sampleRate, NULL, NULL);
+        if (m_previewFmChip) ym2203_reset_chip(m_previewFmChip);
+    }
+
+    if (m_previewFmChip) {
+        // Algorithm & Feedback (Reg 0xB0)
+        ym2203_write(m_previewFmChip, 0, 0xB0);
+        ym2203_write(m_previewFmChip, 1, ((fm.feedback & 7) << 3) | (fm.algorithm & 7));
+
+        // AMS & PMS (Reg 0xB4)
+        ym2203_write(m_previewFmChip, 0, 0xB4);
+        ym2203_write(m_previewFmChip, 1, ((fm.ams & 3) << 4) | (fm.pms & 7));
+
+        // Operator registers: Slot 1 (0x00), Slot 2 (0x08), Slot 3 (0x04), Slot 4 (0x0C)
+        const int regOffsets[4] = { 0x00, 0x08, 0x04, 0x0C };
+        for (int k = 0; k < 4; ++k) {
+            int ro = regOffsets[k];
+            const auto& op = fm.ops[k];
+
+            int dtCode = 0;
+            if (op.dt > 0) dtCode = std::min(op.dt, 3);
+            else if (op.dt < 0) dtCode = (op.dt <= -3) ? 7 : (op.dt == -2 ? 6 : 5);
+
+            // 0x30: DT / MULT
+            ym2203_write(m_previewFmChip, 0, 0x30 + ro);
+            ym2203_write(m_previewFmChip, 1, ((dtCode & 7) << 4) | (op.mult & 0x0F));
+
+            // 0x40: TL
+            ym2203_write(m_previewFmChip, 0, 0x40 + ro);
+            ym2203_write(m_previewFmChip, 1, op.tl & 0x7F);
+
+            // 0x50: RS / AR
+            ym2203_write(m_previewFmChip, 0, 0x50 + ro);
+            ym2203_write(m_previewFmChip, 1, ((op.rs & 3) << 6) | (op.ar & 0x1F));
+
+            // 0x60: AM / DR
+            ym2203_write(m_previewFmChip, 0, 0x60 + ro);
+            ym2203_write(m_previewFmChip, 1, (op.am ? 0x80 : 0) | (op.dr & 0x1F));
+
+            // 0x70: SR
+            ym2203_write(m_previewFmChip, 0, 0x70 + ro);
+            ym2203_write(m_previewFmChip, 1, op.sr & 0x1F);
+
+            // 0x80: SL / RR
+            ym2203_write(m_previewFmChip, 0, 0x80 + ro);
+            ym2203_write(m_previewFmChip, 1, ((op.sl & 0x0F) << 4) | (op.rr & 0x0F));
+
+            // 0x90: SSG-EG
+            ym2203_write(m_previewFmChip, 0, 0x90 + ro);
+            ym2203_write(m_previewFmChip, 1, op.ssg & 0x0F);
+        }
+    }
+
     if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
+}
+
+void AudioEngine::SetPreviewFmParams(int alg, int fb, float mult1, float tl1, float mult2, float tl2, float mult3, float tl3, float mult4, float tl4) {
+    FmPresetData fm;
+    fm.algorithm = alg;
+    fm.feedback = fb;
+    fm.ops[0].mult = (int)mult1; fm.ops[0].tl = (int)tl1;
+    fm.ops[1].mult = (int)mult2; fm.ops[1].tl = (int)tl2;
+    fm.ops[2].mult = (int)mult3; fm.ops[2].tl = (int)tl3;
+    fm.ops[3].mult = (int)mult4; fm.ops[3].tl = (int)tl4;
+    SetPreviewFmPatch(fm, "YM2612");
 }
 
 } // namespace vgmstudio

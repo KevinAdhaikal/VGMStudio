@@ -71,15 +71,8 @@ void VgmPatchViewer::SetChannelFilter(const std::string& chName) {
 
 void VgmPatchViewer::TriggerAuditionNote(AudioEngine& audioEngine, const VgmPreset& preset, float freq) {
     if (preset.type == PresetType::FM_4OP || preset.type == PresetType::FM_2OP) {
-        audioEngine.SetPreviewFmParams(
-            preset.fm.algorithm,
-            preset.fm.feedback,
-            (float)preset.fm.ops[0].mult, (float)preset.fm.ops[0].tl,
-            (float)preset.fm.ops[1].mult, (float)preset.fm.ops[1].tl,
-            (float)preset.fm.ops[2].mult, (float)preset.fm.ops[2].tl,
-            (float)preset.fm.ops[3].mult, (float)preset.fm.ops[3].tl
-        );
-        audioEngine.StartPreview(freq, 0, m_testVolume);
+        audioEngine.SetPreviewFmPatch(preset.fm, preset.chipName);
+        audioEngine.StartPreview(freq, 0, 0.0f, m_testVolume);
     } else if (preset.type == PresetType::SQUARE) {
         audioEngine.StartPreview(freq, 1, preset.square.dutyCycle, m_testVolume);
     } else if (preset.type == PresetType::TRIANGLE) {

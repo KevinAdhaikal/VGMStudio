@@ -5,6 +5,10 @@
 #include "snddef.h"
 #include "EmuStructs.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* --- select emulation chips --- */
 #ifdef SNDDEV_YM2203
 #define BUILD_YM2203  1     // build YM2203(OPN)   emulator
@@ -206,5 +210,9 @@ void ym2612_set_mute_mask(void *chip, UINT32 MuteMask);
 void ym2612_set_options(void *chip, UINT32 Flags);
 void ym2612_set_log_cb(void* chip, DEVCB_LOG func, void* param);
 #endif /* (BUILD_YM2612||BUILD_YM3438) */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif	// __FMOPN_H__

@@ -343,4 +343,8 @@ CMakeFiles/vgmstudio.dir/src/ui/song_info.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
- /usr/include/c++/16/cstring
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h /usr/include/c++/16/cstring

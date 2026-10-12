@@ -23,6 +23,9 @@ void ChannelMixer_GetGains(int chipType, int chipInst, int channel, float* gainL
 // Push a single output sample from an emulated chip voice
 void ChannelMixer_PushSample(int chipType, int chipInst, int channel, float sample);
 
+// Enable or disable oscilloscope capture and gain querying (used to bypass during preview audition)
+void ChannelMixer_EnableCapture(int enable);
+
 // Retrieve latest waveform buffer for an emulated chip voice (stable centered trigger)
 void ChannelMixer_GetWaveform(int chipType, int chipInst, int channel, float* outBuf, int count);
 

@@ -13,6 +13,7 @@
 #include "../vgm/vgmplayer.hpp"
 #include "../vgm/FileLoader.h"
 #include "../emu/Resampler.h"
+#include "../vgm/vgm_patch_extractor.hpp"
 
 namespace vgmstudio {
 
@@ -136,6 +137,7 @@ public:
     float GetPreviewSampleProgress() const;
     void SetPreviewWavetable(const std::vector<float>& wavetable);
     void SetPreviewFmParams(int alg, int fb, float mult1, float tl1, float mult2, float tl2, float mult3, float tl3, float mult4, float tl4);
+    void SetPreviewFmPatch(const FmPresetData& fm, const std::string& chipName);
     bool IsPreviewActive() const { return m_previewActive.load(); }
 
 private:
@@ -218,6 +220,14 @@ private:
     float m_previewOpMult[4] = {1.0f, 1.0f, 2.0f, 1.0f};
     float m_previewOpTL[4] = {38.0f, 0.0f, 42.0f, 4.0f};
     float m_previewOpPhase[4] = {0.0f, 0.0f, 0.0f, 0.0f};
+
+    // Authentic FM Preview Synth state (Yamaha OPN hardware engine)
+    void* m_previewFmChip = nullptr;
+    uint32_t m_previewFmClock = 4000000;
+    std::atomic<bool> m_previewFmKeyOn{false};
+    uint32_t m_previewFmReleaseFrames{0};
+    FmPresetData m_previewFmPatch;
+    std::string m_previewFmChipName;
     // Peak levels with decay
     std::atomic<float> m_peakL{0.0f};
     std::atomic<float> m_peakR{0.0f};

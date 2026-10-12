@@ -339,9 +339,13 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/audio/../emu/Resampler.h \
- /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
- /usr/include/c++/16/bits/ostream.h /usr/include/c++/16/ios \
- /usr/include/c++/16/bits/ios_base.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h /usr/include/c++/16/iostream \
+ /usr/include/c++/16/ostream /usr/include/c++/16/bits/ostream.h \
+ /usr/include/c++/16/ios /usr/include/c++/16/bits/ios_base.h \
  /usr/include/c++/16/bits/locale_classes.h \
  /usr/include/c++/16/bits/locale_classes.tcc \
  /usr/include/c++/16/system_error /usr/include/c++/16/stdexcept \
@@ -358,12 +362,8 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.o: \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
  /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/cstring \
- /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
- /usr/include/c++/16/bits/node_handle.h \
- /usr/include/c++/16/bits/stl_map.h \
- /usr/include/c++/16/bits/stl_multimap.h /usr/include/c++/16/filesystem \
- /usr/include/c++/16/bits/fs_fwd.h /usr/include/c++/16/bits/fs_path.h \
- /usr/include/c++/16/locale \
+ /usr/include/c++/16/filesystem /usr/include/c++/16/bits/fs_fwd.h \
+ /usr/include/c++/16/bits/fs_path.h /usr/include/c++/16/locale \
  /usr/include/c++/16/bits/locale_facets_nonio.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/time_members.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/messages_members.h \
@@ -374,4 +374,8 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.o: \
  /usr/include/c++/16/bits/sstream.tcc /usr/include/c++/16/codecvt \
  /usr/include/c++/16/bits/fs_dir.h /usr/include/c++/16/bits/fs_ops.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopn.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h

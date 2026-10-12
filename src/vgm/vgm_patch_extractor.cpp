@@ -386,7 +386,7 @@ bool VgmPatchExtractor::ExtractFromVgm(const uint8_t* vgmData, size_t vgmSize) {
                 ym2203Regs[reg] = val;
 
                 if (reg == 0x28) {
-                    int ch = val & 0x03;
+                    int ch = val & 0x07;
                     int slots = (val >> 4) & 0x0F;
                     if (ch < 3 && slots > 0) {
                         FmPresetData fd;

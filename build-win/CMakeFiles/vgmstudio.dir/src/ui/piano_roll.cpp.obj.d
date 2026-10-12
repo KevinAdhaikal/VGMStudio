@@ -390,6 +390,12 @@ CMakeFiles/vgmstudio.dir/src/ui/piano_roll.cpp.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/functional \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/std_function.h \
@@ -398,7 +404,6 @@ CMakeFiles/vgmstudio.dir/src/ui/piano_roll.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hashtable.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hashtable_policy.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/enable_special_members.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../app/theme.hpp \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/iostream \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ostream \

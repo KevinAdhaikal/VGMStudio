@@ -382,6 +382,12 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/iostream \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/ostream \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/ostream.h \
@@ -410,11 +416,6 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstring \
  /usr/x86_64-w64-mingw32/include/string.h \
  /usr/x86_64-w64-mingw32/include/sec_api/string_s.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/filesystem \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_path.h \
@@ -433,4 +434,8 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_dir.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_ops.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
- /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopn.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h

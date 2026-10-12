@@ -340,6 +340,11 @@ CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imconfig.h \
  /usr/include/assert.h

@@ -383,6 +383,12 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
+ /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imconfig.h \
@@ -398,7 +404,6 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hashtable.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/hashtable_policy.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/enable_special_members.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/node_handle.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/cstring \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/fstream \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/istream \
@@ -430,12 +435,8 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.obj: \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/x86_64-w64-mingw32/bits/c++io.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fstream.tcc \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/set \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_tree.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_set.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multiset.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/map \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_map.h \
- /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/stl_multimap.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/filesystem \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_fwd.h \
  /usr/x86_64-w64-mingw32/include/c++/16.2.0/bits/fs_path.h \

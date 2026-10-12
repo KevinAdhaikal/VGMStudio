@@ -345,6 +345,11 @@ CMakeFiles/vgmstudio.dir/src/ui/piano_roll.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
+ /usr/include/c++/16/map /usr/include/c++/16/bits/stl_tree.h \
+ /usr/include/c++/16/bits/node_handle.h \
+ /usr/include/c++/16/bits/stl_map.h \
+ /usr/include/c++/16/bits/stl_multimap.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
  /usr/include/c++/16/functional /usr/include/c++/16/bits/std_function.h \
  /usr/include/c++/16/unordered_map \
@@ -352,7 +357,6 @@ CMakeFiles/vgmstudio.dir/src/ui/piano_roll.cpp.o: \
  /usr/include/c++/16/bits/hashtable.h \
  /usr/include/c++/16/bits/hashtable_policy.h \
  /usr/include/c++/16/bits/enable_special_members.h \
- /usr/include/c++/16/bits/node_handle.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../app/theme.hpp \
  /usr/include/c++/16/iostream /usr/include/c++/16/ostream \
  /usr/include/c++/16/bits/ostream.h /usr/include/c++/16/ios \

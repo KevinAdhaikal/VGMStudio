@@ -347,5 +347,6 @@ CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h \
  /usr/include/c++/16/cstring

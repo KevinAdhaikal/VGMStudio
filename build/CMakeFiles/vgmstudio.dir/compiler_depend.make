@@ -19,12 +19,12 @@ CMakeFiles/vgmstudio.dir/src/app/app.cpp.o: /home/kevinadhaikal/Documents/vgmstu
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/backends/imgui_impl_opengl3.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/backends/imgui_impl_sdl2.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/third_party/imgui/imgui_internal.h \
-  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/channel_rack.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/disassembly_view.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/edit_song_dialog.hpp \
@@ -570,11 +570,15 @@ CMakeFiles/vgmstudio.dir/src/audio/audio_engine.cpp.o: /home/kevinadhaikal/Docum
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopn.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/EmuStructs.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/SoundDevs.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/channel_mixer.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
+  /home/kevinadhaikal/Documents/vgmstudio/src/emu/snddef.h \
   /home/kevinadhaikal/Documents/vgmstudio/src/emu/stdtype.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
@@ -6926,9 +6930,9 @@ CMakeFiles/vgmstudio.dir/src/main.cpp.o: /home/kevinadhaikal/Documents/vgmstudio
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
-  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/channel_rack.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/disassembly_view.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/edit_song_dialog.hpp \
@@ -9025,6 +9029,7 @@ CMakeFiles/vgmstudio.dir/src/ui/channel_rack.cpp.o: /home/kevinadhaikal/Document
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/channel_rack.hpp \
@@ -9238,9 +9243,12 @@ CMakeFiles/vgmstudio.dir/src/ui/channel_rack.cpp.o: /home/kevinadhaikal/Document
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/string_view.tcc \
@@ -9280,6 +9288,7 @@ CMakeFiles/vgmstudio.dir/src/ui/channel_rack.cpp.o: /home/kevinadhaikal/Document
   /usr/include/c++/16/initializer_list \
   /usr/include/c++/16/iosfwd \
   /usr/include/c++/16/limits \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -9489,6 +9498,7 @@ CMakeFiles/vgmstudio.dir/src/ui/disassembly_view.cpp.o: /home/kevinadhaikal/Docu
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/disassembly_view.hpp \
@@ -9680,6 +9690,7 @@ CMakeFiles/vgmstudio.dir/src/ui/disassembly_view.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/bits/new_allocator.h \
   /usr/include/c++/16/bits/new_except.h \
   /usr/include/c++/16/bits/new_throw.h \
+  /usr/include/c++/16/bits/node_handle.h \
   /usr/include/c++/16/bits/ostream.h \
   /usr/include/c++/16/bits/ostream.tcc \
   /usr/include/c++/16/bits/ostream_insert.h \
@@ -9710,9 +9721,12 @@ CMakeFiles/vgmstudio.dir/src/ui/disassembly_view.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/streambuf.tcc \
@@ -9756,6 +9770,7 @@ CMakeFiles/vgmstudio.dir/src/ui/disassembly_view.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/iosfwd \
   /usr/include/c++/16/istream \
   /usr/include/c++/16/limits \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -9971,6 +9986,7 @@ CMakeFiles/vgmstudio.dir/src/ui/edit_song_dialog.cpp.o: /home/kevinadhaikal/Docu
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/edit_song_dialog.hpp \
@@ -10153,6 +10169,7 @@ CMakeFiles/vgmstudio.dir/src/ui/edit_song_dialog.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/bits/new_allocator.h \
   /usr/include/c++/16/bits/new_except.h \
   /usr/include/c++/16/bits/new_throw.h \
+  /usr/include/c++/16/bits/node_handle.h \
   /usr/include/c++/16/bits/ostream_insert.h \
   /usr/include/c++/16/bits/parse_numbers.h \
   /usr/include/c++/16/bits/postypes.h \
@@ -10178,9 +10195,12 @@ CMakeFiles/vgmstudio.dir/src/ui/edit_song_dialog.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/string_view.tcc \
@@ -10219,6 +10239,7 @@ CMakeFiles/vgmstudio.dir/src/ui/edit_song_dialog.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/initializer_list \
   /usr/include/c++/16/iosfwd \
   /usr/include/c++/16/limits \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -10874,6 +10895,7 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.o: /home/kevinadhaikal/Doc
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
@@ -11342,6 +11364,7 @@ CMakeFiles/vgmstudio.dir/src/ui/piano_roll.cpp.o: /home/kevinadhaikal/Documents/
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
@@ -11568,9 +11591,12 @@ CMakeFiles/vgmstudio.dir/src/ui/piano_roll.cpp.o: /home/kevinadhaikal/Documents/
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/streambuf.tcc \
@@ -11616,6 +11642,7 @@ CMakeFiles/vgmstudio.dir/src/ui/piano_roll.cpp.o: /home/kevinadhaikal/Documents/
   /usr/include/c++/16/iostream \
   /usr/include/c++/16/istream \
   /usr/include/c++/16/limits \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -11831,6 +11858,7 @@ CMakeFiles/vgmstudio.dir/src/ui/sample_viewer.cpp.o: /home/kevinadhaikal/Documen
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
@@ -12350,6 +12378,7 @@ CMakeFiles/vgmstudio.dir/src/ui/settings_dialog.cpp.o: /home/kevinadhaikal/Docum
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/piano_roll.hpp \
@@ -12533,6 +12562,7 @@ CMakeFiles/vgmstudio.dir/src/ui/settings_dialog.cpp.o: /home/kevinadhaikal/Docum
   /usr/include/c++/16/bits/new_allocator.h \
   /usr/include/c++/16/bits/new_except.h \
   /usr/include/c++/16/bits/new_throw.h \
+  /usr/include/c++/16/bits/node_handle.h \
   /usr/include/c++/16/bits/ostream_insert.h \
   /usr/include/c++/16/bits/parse_numbers.h \
   /usr/include/c++/16/bits/postypes.h \
@@ -12558,9 +12588,12 @@ CMakeFiles/vgmstudio.dir/src/ui/settings_dialog.cpp.o: /home/kevinadhaikal/Docum
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/string_view.tcc \
@@ -12598,6 +12631,7 @@ CMakeFiles/vgmstudio.dir/src/ui/settings_dialog.cpp.o: /home/kevinadhaikal/Docum
   /usr/include/c++/16/initializer_list \
   /usr/include/c++/16/iosfwd \
   /usr/include/c++/16/limits \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -12805,6 +12839,7 @@ CMakeFiles/vgmstudio.dir/src/ui/song_info.cpp.o: /home/kevinadhaikal/Documents/v
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/song_info.hpp \
@@ -12987,6 +13022,7 @@ CMakeFiles/vgmstudio.dir/src/ui/song_info.cpp.o: /home/kevinadhaikal/Documents/v
   /usr/include/c++/16/bits/new_allocator.h \
   /usr/include/c++/16/bits/new_except.h \
   /usr/include/c++/16/bits/new_throw.h \
+  /usr/include/c++/16/bits/node_handle.h \
   /usr/include/c++/16/bits/ostream_insert.h \
   /usr/include/c++/16/bits/parse_numbers.h \
   /usr/include/c++/16/bits/postypes.h \
@@ -13012,9 +13048,12 @@ CMakeFiles/vgmstudio.dir/src/ui/song_info.cpp.o: /home/kevinadhaikal/Documents/v
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/string_view.tcc \
@@ -13053,6 +13092,7 @@ CMakeFiles/vgmstudio.dir/src/ui/song_info.cpp.o: /home/kevinadhaikal/Documents/v
   /usr/include/c++/16/initializer_list \
   /usr/include/c++/16/iosfwd \
   /usr/include/c++/16/limits \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -13260,6 +13300,7 @@ CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.o: /home/kevinadhaikal/Docu
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/speed_pitch_view.hpp \
@@ -13442,6 +13483,7 @@ CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/bits/new_allocator.h \
   /usr/include/c++/16/bits/new_except.h \
   /usr/include/c++/16/bits/new_throw.h \
+  /usr/include/c++/16/bits/node_handle.h \
   /usr/include/c++/16/bits/ostream_insert.h \
   /usr/include/c++/16/bits/parse_numbers.h \
   /usr/include/c++/16/bits/postypes.h \
@@ -13467,9 +13509,12 @@ CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/string_view.tcc \
@@ -13507,6 +13552,7 @@ CMakeFiles/vgmstudio.dir/src/ui/speed_pitch_view.cpp.o: /home/kevinadhaikal/Docu
   /usr/include/c++/16/initializer_list \
   /usr/include/c++/16/iosfwd \
   /usr/include/c++/16/limits \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -13714,6 +13760,7 @@ CMakeFiles/vgmstudio.dir/src/ui/transport_bar.cpp.o: /home/kevinadhaikal/Documen
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/file_dialog.hpp \
@@ -13952,9 +13999,12 @@ CMakeFiles/vgmstudio.dir/src/ui/transport_bar.cpp.o: /home/kevinadhaikal/Documen
   /usr/include/c++/16/bits/stl_iterator.h \
   /usr/include/c++/16/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/16/bits/stl_iterator_base_types.h \
+  /usr/include/c++/16/bits/stl_map.h \
+  /usr/include/c++/16/bits/stl_multimap.h \
   /usr/include/c++/16/bits/stl_pair.h \
   /usr/include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/include/c++/16/bits/stl_tempbuf.h \
+  /usr/include/c++/16/bits/stl_tree.h \
   /usr/include/c++/16/bits/stl_uninitialized.h \
   /usr/include/c++/16/bits/stl_vector.h \
   /usr/include/c++/16/bits/streambuf.tcc \
@@ -14003,6 +14053,7 @@ CMakeFiles/vgmstudio.dir/src/ui/transport_bar.cpp.o: /home/kevinadhaikal/Documen
   /usr/include/c++/16/istream \
   /usr/include/c++/16/limits \
   /usr/include/c++/16/locale \
+  /usr/include/c++/16/map \
   /usr/include/c++/16/math.h \
   /usr/include/c++/16/memory \
   /usr/include/c++/16/mutex \
@@ -14223,6 +14274,7 @@ CMakeFiles/vgmstudio.dir/src/ui/vgm_events_mixer.cpp.o: /home/kevinadhaikal/Docu
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/playerbase.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_disassembly.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_info.hpp \
+  /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgm_patch_extractor.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/vgm/vgmplayer.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/audio/audio_engine.hpp \
   /home/kevinadhaikal/Documents/vgmstudio/src/ui/vgm_events_mixer.hpp \
@@ -19345,6 +19397,8 @@ CMakeFiles/vgmstudio.dir/src/chips/ymfmintf.cpp.o:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/app/theme.cpp:
 
+/home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopn.h:
+
 CMakeFiles/vgmstudio.dir/src/emu/panning.c.o:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/2151intf.c:
@@ -19364,5 +19418,3 @@ CMakeFiles/vgmstudio.dir/src/emu/panning.c.o:
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/2612intf.c:
 
 /home/kevinadhaikal/Documents/vgmstudio/src/chips/2612intf.h:
-
-/home/kevinadhaikal/Documents/vgmstudio/src/chips/fmopn.h:

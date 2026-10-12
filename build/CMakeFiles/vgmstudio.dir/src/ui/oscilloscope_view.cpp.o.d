@@ -347,6 +347,7 @@ CMakeFiles/vgmstudio.dir/src/ui/oscilloscope_view.cpp.o: \
  /home/kevinadhaikal/Documents/vgmstudio/src/emu/common_def.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/FileLoader.h \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../emu/Resampler.h \
+ /home/kevinadhaikal/Documents/vgmstudio/src/ui/../audio/../vgm/vgm_patch_extractor.hpp \
  /home/kevinadhaikal/Documents/vgmstudio/src/ui/icons.hpp \
  /usr/include/c++/16/functional /usr/include/c++/16/bits/std_function.h \
  /usr/include/c++/16/unordered_map \
