@@ -480,6 +480,12 @@ mix_output_stereo(EPSG *psg, int32_t out[2])
     if (gL == 1.0f && gR == 1.0f) {
       ChannelMixer_GetGains(DEVID_YM2203, 0, 3 + i, &gL, &gR);
     }
+    if (gL == 1.0f && gR == 1.0f) {
+      ChannelMixer_GetGains(DEVID_YM2608, 0, 6 + i, &gL, &gR);
+    }
+    if (gL == 1.0f && gR == 1.0f) {
+      ChannelMixer_GetGains(DEVID_YM2610, 0, 6 + i, &gL, &gR);
+    }
 
     if (! (~psg->stereo_mask[i] & 0x03) && ! psg->pcm3ch)
     {

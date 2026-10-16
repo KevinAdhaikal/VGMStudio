@@ -14,6 +14,10 @@ public:
 
     void Render(AudioEngine& audioEngine, bool* pOpen = nullptr);
     void RequestFocus() { m_focusRequested = true; }
+    void SetChannelFilter(int f) { m_channelFilter = f; m_lastFilterKey.clear(); }
+    int GetChannelFilter() const { return m_channelFilter; }
+    const std::vector<int>& GetFilteredIndices() const { return m_filteredIndices; }
+    void UpdateFilter(const VgmDisassembly& disasm);
 
 private:
     bool m_focusRequested = false;
@@ -29,8 +33,6 @@ private:
     std::vector<int> m_filteredIndices;
     std::string m_lastFilterKey;
     size_t m_lastTotalInstructions = 0;
-
-    void UpdateFilter(const VgmDisassembly& disasm);
 };
 
 } // namespace vgmstudio

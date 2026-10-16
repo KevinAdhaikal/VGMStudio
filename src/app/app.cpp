@@ -1,9 +1,9 @@
 #include "app.hpp"
 #include "theme.hpp"
-#include "../third_party/imgui/imgui.h"
-#include "../third_party/imgui/imgui_internal.h"
-#include "../third_party/imgui/backends/imgui_impl_sdl2.h"
-#include "../third_party/imgui/backends/imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <imgui_internal.h>
+#include "backends/imgui_impl_sdl2.h"
+#include "backends/imgui_impl_opengl3.h"
 
 #include <GL/gl.h>
 #include <iostream>

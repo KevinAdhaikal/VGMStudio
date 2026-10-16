@@ -32,7 +32,10 @@ VgmPatchViewer::VgmPatchViewer() {
 
 VgmPatchViewer::~VgmPatchViewer() = default;
 
-void VgmPatchViewer::Reset() {
+void VgmPatchViewer::Reset(AudioEngine* pAudioEngine) {
+    if (pAudioEngine) {
+        StopAllAuditionNotes(*pAudioEngine);
+    }
     m_extractor.Clear();
     m_hasScanned = false;
     m_selectedPresetIdx = 0;
@@ -41,8 +44,8 @@ void VgmPatchViewer::Reset() {
     m_typeFilterIdx = 0;
     m_sortModeIdx = 0;
     m_searchFilter[0] = '\0';
-    m_activeTestKey = -1;
-    m_mouseTesting = false;
+    m_activeMidiNotes.clear();
+    m_latchedMidiNotes.clear();
     m_lastTestedMidi = -1;
     m_exportStatusMessage.clear();
     m_exportStatusTimer = 0.0f;
@@ -55,7 +58,7 @@ void VgmPatchViewer::ScanSong(AudioEngine& audioEngine) {
         m_selectedPresetIdx = -1;
         m_channelFilterIdx = 0;
     } else {
-        Reset();
+        Reset(&audioEngine);
     }
 }
 
@@ -69,24 +72,30 @@ void VgmPatchViewer::SetChannelFilter(const std::string& chName) {
     }
 }
 
-void VgmPatchViewer::TriggerAuditionNote(AudioEngine& audioEngine, const VgmPreset& preset, float freq) {
+void VgmPatchViewer::TriggerAuditionNote(AudioEngine& audioEngine, const VgmPreset& preset, float freq, int noteId) {
     if (preset.type == PresetType::FM_4OP || preset.type == PresetType::FM_2OP) {
         audioEngine.SetPreviewFmPatch(preset.fm, preset.chipName);
-        audioEngine.StartPreview(freq, 0, 0.0f, m_testVolume);
+        audioEngine.StartPreviewNote(noteId, freq, 0, 0.0f, m_testVolume);
     } else if (preset.type == PresetType::SQUARE) {
-        audioEngine.StartPreview(freq, 1, preset.square.dutyCycle, m_testVolume);
+        audioEngine.StartPreviewNote(noteId, freq, 1, preset.square.dutyCycle, m_testVolume);
     } else if (preset.type == PresetType::TRIANGLE) {
-        audioEngine.StartPreview(freq, 2, 0.0f, m_testVolume);
+        audioEngine.StartPreviewNote(noteId, freq, 2, 0.0f, m_testVolume);
     } else if (preset.type == PresetType::WAVETABLE) {
         audioEngine.SetPreviewWavetable(preset.wavetable.samples);
-        audioEngine.StartPreview(freq, 3, 0.0f, m_testVolume);
+        audioEngine.StartPreviewNote(noteId, freq, 3, 0.0f, m_testVolume);
     } else if (preset.type == PresetType::NOISE) {
-        audioEngine.StartPreview(freq, 4, (float)preset.noise.mode, m_testVolume);
+        audioEngine.StartPreviewNote(noteId, freq, 4, (float)preset.noise.mode, m_testVolume);
     }
 }
 
-void VgmPatchViewer::StopAuditionNote(AudioEngine& audioEngine) {
-    audioEngine.StopPreview();
+void VgmPatchViewer::StopAuditionNote(AudioEngine& audioEngine, int noteId) {
+    audioEngine.StopPreviewNote(noteId);
+}
+
+void VgmPatchViewer::StopAllAuditionNotes(AudioEngine& audioEngine) {
+    m_activeMidiNotes.clear();
+    m_latchedMidiNotes.clear();
+    audioEngine.StopAllPreviewNotes();
 }
 
 void VgmPatchViewer::RenderAlgorithmDiagram(int algorithm, int feedback, const FmOperatorPreset ops[4]) {
@@ -564,17 +573,31 @@ void VgmPatchViewer::RenderAuditionKeyboard(AudioEngine& audioEngine, const VgmP
 
     ImGui::TextColored(ImVec4(0.0f, 0.9f, 0.95f, 1.0f), "Key Note Testing & Audition Piano");
     ImGui::SameLine();
-    ImGui::TextDisabled("| Click keys or use computer keyboard [Z-M] to audition this patch");
+    ImGui::TextDisabled("| Polyphonic (Chords supported) [White: A-S-D-F-G-H-J-K-L-;-' | Black: W-E-T-Y-U-O-P | Oct: Z/X]");
 
     ImGui::BeginGroup();
     ImGui::Text("Octave: %d", m_testOctave);
     ImGui::SameLine();
-    if (ImGui::Button("< Oct-") && m_testOctave > 1) m_testOctave--;
+    if (ImGui::Button("< Oct-") && m_testOctave > 1) {
+        StopAllAuditionNotes(audioEngine);
+        m_testOctave--;
+    }
     ImGui::SameLine();
-    if (ImGui::Button("Oct+ >") && m_testOctave < 6) m_testOctave++;
+    if (ImGui::Button("Oct+ >") && m_testOctave < 6) {
+        StopAllAuditionNotes(audioEngine);
+        m_testOctave++;
+    }
     ImGui::SameLine(0.0f, 16.0f);
     ImGui::SetNextItemWidth(120.0f);
     ImGui::SliderFloat("Audition Vol", &m_testVolume, 0.1f, 1.2f, "%.2f");
+    ImGui::SameLine(0.0f, 16.0f);
+    ImGui::TextColored(ImVec4(0.3f, 0.85f, 0.95f, 1.0f), "[Polyphony: 6 Voices]");
+    if (!m_latchedMidiNotes.empty() || !m_activeMidiNotes.empty()) {
+        ImGui::SameLine(0.0f, 12.0f);
+        if (ImGui::SmallButton("Release All [Esc]")) {
+            StopAllAuditionNotes(audioEngine);
+        }
+    }
     ImGui::EndGroup();
 
     // 2-Octave interactive Piano Keyboard (14 white keys, 10 black keys)
@@ -625,59 +648,99 @@ void VgmPatchViewer::RenderAuditionKeyboard(AudioEngine& audioEngine, const VgmP
         }
     }
 
-    // Computer keyboard tracker keys
-    int kbKey = -1;
+    std::set<int> currentFrameNotes;
+
+    // 1. Shift-click toggle latching on mouse click
+    if (hoveredKey != -1 && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+        int clickedMidi = baseMidi + hoveredKey;
+        if (ImGui::GetIO().KeyShift) {
+            if (m_latchedMidiNotes.count(clickedMidi)) {
+                m_latchedMidiNotes.erase(clickedMidi);
+            } else {
+                m_latchedMidiNotes.insert(clickedMidi);
+            }
+        }
+    }
+
+    // Add all latched notes
+    for (int m : m_latchedMidiNotes) {
+        currentFrameNotes.insert(m);
+    }
+
+    // 2. Normal mouse drag/click (without Shift)
+    if (mouseDown && hoveredKey != -1 && !ImGui::GetIO().KeyShift) {
+        currentFrameNotes.insert(baseMidi + hoveredKey);
+    }
+
+    // 3. Polyphonic computer keyboard (check ALL tracker keys independently)
     if (ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows) && !ImGui::GetIO().WantTextInput) {
-        if (ImGui::IsKeyDown(ImGuiKey_Z)) kbKey = 0;           // C
-        else if (ImGui::IsKeyDown(ImGuiKey_S)) kbKey = 1;      // C#
-        else if (ImGui::IsKeyDown(ImGuiKey_X)) kbKey = 2;      // D
-        else if (ImGui::IsKeyDown(ImGuiKey_D)) kbKey = 3;      // D#
-        else if (ImGui::IsKeyDown(ImGuiKey_C)) kbKey = 4;      // E
-        else if (ImGui::IsKeyDown(ImGuiKey_V)) kbKey = 5;      // F
-        else if (ImGui::IsKeyDown(ImGuiKey_G)) kbKey = 6;      // F#
-        else if (ImGui::IsKeyDown(ImGuiKey_B)) kbKey = 7;      // G
-        else if (ImGui::IsKeyDown(ImGuiKey_H)) kbKey = 8;      // G#
-        else if (ImGui::IsKeyDown(ImGuiKey_N)) kbKey = 9;      // A
-        else if (ImGui::IsKeyDown(ImGuiKey_J)) kbKey = 10;     // A#
-        else if (ImGui::IsKeyDown(ImGuiKey_M)) kbKey = 11;     // B
-        else if (ImGui::IsKeyDown(ImGuiKey_Comma)) kbKey = 12; // C+1
-        else if (ImGui::IsKeyDown(ImGuiKey_L)) kbKey = 13;     // C#+1
-        else if (ImGui::IsKeyDown(ImGuiKey_Period)) kbKey = 14;// D+1
-    }
+        // Natural white keys: A-S-D-F-G-H-J-K-L-;-'
+        if (ImGui::IsKeyDown(ImGuiKey_A))           currentFrameNotes.insert(baseMidi + 0);  // C
+        if (ImGui::IsKeyDown(ImGuiKey_S))           currentFrameNotes.insert(baseMidi + 2);  // D
+        if (ImGui::IsKeyDown(ImGuiKey_D))           currentFrameNotes.insert(baseMidi + 4);  // E
+        if (ImGui::IsKeyDown(ImGuiKey_F))           currentFrameNotes.insert(baseMidi + 5);  // F
+        if (ImGui::IsKeyDown(ImGuiKey_G))           currentFrameNotes.insert(baseMidi + 7);  // G
+        if (ImGui::IsKeyDown(ImGuiKey_H))           currentFrameNotes.insert(baseMidi + 9);  // A
+        if (ImGui::IsKeyDown(ImGuiKey_J))           currentFrameNotes.insert(baseMidi + 11); // B
+        if (ImGui::IsKeyDown(ImGuiKey_K))           currentFrameNotes.insert(baseMidi + 12); // C+1
+        if (ImGui::IsKeyDown(ImGuiKey_L))           currentFrameNotes.insert(baseMidi + 14); // D+1
+        if (ImGui::IsKeyDown(ImGuiKey_Semicolon))   currentFrameNotes.insert(baseMidi + 16); // E+1
+        if (ImGui::IsKeyDown(ImGuiKey_Apostrophe))  currentFrameNotes.insert(baseMidi + 17); // F+1
 
-    int activeKey = -1;
-    if (mouseDown && hoveredKey != -1) {
-        activeKey = hoveredKey;
-    } else if (kbKey != -1) {
-        activeKey = kbKey;
-    }
+        // Black accidental keys: W-E-T-Y-U-O-P-]
+        if (ImGui::IsKeyDown(ImGuiKey_W))            currentFrameNotes.insert(baseMidi + 1);  // C#
+        if (ImGui::IsKeyDown(ImGuiKey_E))            currentFrameNotes.insert(baseMidi + 3);  // D#
+        if (ImGui::IsKeyDown(ImGuiKey_T))            currentFrameNotes.insert(baseMidi + 6);  // F#
+        if (ImGui::IsKeyDown(ImGuiKey_Y))            currentFrameNotes.insert(baseMidi + 8);  // G#
+        if (ImGui::IsKeyDown(ImGuiKey_U))            currentFrameNotes.insert(baseMidi + 10); // A#
+        if (ImGui::IsKeyDown(ImGuiKey_O))            currentFrameNotes.insert(baseMidi + 13); // C#+1
+        if (ImGui::IsKeyDown(ImGuiKey_P))            currentFrameNotes.insert(baseMidi + 15); // D#+1
+        if (ImGui::IsKeyDown(ImGuiKey_RightBracket)) currentFrameNotes.insert(baseMidi + 18); // F#+1
 
-    if (activeKey != -1) {
-        if (!m_mouseTesting || m_activeTestKey != activeKey) {
-            m_mouseTesting = true;
-            m_activeTestKey = activeKey;
-            int testMidi = baseMidi + activeKey;
-            m_lastTestedMidi = testMidi;
-            float freq = 440.0f * std::pow(2.0f, (testMidi - 69.0f) / 12.0f);
-            TriggerAuditionNote(audioEngine, preset, freq);
+        // Octave shifts via Z / X
+        if (ImGui::IsKeyPressed(ImGuiKey_Z) && m_testOctave > 1) {
+            StopAllAuditionNotes(audioEngine);
+            m_testOctave--;
         }
-    } else {
-        if (m_mouseTesting) {
-            m_mouseTesting = false;
-            m_activeTestKey = -1;
-            StopAuditionNote(audioEngine);
+        if (ImGui::IsKeyPressed(ImGuiKey_X) && m_testOctave < 6) {
+            StopAllAuditionNotes(audioEngine);
+            m_testOctave++;
+        }
+
+        if (ImGui::IsKeyPressed(ImGuiKey_Escape)) {
+            m_latchedMidiNotes.clear();
+            currentFrameNotes.clear();
         }
     }
+
+    // Trigger newly added notes
+    for (int note : currentFrameNotes) {
+        if (!m_activeMidiNotes.count(note)) {
+            m_lastTestedMidi = note;
+            float freq = 440.0f * std::pow(2.0f, (note - 69.0f) / 12.0f);
+            TriggerAuditionNote(audioEngine, preset, freq, note);
+        }
+    }
+
+    // Stop released notes
+    for (int note : m_activeMidiNotes) {
+        if (!currentFrameNotes.count(note)) {
+            StopAuditionNote(audioEngine, note);
+        }
+    }
+
+    m_activeMidiNotes = currentFrameNotes;
 
     // 1. White keys
     for (int w = 0; w < 14; ++w) {
         int semi = whiteKeySemitones[w];
+        int midi = baseMidi + semi;
         float wkX = kbStart.x + w * whiteKeyW;
         ImVec2 wk0(wkX, kbStart.y);
         ImVec2 wk1(wkX + whiteKeyW, kbStart.y + whiteKeyH);
 
-        bool isActive = (m_activeTestKey == semi);
-        bool isHovered = (hoveredKey == semi && !m_mouseTesting);
+        bool isActive = (m_activeMidiNotes.count(midi) > 0);
+        bool isHovered = (hoveredKey == semi && !mouseDown);
 
         ImU32 wCol = IM_COL32(235, 240, 248, 255);
         if (isActive) wCol = IM_COL32(0, 220, 240, 255);
@@ -697,13 +760,14 @@ void VgmPatchViewer::RenderAuditionKeyboard(AudioEngine& audioEngine, const VgmP
     // 2. Black keys
     for (int b = 0; b < 10; ++b) {
         int semi = blackKeySemitones[b];
+        int midi = baseMidi + semi;
         int wAnchor = blackKeyAnchors[b];
         float bkX = kbStart.x + (wAnchor + 1) * whiteKeyW - blackKeyW * 0.5f;
         ImVec2 bk0(bkX, kbStart.y);
         ImVec2 bk1(bkX + blackKeyW, kbStart.y + blackKeyH);
 
-        bool isActive = (m_activeTestKey == semi);
-        bool isHovered = (hoveredKey == semi && !m_mouseTesting);
+        bool isActive = (m_activeMidiNotes.count(midi) > 0);
+        bool isHovered = (hoveredKey == semi && !mouseDown);
 
         ImU32 bCol = IM_COL32(24, 30, 42, 255);
         if (isActive) bCol = IM_COL32(20, 160, 240, 255);
@@ -720,19 +784,28 @@ void VgmPatchViewer::RenderAuditionKeyboard(AudioEngine& audioEngine, const VgmP
 
     ImGui::Dummy(ImVec2(totalW, whiteKeyH + 10.0f));
 
-    if (m_lastTestedMidi >= 0) {
+    if (!m_activeMidiNotes.empty()) {
+        std::string chordStr;
+        int count = 0;
+        for (int note : m_activeMidiNotes) {
+            if (count > 0) chordStr += ", ";
+            int s = note % 12;
+            int oct = (note / 12) - 1;
+            float f = 440.0f * std::pow(2.0f, (note - 69.0f) / 12.0f);
+            char nBuf[32];
+            std::snprintf(nBuf, sizeof(nBuf), "%s%d (%.1f Hz)", NOTE_NAMES[s], oct, f);
+            chordStr += nBuf;
+            count++;
+        }
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.85f, 1.0f), "[Playing Chord (%d notes)]: %s", count, chordStr.c_str());
+    } else if (m_lastTestedMidi >= 0) {
         float f = 440.0f * std::pow(2.0f, (m_lastTestedMidi - 69.0f) / 12.0f);
         int semi = m_lastTestedMidi % 12;
         int oct = (m_lastTestedMidi / 12) - 1;
-        if (m_activeTestKey >= 0) {
-            ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.85f, 1.0f), "● Auditioning: %s%d (MIDI %d) -> %.2f Hz",
-                               NOTE_NAMES[semi], oct, m_lastTestedMidi, f);
-        } else {
-            ImGui::TextColored(ImVec4(0.0f, 0.85f, 0.95f, 1.0f), "Last Auditioned: %s%d (MIDI %d) -> %.2f Hz",
-                               NOTE_NAMES[semi], oct, m_lastTestedMidi, f);
-        }
+        ImGui::TextColored(ImVec4(0.0f, 0.85f, 0.95f, 1.0f), "Last Auditioned: %s%d (MIDI %d) -> %.2f Hz",
+                           NOTE_NAMES[semi], oct, m_lastTestedMidi, f);
     } else {
-        ImGui::TextDisabled("Audition: Click/drag keys above, or use computer keyboard [Z,S,X,D,C,V,G,B,H,N,J,M] to play");
+        ImGui::TextDisabled("Audition: Play polyphonic chords via keyboard [Z-M lower row, Q-U upper row], click keys, or Shift-click to latch.");
     }
 }
 
@@ -922,10 +995,9 @@ void VgmPatchViewer::RenderPresetList(AudioEngine& audioEngine, float width) {
 
         bool hovered = false;
         if (ImGui::Selectable(itemLabel, isSelected, 0, ImVec2(itemWidth, 0.0f))) {
-            m_selectedPresetIdx = i;
-            if (m_mouseTesting) {
-                m_mouseTesting = false;
-                StopAuditionNote(audioEngine);
+            if (m_selectedPresetIdx != i) {
+                m_selectedPresetIdx = i;
+                StopAllAuditionNotes(audioEngine);
             }
         }
         if (ImGui::IsItemHovered()) hovered = true;
@@ -1089,8 +1161,18 @@ void VgmPatchViewer::Render(AudioEngine& audioEngine, bool* pOpen) {
         ScanSong(audioEngine);
     }
 
+    if (pOpen && !*pOpen) {
+        if (!m_activeMidiNotes.empty()) {
+            StopAllAuditionNotes(audioEngine);
+        }
+        return;
+    }
+
     ImGui::SetNextWindowSize(ImVec2(1020, 700), ImGuiCond_FirstUseEver);
     if (!ImGui::Begin("VGM Preset / Patch Viewer###VGMPatchViewer", pOpen)) {
+        if (!m_activeMidiNotes.empty()) {
+            StopAllAuditionNotes(audioEngine);
+        }
         ImGui::End();
         return;
     }

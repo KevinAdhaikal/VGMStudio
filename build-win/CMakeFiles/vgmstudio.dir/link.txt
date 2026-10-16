@@ -1,3 +1,0 @@
-/home/kevinadhaikal/.local/lib/python3.14/site-packages/cmake/data/bin/cmake -E rm -f CMakeFiles/vgmstudio.dir/objects.a
-/usr/bin/x86_64-w64-mingw32-ar qc CMakeFiles/vgmstudio.dir/objects.a @CMakeFiles/vgmstudio.dir/objects1.rsp
-/usr/bin/x86_64-w64-mingw32-g++ -static -Wl,--whole-archive CMakeFiles/vgmstudio.dir/objects.a -Wl,--no-whole-archive -o vgmstudio.exe -Wl,--out-implib,libvgmstudio.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/vgmstudio.dir/linkLibs.rsp

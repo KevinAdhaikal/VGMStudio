@@ -1482,7 +1482,7 @@ void SampleViewer::RenderAuditionPiano(AudioEngine& audioEngine, const std::vect
     ImGui::SetNextItemWidth(95.0f);
     ImGui::SliderFloat("##PcmVol", &m_testVolume, 0.1f, 1.2f, "Vol: %.2f");
     ImGui::SameLine();
-    ImGui::TextDisabled("| Keys [Z-M]");
+    ImGui::TextDisabled("| Keys: [A-S-D-F white, W-E-T-Y black | Oct: Z/X]");
 
     const int numWhiteKeys = 14;
     float whiteKeyW = std::clamp((totalW - 20.0f) / (float)numWhiteKeys, 20.0f, 38.0f);
@@ -1532,24 +1532,33 @@ void SampleViewer::RenderAuditionPiano(AudioEngine& audioEngine, const std::vect
         }
     }
 
-    // Computer keyboard tracker keys
+    // Computer keyboard keys (A-S-D-F white notes, W-E-T-Y-U-O-P black notes)
     int kbKey = -1;
     if (ImGui::IsWindowFocused(ImGuiFocusedFlags_RootAndChildWindows) && !ImGui::GetIO().WantTextInput) {
-        if (ImGui::IsKeyDown(ImGuiKey_Z)) kbKey = 0;
-        else if (ImGui::IsKeyDown(ImGuiKey_S)) kbKey = 1;
-        else if (ImGui::IsKeyDown(ImGuiKey_X)) kbKey = 2;
-        else if (ImGui::IsKeyDown(ImGuiKey_D)) kbKey = 3;
-        else if (ImGui::IsKeyDown(ImGuiKey_C)) kbKey = 4;
-        else if (ImGui::IsKeyDown(ImGuiKey_V)) kbKey = 5;
-        else if (ImGui::IsKeyDown(ImGuiKey_G)) kbKey = 6;
-        else if (ImGui::IsKeyDown(ImGuiKey_B)) kbKey = 7;
-        else if (ImGui::IsKeyDown(ImGuiKey_H)) kbKey = 8;
-        else if (ImGui::IsKeyDown(ImGuiKey_N)) kbKey = 9;
-        else if (ImGui::IsKeyDown(ImGuiKey_J)) kbKey = 10;
-        else if (ImGui::IsKeyDown(ImGuiKey_M)) kbKey = 11;
-        else if (ImGui::IsKeyDown(ImGuiKey_Comma)) kbKey = 12;
-        else if (ImGui::IsKeyDown(ImGuiKey_L)) kbKey = 13;
-        else if (ImGui::IsKeyDown(ImGuiKey_Period)) kbKey = 14;
+        // Natural white notes (Do-Re-Mi-Fa...)
+        if (ImGui::IsKeyDown(ImGuiKey_A))           kbKey = 0;   // C
+        else if (ImGui::IsKeyDown(ImGuiKey_W))      kbKey = 1;   // C#
+        else if (ImGui::IsKeyDown(ImGuiKey_S))      kbKey = 2;   // D
+        else if (ImGui::IsKeyDown(ImGuiKey_E))      kbKey = 3;   // D#
+        else if (ImGui::IsKeyDown(ImGuiKey_D))      kbKey = 4;   // E
+        else if (ImGui::IsKeyDown(ImGuiKey_F))      kbKey = 5;   // F
+        else if (ImGui::IsKeyDown(ImGuiKey_T))      kbKey = 6;   // F#
+        else if (ImGui::IsKeyDown(ImGuiKey_G))      kbKey = 7;   // G
+        else if (ImGui::IsKeyDown(ImGuiKey_Y))      kbKey = 8;   // G#
+        else if (ImGui::IsKeyDown(ImGuiKey_H))      kbKey = 9;   // A
+        else if (ImGui::IsKeyDown(ImGuiKey_U))      kbKey = 10;  // A#
+        else if (ImGui::IsKeyDown(ImGuiKey_J))      kbKey = 11;  // B
+        else if (ImGui::IsKeyDown(ImGuiKey_K))      kbKey = 12;  // C+1
+        else if (ImGui::IsKeyDown(ImGuiKey_O))      kbKey = 13;  // C#+1
+        else if (ImGui::IsKeyDown(ImGuiKey_L))      kbKey = 14;  // D+1
+        else if (ImGui::IsKeyDown(ImGuiKey_P))      kbKey = 15;  // D#+1
+        else if (ImGui::IsKeyDown(ImGuiKey_Semicolon))  kbKey = 16;  // E+1
+        else if (ImGui::IsKeyDown(ImGuiKey_Apostrophe)) kbKey = 17;  // F+1
+        else if (ImGui::IsKeyDown(ImGuiKey_RightBracket)) kbKey = 18; // F#+1
+
+        // Octave shifts
+        if (ImGui::IsKeyPressed(ImGuiKey_Z) && m_testOctave > 1) m_testOctave--;
+        if (ImGui::IsKeyPressed(ImGuiKey_X) && m_testOctave < 6) m_testOctave++;
     }
 
     int activeKey = -1;
@@ -1618,7 +1627,7 @@ void SampleViewer::RenderAuditionPiano(AudioEngine& audioEngine, const std::vect
     ImGui::InvisibleButton("##AuditionKeyboardHitbox", ImVec2(whiteKeyW * 14.0f, whiteKeyH));
 
     ImGui::Spacing();
-    ImGui::TextDisabled("Audition: Click/drag keys above, or use computer keyboard [Z, S, X, D, C, V, G, B, H, N, J, M]");
+    ImGui::TextDisabled("Audition: Click/drag keys above, or use computer keyboard [White: A-S-D-F-G-H-J-K-L | Black: W-E-T-Y-U-O-P | Oct: Z/X]");
 }
 
 bool SampleViewer::SaveWavFile(const std::string& outPath, const std::vector<float>& pcm, uint32_t sampleRate) {

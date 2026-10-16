@@ -125,6 +125,9 @@ public:
     // Preview / Audition synthesizer for testing instruments, samples, and wavetables
     void StartPreview(float freq, int mode = 0, float param1 = 0.0f, float param2 = 0.0f);
     void StopPreview();
+    void StartPreviewNote(int noteId, float freq, int mode = 0, float param1 = 0.0f, float param2 = 0.0f);
+    void StopPreviewNote(int noteId);
+    void StopAllPreviewNotes();
     void PlayPreviewSampleBuffer(const std::vector<float>& pcmData);
     void PlayPreviewSamplePitched(const std::vector<float>& pcmData, float pitchRatio, size_t startOffset = 0);
     void PausePreviewSample();
@@ -139,6 +142,7 @@ public:
     void SetPreviewFmParams(int alg, int fb, float mult1, float tl1, float mult2, float tl2, float mult3, float tl3, float mult4, float tl4);
     void SetPreviewFmPatch(const FmPresetData& fm, const std::string& chipName);
     bool IsPreviewActive() const { return m_previewActive.load(); }
+    void RenderAudioFrames(int16_t* outStream, int frames) { ProcessAudio(outStream, frames); }
 
 private:
     static void AudioCallback(void* userdata, Uint8* stream, int len);
@@ -199,10 +203,26 @@ private:
     std::array<ChannelOsc, MAX_CHANNELS> m_chanOsc;
     std::atomic<int> m_chanOscWritePos{0};
 
-    // Preview / Audition synthesizer state
+    // Preview / Audition synthesizer state (Polyphonic)
+    static constexpr int MAX_PREVIEW_VOICES = 8;
+    struct PreviewVoice {
+        int noteId = -1;
+        float freq = 440.0f;
+        bool active = false;
+        bool keyOn = false;
+        uint32_t releaseFrames = 0;
+        float phase = 0.0f;
+        float duty = 0.5f;
+        float volume = 1.0f;
+        int fmHardwareCh = -1; // 0..5 for FM
+        uint64_t triggerOrder = 0;
+    };
+    std::array<PreviewVoice, MAX_PREVIEW_VOICES> m_previewVoices;
+    uint64_t m_voiceTriggerCounter = 0;
+
     std::atomic<bool> m_previewActive{false};
     std::atomic<float> m_previewFreq{440.0f};
-    std::atomic<int> m_previewMode{0}; // 0 = Sine/FM, 1 = Square/Pulse, 2 = Triangle, 3 = Saw/Wavetable, 4 = PCM buffer
+    std::atomic<int> m_previewMode{0}; // 0 = Sine/FM, 1 = Square/Pulse, 2 = Triangle, 3 = Saw/Wavetable, 4 = Noise
     std::atomic<float> m_previewParam1{0.0f};
     std::atomic<float> m_previewParam2{0.0f};
     float m_previewPhase = 0.0f;
@@ -221,7 +241,7 @@ private:
     float m_previewOpTL[4] = {38.0f, 0.0f, 42.0f, 4.0f};
     float m_previewOpPhase[4] = {0.0f, 0.0f, 0.0f, 0.0f};
 
-    // Authentic FM Preview Synth state (Yamaha OPN hardware engine)
+    // Authentic FM Preview Synth state (Yamaha OPN hardware engine - 6 hardware channels)
     void* m_previewFmChip = nullptr;
     uint32_t m_previewFmClock = 4000000;
     std::atomic<bool> m_previewFmKeyOn{false};

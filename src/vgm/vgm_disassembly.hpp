@@ -7,6 +7,8 @@
 
 namespace vgmstudio {
 
+struct TrackedChannel;
+
 enum class InstCategory : uint8_t {
     All = 0,
     SoundChips,
@@ -26,7 +28,7 @@ struct VgmInstruction {
     uint32_t length = 0;         // Instruction length in bytes
     char     hexBytes[32] = {0}; // "54 28 01"
     char     chip[24] = {0};     // "YM2151", "YM2612", "SN76489", "Wait", etc.
-    char     channel[24] = {0};  // "Ch 1", "Ch 2", "Noise", "DAC", "Global", etc.
+    char     channel[48] = {0};  // "[YM2203] FM 1", "[YM2203] SSG 1", "[SegaPCM] PCM 1", "Global", etc.
     char     desc[128] = {0};    // Disassembled human-readable description
     InstCategory category = InstCategory::Other;
     bool isWait = false;
@@ -40,7 +42,7 @@ public:
     ~VgmDisassembly();
 
     void Clear();
-    bool Disassemble(const uint8_t* vgmData, size_t dataSize);
+    bool Disassemble(const uint8_t* vgmData, size_t dataSize, const std::vector<TrackedChannel>* songChannels = nullptr);
 
     const std::vector<VgmInstruction>& GetInstructions() const { return m_instructions; }
     size_t GetCount() const { return m_instructions.size(); }

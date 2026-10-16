@@ -1,3 +1,0 @@
-/home/kevinadhaikal/Documents/vgmstudio/build/CMakeFiles/vgmstudio.dir
-/home/kevinadhaikal/Documents/vgmstudio/build/CMakeFiles/edit_cache.dir
-/home/kevinadhaikal/Documents/vgmstudio/build/CMakeFiles/rebuild_cache.dir

@@ -1,5 +1,5 @@
 #include "file_dialog.hpp"
-#include "../third_party/imgui/imgui.h"
+#include <imgui.h>
 #include <algorithm>
 #include <iostream>
 

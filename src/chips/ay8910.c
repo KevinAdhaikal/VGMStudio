@@ -1234,6 +1234,15 @@ void ay8910_update_one(void *param, UINT32 samples, DEV_SMPL **outputs)
 
 				float gL = 1.0f, gR = 1.0f;
 				ChannelMixer_GetGains(DEVID_AY8910, 0, chan, &gL, &gR);
+				if (gL == 1.0f && gR == 1.0f) {
+					ChannelMixer_GetGains(DEVID_YM2203, 0, 3 + chan, &gL, &gR);
+				}
+				if (gL == 1.0f && gR == 1.0f) {
+					ChannelMixer_GetGains(DEVID_YM2608, 0, 6 + chan, &gL, &gR);
+				}
+				if (gL == 1.0f && gR == 1.0f) {
+					ChannelMixer_GetGains(DEVID_YM2610, 0, 6 + chan, &gL, &gR);
+				}
 				ChannelMixer_PushSample(DEVID_AY8910, 0, chan, (float)chnout);
 				ChannelMixer_PushSample(DEVID_YM2203, 0, 3 + chan, (float)chnout);
 

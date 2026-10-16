@@ -30,6 +30,12 @@ struct FmOperatorPreset {
     int rs = 0;        // Rate Scale / Key Scale (0..3)
     int ssg = 0;       // SSG-EG envelope mode (0..15)
     bool am = false;   // Amplitude Modulation enable
+
+    bool operator==(const FmOperatorPreset& o) const {
+        return mult == o.mult && tl == o.tl && ar == o.ar && dr == o.dr &&
+               sr == o.sr && sl == o.sl && rr == o.rr && dt == o.dt &&
+               rs == o.rs && ssg == o.ssg && am == o.am;
+    }
 };
 
 struct FmPresetData {
@@ -38,6 +44,15 @@ struct FmPresetData {
     int pms = 0;       // Phase Modulation Sensitivity (0..7)
     int ams = 0;       // Amplitude Modulation Sensitivity (0..3)
     FmOperatorPreset ops[4];
+
+    bool operator==(const FmPresetData& o) const {
+        if (algorithm != o.algorithm || feedback != o.feedback ||
+            pms != o.pms || ams != o.ams) return false;
+        for (int i = 0; i < 4; ++i) {
+            if (!(ops[i] == o.ops[i])) return false;
+        }
+        return true;
+    }
 };
 
 struct SquarePresetData {

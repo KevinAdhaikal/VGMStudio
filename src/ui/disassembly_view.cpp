@@ -48,8 +48,11 @@ void DisassemblyView::UpdateFilter(const VgmDisassembly& disasm) {
     }
 
     std::string targetChannelName;
-    if (m_channelFilter > 0 && m_channelFilter <= (int)detectedChannels.size()) {
-        targetChannelName = detectedChannels[m_channelFilter - 1];
+    bool filterGlobalOnly = false;
+    if (m_channelFilter == 1) {
+        filterGlobalOnly = true;
+    } else if (m_channelFilter >= 2 && (m_channelFilter - 2) < (int)detectedChannels.size()) {
+        targetChannelName = detectedChannels[m_channelFilter - 2];
     }
 
     bool hasSearch = (m_searchFilter[0] != '\0');
@@ -80,7 +83,14 @@ void DisassemblyView::UpdateFilter(const VgmDisassembly& disasm) {
         }
 
         // 3. Channel Filter
-        if (!targetChannelName.empty()) {
+        if (filterGlobalOnly) {
+            bool isGlobal = (std::strcmp(inst.channel, "Global") == 0 ||
+                             std::strcmp(inst.channel, "Timing") == 0 ||
+                             std::strcmp(inst.channel, "Data Block") == 0 ||
+                             std::strcmp(inst.channel, "RAM") == 0 ||
+                             std::strstr(inst.channel, "Global") != nullptr);
+            if (!isGlobal) continue;
+        } else if (!targetChannelName.empty()) {
             if (std::string(inst.channel) != targetChannelName) {
                 continue;
             }
@@ -200,12 +210,24 @@ void DisassemblyView::Render(AudioEngine& audioEngine, bool* pOpen) {
     const auto& detectedChannels = disasm.GetDetectedChannels();
     std::vector<const char*> chanNames;
     chanNames.push_back("All Channels");
+    chanNames.push_back("Global / System");
     for (const auto& chn : detectedChannels) {
         chanNames.push_back(chn.c_str());
     }
-    ImGui::SetNextItemWidth(120.0f);
+    if (m_channelFilter >= (int)chanNames.size()) {
+        m_channelFilter = 0;
+    }
+    ImGui::SetNextItemWidth(170.0f);
     if (ImGui::Combo("##ChannelFilter", &m_channelFilter, chanNames.data(), (int)chanNames.size())) {
         m_lastFilterKey.clear();
+    }
+    if (ImGui::IsItemHovered()) {
+        ImGui::SetTooltip(
+            "Channel Filter:\n"
+            "- All Channels: Shows every instruction across all channels\n"
+            "- Global / System: Chip init, delays, timers, global control registers\n"
+            "- [Chip] Channel: Instructions targeting this specific audio channel"
+        );
     }
 
     ImGui::SameLine();
@@ -283,7 +305,7 @@ void DisassemblyView::Render(AudioEngine& audioEngine, bool* pOpen) {
         ImGui::TableSetupColumn("Sample", ImGuiTableColumnFlags_WidthFixed, 70.0f);
         ImGui::TableSetupColumn("Bytes", ImGuiTableColumnFlags_WidthFixed, 85.0f);
         ImGui::TableSetupColumn("Chip / Type", ImGuiTableColumnFlags_WidthFixed, 95.0f);
-        ImGui::TableSetupColumn("Channel", ImGuiTableColumnFlags_WidthFixed, 70.0f);
+        ImGui::TableSetupColumn("Channel", ImGuiTableColumnFlags_WidthFixed, 125.0f);
         ImGui::TableSetupColumn("Disassembly / Description", ImGuiTableColumnFlags_WidthStretch);
 
         ImGui::TableSetupScrollFreeze(0, 1);

@@ -349,9 +349,10 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
             }
 
             int chCount = (dev.devDecl && dev.devDecl->channelCount) ? dev.devDecl->channelCount(dev.devCfg) : 0;
-            if (chCount <= 0) {
+            if (dev.type == DEVID_YM2612) {
+                chCount = 6;
+            } else if (chCount <= 0) {
                 if (dev.type == DEVID_SEGAPCM) chCount = 16;
-                else if (dev.type == DEVID_YM2612) chCount = 6;
                 else if (dev.type == DEVID_SN76496) chCount = 4;
                 else if (dev.type == DEVID_YM2151) chCount = 8;
                 else if (dev.type == DEVID_YM2413) chCount = 9;
@@ -404,6 +405,18 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
                     ch.name = "SSG " + std::to_string(i + 1);
                 } else if (dev.type == DEVID_RF5C68) {
                     ch.name = "PCM " + std::to_string(i + 1);
+                } else if (dev.type == DEVID_SEGAPCM) {
+                    ch.name = "PCM " + std::to_string(i + 1);
+                } else if (dev.type == DEVID_YMW258) {
+                    ch.name = "Voice " + std::to_string(i + 1);
+                } else if (dev.type == DEVID_YM2612 || dev.type == DEVID_YM2203 || dev.type == DEVID_YM2608 || 
+                           dev.type == DEVID_YM2610 || dev.type == DEVID_YM2151 || dev.type == DEVID_YM2413 || 
+                           dev.type == DEVID_YM3812 || dev.type == DEVID_YMF262) {
+                    ch.name = "FM " + std::to_string(i + 1);
+                } else if (dev.type == DEVID_SN76496) {
+                    ch.name = (i < 3) ? ("Square " + std::to_string(i + 1)) : "Noise";
+                } else if (dev.type == DEVID_AY8910) {
+                    ch.name = "SSG " + std::to_string(i + 1);
                 } else if (customNames && customNames[i] && strlen(customNames[i]) > 0) {
                     ch.name = customNames[i];
                 } else {
@@ -436,10 +449,17 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
                 }
 
                 ch.color = GetChannelColor(ch.chipName, ch.type, i);
-                ch.chipType = dev.type;
-                ch.chipInstance = (int)dev.instance;
+                if (dev.parentIdx != (UINT32)-1 && dev.parentIdx < devList.size()) {
+                    const auto& parentDev = devList[dev.parentIdx];
+                    ch.chipType = parentDev.type;
+                    ch.chipInstance = (int)parentDev.instance;
+                    ch.linkIndex = 1;
+                } else {
+                    ch.chipType = dev.type;
+                    ch.chipInstance = (int)dev.instance;
+                    ch.linkIndex = 0;
+                }
                 ch.channelInChip = i;
-                ch.linkIndex = (dev.parentIdx != (UINT32)-1) ? 1 : 0;
                 m_channels.push_back(ch);
             }
         }
@@ -765,6 +785,8 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
     uint8_t ym2612FNumHigh[6] = {0};
     uint8_t ym2612Block[6] = {0};
     bool ym2612KeyOn[6] = {false};
+    bool ym2612DacPlaying = false;
+    uint32_t ym2612DacLastSmpl = 0;
 
     // YM2151 state
     uint8_t ym2151KC[8] = {0};
@@ -835,6 +857,13 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
     size_t filePos = dataOfs;
     uint32_t curSample = 0;
 
+    auto checkDacTimeout = [&]() {
+        if (ym2612DacPlaying && ym2612Base >= 0 && (curSample > ym2612DacLastSmpl + 2205)) {
+            NoteOff(ym2612Base + 5, ym2612DacLastSmpl + 400);
+            ym2612DacPlaying = false;
+        }
+    };
+
     while (filePos < eofOfs && filePos < dataSize) {
         uint8_t cmd = vgmData[filePos];
 
@@ -850,16 +879,19 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
             uint16_t waitSmpl = ReadLE16(&vgmData[filePos + 1]);
             curSample += waitSmpl;
             filePos += 3;
+            checkDacTimeout();
             break;
         }
         case 0x62: {
             curSample += 735;
             filePos += 1;
+            checkDacTimeout();
             break;
         }
         case 0x63: {
             curSample += 882;
             filePos += 1;
+            checkDacTimeout();
             break;
         }
 
@@ -977,18 +1009,34 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
                     else if (chRaw >= 4 && chRaw <= 6) ch = chRaw - 1; // 4->3, 5->4, 6->5
 
                     if (ch >= 0 && ch < 6) {
-                        uint8_t slots = (data >> 4) & 0x0F;
-                        int globalCh = ym2612Base + ch;
-                        if (slots != 0) {
-                            ym2612KeyOn[ch] = true;
-                            uint16_t fnum = ((uint16_t)ym2612FNumHigh[ch] << 8) | ym2612FNumLow[ch];
-                            float freq = ((float)fnum * clkYM2612) / (144.0f * (float)(1 << (20 - ym2612Block[ch])));
-                            float midi = FreqToMidi(freq);
-                            NoteOn(globalCh, curSample, midi, 0.85f);
+                        if (ch == 5 && ym2612DacPlaying) {
+                            // While DAC is actively streaming, ignore FM 6 key on/off
                         } else {
-                            ym2612KeyOn[ch] = false;
-                            NoteOff(globalCh, curSample);
+                            uint8_t slots = (data >> 4) & 0x0F;
+                            int globalCh = ym2612Base + ch;
+                            if (slots != 0) {
+                                ym2612KeyOn[ch] = true;
+                                uint16_t fnum = ((uint16_t)ym2612FNumHigh[ch] << 8) | ym2612FNumLow[ch];
+                                float freq = ((float)fnum * clkYM2612) / (144.0f * (float)(1 << (20 - ym2612Block[ch])));
+                                float midi = FreqToMidi(freq);
+                                NoteOn(globalCh, curSample, midi, 0.85f);
+                            } else {
+                                ym2612KeyOn[ch] = false;
+                                NoteOff(globalCh, curSample);
+                            }
                         }
+                    }
+                } else if (port == 0 && reg == 0x2A) {
+                    if (ym2612Base >= 0) {
+                        if (!ym2612DacPlaying) {
+                            NoteOn(ym2612Base + 5, curSample, 48.0f, 0.85f);
+                            ym2612DacPlaying = true;
+                        } else if (curSample > ym2612DacLastSmpl + 2205) {
+                            NoteOff(ym2612Base + 5, ym2612DacLastSmpl + 400);
+                            NoteOn(ym2612Base + 5, curSample, 48.0f, 0.85f);
+                            ym2612DacPlaying = true;
+                        }
+                        ym2612DacLastSmpl = curSample;
                     }
                 } else if (reg >= 0xA0 && reg <= 0xA2) {
                     int ch = (port * 3) + (reg - 0xA0);
@@ -1757,9 +1805,21 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
             if (cmd >= 0x70 && cmd <= 0x7F) {
                 curSample += (cmd & 0x0F) + 1;
                 filePos += 1;
+                checkDacTimeout();
             }
             // YM2612 DAC write + delay (0x80..0x8F)
             else if (cmd >= 0x80 && cmd <= 0x8F) {
+                if (ym2612Base >= 0) {
+                    if (!ym2612DacPlaying) {
+                        NoteOn(ym2612Base + 5, curSample, 48.0f, 0.85f);
+                        ym2612DacPlaying = true;
+                    } else if (curSample > ym2612DacLastSmpl + 2205) {
+                        NoteOff(ym2612Base + 5, ym2612DacLastSmpl + 400);
+                        NoteOn(ym2612Base + 5, curSample, 48.0f, 0.85f);
+                        ym2612DacPlaying = true;
+                    }
+                    ym2612DacLastSmpl = curSample;
+                }
                 curSample += (cmd & 0x0F);
                 filePos += 1;
             }
@@ -1783,13 +1843,31 @@ bool NoteTracker::ProcessVgm(const uint8_t* vgmData, size_t dataSize, uint32_t s
             else if (cmd == 0x4F) filePos += 2;
             else if (cmd >= 0xA0 && cmd <= 0xBF) filePos += 3;
             else if (cmd >= 0xC0 && cmd <= 0xDF) filePos += 4;
-            else if (cmd >= 0xE0) filePos += 5;
+            else if (cmd == 0xE0) {
+                if (filePos + 5 > dataSize) break;
+                if (ym2612Base >= 0) {
+                    if (ym2612DacPlaying) {
+                        NoteOff(ym2612Base + 5, curSample);
+                        ym2612DacPlaying = false;
+                    }
+                    NoteOn(ym2612Base + 5, curSample, 48.0f, 0.85f);
+                    ym2612DacPlaying = true;
+                    ym2612DacLastSmpl = curSample;
+                }
+                filePos += 5;
+            }
+            else if (cmd >= 0xE1) filePos += 5;
             else {
                 filePos += 1;
             }
             break;
         }
         }
+    }
+
+    if (ym2612DacPlaying && ym2612Base >= 0) {
+        NoteOff(ym2612Base + 5, ym2612DacLastSmpl + 400);
+        ym2612DacPlaying = false;
     }
 
     // Flush any remaining active notes

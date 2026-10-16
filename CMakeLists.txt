@@ -22,19 +22,19 @@ include_directories(
     src/vgm
     src/audio
     src/ui
-    src/third_party/imgui
-    src/third_party/imgui/backends
+    vendor/imgui
+    vendor/imgui/backends
 )
 
 # ImGui sources
 set(IMGUI_SRCS
-    src/third_party/imgui/imgui.cpp
-    src/third_party/imgui/imgui_demo.cpp
-    src/third_party/imgui/imgui_draw.cpp
-    src/third_party/imgui/imgui_tables.cpp
-    src/third_party/imgui/imgui_widgets.cpp
-    src/third_party/imgui/backends/imgui_impl_sdl2.cpp
-    src/third_party/imgui/backends/imgui_impl_opengl3.cpp
+    vendor/imgui/imgui.cpp
+    vendor/imgui/imgui_demo.cpp
+    vendor/imgui/imgui_draw.cpp
+    vendor/imgui/imgui_tables.cpp
+    vendor/imgui/imgui_widgets.cpp
+    vendor/imgui/backends/imgui_impl_sdl2.cpp
+    vendor/imgui/backends/imgui_impl_opengl3.cpp
 )
 
 # Application & UI sources
@@ -113,7 +113,7 @@ add_executable(vgmstudio ${ALL_SRCS})
 
 if(WIN32)
     # Check for bundled SDL2 MinGW development package
-    set(SDL2_WIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party/sdl2-windows/x86_64-w64-mingw32")
+    set(SDL2_WIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/vendor/sdl2-windows/x86_64-w64-mingw32")
     if(EXISTS "${SDL2_WIN_DIR}")
         target_include_directories(vgmstudio PRIVATE "${SDL2_WIN_DIR}/include/SDL2")
         target_link_directories(vgmstudio PRIVATE "${SDL2_WIN_DIR}/lib")
@@ -133,11 +133,11 @@ if(WIN32)
     endif()
 
     # Build bundled zlib as static library
-    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/third_party/zlib/CMakeLists.txt")
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/vendor/zlib/CMakeLists.txt")
         set(ZLIB_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
         set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
-        add_subdirectory(third_party/zlib EXCLUDE_FROM_ALL)
-        target_include_directories(vgmstudio PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/third_party/zlib" "${CMAKE_CURRENT_BINARY_DIR}/third_party/zlib")
+        add_subdirectory(vendor/zlib EXCLUDE_FROM_ALL)
+        target_include_directories(vgmstudio PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/vendor/zlib" "${CMAKE_CURRENT_BINARY_DIR}/vendor/zlib")
         target_link_libraries(vgmstudio PRIVATE zlibstatic)
     else()
         find_package(ZLIB REQUIRED)

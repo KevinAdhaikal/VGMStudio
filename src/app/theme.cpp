@@ -1,5 +1,5 @@
 #include "theme.hpp"
-#include "../third_party/imgui/imgui.h"
+#include <imgui.h>
 
 namespace vgmstudio {
 namespace theme {

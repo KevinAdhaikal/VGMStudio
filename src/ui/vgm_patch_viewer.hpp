@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <set>
 #include <imgui.h>
 #include "../vgm/vgm_patch_extractor.hpp"
 #include "../audio/audio_engine.hpp"
@@ -15,7 +16,7 @@ public:
 
     void Render(AudioEngine& audioEngine, bool* pOpen);
     void RequestFocus() { m_focusRequested = true; }
-    void Reset();
+    void Reset(AudioEngine* pAudioEngine = nullptr);
     void ScanSong(AudioEngine& audioEngine);
     void SetChannelFilter(const std::string& chName);
 
@@ -32,11 +33,11 @@ private:
     int m_typeFilterIdx = 0;     // 0 = All Types
     int m_sortModeIdx = 0;       // 0 = Most Used (Default), 1 = Song Order, 2 = Channel, 3 = Name
 
-    // Audition keyboard state
+    // Audition keyboard state (Polyphonic)
     int m_testOctave = 3;
     float m_testVolume = 0.85f;
-    int m_activeTestKey = -1;
-    bool m_mouseTesting = false;
+    std::set<int> m_activeMidiNotes;   // Currently sounding MIDI note numbers
+    std::set<int> m_latchedMidiNotes;  // Sustained notes latched via Shift-click
     int m_lastTestedMidi = -1;
 
     // Export status notification
@@ -56,8 +57,9 @@ private:
     void RenderEnvelopeCurve(const FmOperatorPreset& op, ImVec2 size, bool isCarrier);
     void RenderOperatorCard(int opIdx, const FmOperatorPreset& op, bool isCarrier, float cardW);
 
-    void TriggerAuditionNote(AudioEngine& audioEngine, const VgmPreset& preset, float freq);
-    void StopAuditionNote(AudioEngine& audioEngine);
+    void TriggerAuditionNote(AudioEngine& audioEngine, const VgmPreset& preset, float freq, int noteId);
+    void StopAuditionNote(AudioEngine& audioEngine, int noteId);
+    void StopAllAuditionNotes(AudioEngine& audioEngine);
 };
 
 } // namespace vgmstudio

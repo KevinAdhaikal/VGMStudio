@@ -11,6 +11,9 @@
 #ifndef SNDDEV_YM2203
 #define SNDDEV_YM2203
 #endif
+#ifndef SNDDEV_YM2612
+#define SNDDEV_YM2612
+#endif
 extern "C" {
 #include "chips/fmopn.h"
 }
@@ -55,10 +58,10 @@ bool AudioEngine::Init(int sampleRate, int bufferSize) {
     // Start audio device thread (starts unpaused in SDL, but our flag controls playback)
     SDL_PauseAudioDevice(m_deviceId, 0);
 
-    // Initialize preview FM synthesizer core (Yamaha OPN hardware engine)
+    // Initialize preview FM synthesizer core (Yamaha OPN hardware engine - 6 channels)
     m_previewFmClock = 4000000;
-    m_previewFmChip = ym2203_init(NULL, m_previewFmClock, m_sampleRate, NULL, NULL);
-    if (m_previewFmChip) ym2203_reset_chip(m_previewFmChip);
+    m_previewFmChip = ym2612_init(NULL, m_previewFmClock, m_sampleRate, NULL, NULL);
+    if (m_previewFmChip) ym2612_reset_chip(m_previewFmChip);
     m_previewFmKeyOn.store(false);
     m_previewFmReleaseFrames = 0;
 
@@ -69,7 +72,7 @@ bool AudioEngine::Init(int sampleRate, int bufferSize) {
 
 void AudioEngine::Shutdown() {
     if (m_previewFmChip) {
-        ym2203_shutdown(m_previewFmChip);
+        ym2612_shutdown(m_previewFmChip);
         m_previewFmChip = nullptr;
     }
     if (m_deviceId != 0) {
@@ -145,7 +148,7 @@ bool AudioEngine::LoadFile(const std::string& path) {
     // Track notes & disassemble instructions across the song
     if (m_dLoad) {
         m_noteTracker.ProcessVgm(DataLoader_GetData(m_dLoad), DataLoader_GetSize(m_dLoad), m_sampleRate, m_player.get());
-        m_disassembly.Disassemble(DataLoader_GetData(m_dLoad), DataLoader_GetSize(m_dLoad));
+        m_disassembly.Disassemble(DataLoader_GetData(m_dLoad), DataLoader_GetSize(m_dLoad), &m_noteTracker.GetChannels());
     }
 
     // Initialize chips & sound devices so they are ready for seeking or playback
@@ -552,7 +555,12 @@ void AudioEngine::GetChannelWaveform(size_t chIdx, float* outBuf, int count) {
     const auto& channels = m_noteTracker.GetChannels();
     if (chIdx < channels.size()) {
         const auto& ch = channels[chIdx];
-        if (ch.muted) {
+        bool anySolo = false;
+        for (const auto& c : channels) {
+            if (c.solo) { anySolo = true; break; }
+        }
+        bool isMuted = anySolo ? !ch.solo : ch.muted;
+        if (isMuted) {
             std::fill(outBuf, outBuf + count, 0.0f);
             return;
         }
@@ -561,6 +569,8 @@ void AudioEngine::GetChannelWaveform(size_t chIdx, float* outBuf, int count) {
         int chNum = ch.channelInChip;
         if (ch.chipType == DEVID_YM2203 && ch.linkIndex == 1) {
             chNum = 3 + ch.channelInChip;
+        } else if ((ch.chipType == DEVID_YM2608 || ch.chipType == DEVID_YM2610) && ch.linkIndex == 1) {
+            chNum = 6 + ch.channelInChip;
         }
         ChannelMixer_GetWaveform(chipType, chipInst, chNum, outBuf, count);
         return;
@@ -575,9 +585,17 @@ void AudioEngine::SetChannelVolume(size_t chIdx, float vol) {
         int chNum = channels[chIdx].channelInChip;
         if (channels[chIdx].chipType == DEVID_YM2203 && channels[chIdx].linkIndex == 1) {
             chNum = 3 + channels[chIdx].channelInChip;
+        } else if ((channels[chIdx].chipType == DEVID_YM2608 || channels[chIdx].chipType == DEVID_YM2610) && channels[chIdx].linkIndex == 1) {
+            chNum = 6 + channels[chIdx].channelInChip;
         }
+        bool anySolo = false;
+        for (const auto& c : channels) {
+            if (c.solo) { anySolo = true; break; }
+        }
+        bool isMuted = anySolo ? !channels[chIdx].solo : channels[chIdx].muted;
+        float effectiveVol = isMuted ? 0.0f : channels[chIdx].volume;
         ChannelMixer_Set(channels[chIdx].chipType, channels[chIdx].chipInstance,
-                         chNum, channels[chIdx].volume, channels[chIdx].pan);
+                         chNum, effectiveVol, channels[chIdx].pan);
     }
 }
 
@@ -596,9 +614,17 @@ void AudioEngine::SetChannelPan(size_t chIdx, float pan) {
         int chNum = channels[chIdx].channelInChip;
         if (channels[chIdx].chipType == DEVID_YM2203 && channels[chIdx].linkIndex == 1) {
             chNum = 3 + channels[chIdx].channelInChip;
+        } else if ((channels[chIdx].chipType == DEVID_YM2608 || channels[chIdx].chipType == DEVID_YM2610) && channels[chIdx].linkIndex == 1) {
+            chNum = 6 + channels[chIdx].channelInChip;
         }
+        bool anySolo = false;
+        for (const auto& c : channels) {
+            if (c.solo) { anySolo = true; break; }
+        }
+        bool isMuted = anySolo ? !channels[chIdx].solo : channels[chIdx].muted;
+        float effectiveVol = isMuted ? 0.0f : channels[chIdx].volume;
         ChannelMixer_Set(channels[chIdx].chipType, channels[chIdx].chipInstance,
-                         chNum, channels[chIdx].volume, channels[chIdx].pan);
+                         chNum, effectiveVol, channels[chIdx].pan);
     }
 }
 
@@ -781,59 +807,84 @@ void AudioEngine::ProcessAudio(int16_t* outStream, int frames) {
         DEV_SMPL* bufs[2] = { fmBufL.data(), fmBufR.data() };
 
         ChannelMixer_EnableCapture(0);
-        ym2203_update_one(m_previewFmChip, (UINT32)frames, bufs);
+        ym2612_update_one(m_previewFmChip, (UINT32)frames, bufs);
         ChannelMixer_EnableCapture(1);
         hasFmSamples = true;
 
-        if (!m_previewFmKeyOn.load()) {
+        bool anyKeyOn = false;
+        for (const auto& v : m_previewVoices) {
+            if (v.active && v.keyOn) {
+                anyKeyOn = true;
+                break;
+            }
+        }
+
+        if (!anyKeyOn) {
             m_previewFmReleaseFrames += frames;
-            int maxReleaseSamples = m_sampleRate * 2; // 2.0s max release
             int maxPeak = 0;
             for (int f = 0; f < frames; ++f) {
-                int a = std::abs((int)fmBufL[f]);
-                if (a > maxPeak) maxPeak = a;
+                int aL = std::abs((int)fmBufL[f]);
+                int aR = std::abs((int)fmBufR[f]);
+                if (aL > maxPeak) maxPeak = aL;
+                if (aR > maxPeak) maxPeak = aR;
             }
-            if (maxPeak < 25 || m_previewFmReleaseFrames > (uint32_t)maxReleaseSamples) {
+            if (maxPeak < 25 || m_previewFmReleaseFrames > (uint32_t)(m_sampleRate * 2)) {
+                for (auto& v : m_previewVoices) {
+                    v.active = false;
+                }
                 m_previewActive.store(false);
             }
+        } else {
+            m_previewFmReleaseFrames = 0;
         }
     }
 
     for (UINT32 i = 0; i < (UINT32)frames; ++i) {
-        float previewSample = 0.0f;
+        float previewSampleL = 0.0f;
+        float previewSampleR = 0.0f;
+
         if (hasFmSamples) {
             float vol = (pParam2 > 0.0f) ? pParam2 : (pParam1 > 0.0f ? pParam1 : 1.0f);
-            previewSample = ((float)fmBufL[i] / 8192.0f) * vol;
+            previewSampleL = ((float)fmBufL[i] / 8192.0f) * vol;
+            previewSampleR = ((float)fmBufR[i] / 8192.0f) * vol;
         } else if (previewActive) {
-            float dt = previewFreq / (float)m_sampleRate;
-            m_previewPhase += dt;
-            if (m_previewPhase >= 1.0f) m_previewPhase -= 1.0f;
+            float sumSmpl = 0.0f;
+            int numVoicesActive = 0;
+            for (auto& v : m_previewVoices) {
+                if (!v.active) continue;
+                numVoicesActive++;
+                float dt = v.freq / (float)m_sampleRate;
+                v.phase += dt;
+                if (v.phase >= 1.0f) v.phase -= 1.0f;
 
-            if (previewMode == 1) { // Square / Pulse
-                float duty = (pParam1 > 0.05f && pParam1 < 0.95f) ? pParam1 : 0.5f;
-                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
-                previewSample = (m_previewPhase < duty ? 0.3f : -0.3f) * vol;
-            } else if (previewMode == 2) { // Triangle
-                float p = m_previewPhase;
-                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
-                previewSample = (p < 0.5f ? (4.0f * p - 1.0f) : (3.0f - 4.0f * p)) * 0.4f * vol;
-            } else if (previewMode == 3) { // Wavetable / Custom RAM
-                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
-                if (!m_previewWavetable.empty()) {
-                    float pos = m_previewPhase * (float)m_previewWavetable.size();
-                    size_t idx0 = (size_t)pos % m_previewWavetable.size();
-                    size_t idx1 = (idx0 + 1) % m_previewWavetable.size();
-                    float frac = pos - (float)(size_t)pos;
-                    previewSample = (m_previewWavetable[idx0] * (1.0f - frac) + m_previewWavetable[idx1] * frac) * 0.4f * vol;
-                } else {
-                    previewSample = (2.0f * m_previewPhase - 1.0f) * 0.3f * vol;
+                float vSmpl = 0.0f;
+                if (previewMode == 1) { // Square / Pulse
+                    vSmpl = (v.phase < v.duty ? 0.25f : -0.25f) * v.volume;
+                } else if (previewMode == 2) { // Triangle
+                    float p = v.phase;
+                    vSmpl = (p < 0.5f ? (4.0f * p - 1.0f) : (3.0f - 4.0f * p)) * 0.35f * v.volume;
+                } else if (previewMode == 3) { // Wavetable / Custom RAM
+                    if (!m_previewWavetable.empty()) {
+                        float pos = v.phase * (float)m_previewWavetable.size();
+                        size_t idx0 = (size_t)pos % m_previewWavetable.size();
+                        size_t idx1 = (idx0 + 1) % m_previewWavetable.size();
+                        float frac = pos - (float)(size_t)pos;
+                        vSmpl = (m_previewWavetable[idx0] * (1.0f - frac) + m_previewWavetable[idx1] * frac) * 0.35f * v.volume;
+                    } else {
+                        vSmpl = (2.0f * v.phase - 1.0f) * 0.25f * v.volume;
+                    }
+                } else if (previewMode == 4) { // Noise
+                    static uint16_t lfsr = 0x7FFF;
+                    lfsr = (lfsr >> 1) ^ (-(lfsr & 1) & (v.duty > 0.5f ? 0x6000 : 0x4000));
+                    vSmpl = ((lfsr & 1) ? 0.25f : -0.25f) * v.volume;
                 }
-            } else if (previewMode == 4) { // Noise
-                static uint16_t lfsr = 0x7FFF;
-                lfsr = (lfsr >> 1) ^ (-(lfsr & 1) & (pParam1 > 0.5f ? 0x6000 : 0x4000));
-                float vol = (pParam2 > 0.0f) ? pParam2 : 1.0f;
-                previewSample = ((lfsr & 1) ? 0.3f : -0.3f) * vol;
+                sumSmpl += vSmpl;
             }
+            if (numVoicesActive > 1) {
+                sumSmpl *= (1.0f / std::sqrt((float)numVoicesActive));
+            }
+            previewSampleL = sumSmpl;
+            previewSampleR = sumSmpl;
         }
 
         // PCM Sample playback
@@ -842,7 +893,9 @@ void AudioEngine::ProcessAudio(int16_t* outStream, int frames) {
                 // Paused: do nothing, do not advance position
             } else if (m_previewSamplePosFloat < (float)m_previewSampleBuffer.size()) {
                 size_t idx = (size_t)m_previewSamplePosFloat;
-                previewSample += m_previewSampleBuffer[idx] * (0.7f * m_previewSampleVolume.load());
+                float pcmVal = m_previewSampleBuffer[idx] * (0.7f * m_previewSampleVolume.load());
+                previewSampleL += pcmVal;
+                previewSampleR += pcmVal;
                 m_previewSamplePosFloat += m_previewSampleStep;
             } else {
                 // Finished playing completely - clean up so it never loops or plays unpitched
@@ -859,10 +912,9 @@ void AudioEngine::ProcessAudio(int16_t* outStream, int frames) {
         smplL = (int32_t)(smplL * vol);
         smplR = (int32_t)(smplR * vol);
 
-        if (previewSample != 0.0f) {
-            int32_t prevInt = (int32_t)(previewSample * 32767.0f);
-            smplL += prevInt;
-            smplR += prevInt;
+        if (previewSampleL != 0.0f || previewSampleR != 0.0f) {
+            smplL += (int32_t)(previewSampleL * 32767.0f);
+            smplR += (int32_t)(previewSampleR * 32767.0f);
         }
 
         smplL = std::clamp(smplL, -32768, 32767);
@@ -1024,7 +1076,19 @@ void AudioEngine::UpdateChannelMuting() {
         if (isMuted) {
             int linkIdx = (ch.linkIndex > 0) ? 1 : 0;
             muteMap[key].chnMute[linkIdx] |= (1U << ch.channelInChip);
+            if (ch.chipType == DEVID_YM2612 && ch.channelInChip == 5) {
+                muteMap[key].chnMute[linkIdx] |= (1U << 6);
+            }
         }
+
+        int chNum = ch.channelInChip;
+        if (ch.chipType == DEVID_YM2203 && ch.linkIndex == 1) {
+            chNum = 3 + ch.channelInChip;
+        } else if ((ch.chipType == DEVID_YM2608 || ch.chipType == DEVID_YM2610) && ch.linkIndex == 1) {
+            chNum = 6 + ch.channelInChip;
+        }
+        float effectiveVol = isMuted ? 0.0f : ch.volume;
+        ChannelMixer_Set(ch.chipType, ch.chipInstance, chNum, effectiveVol, ch.pan);
     }
 
     for (const auto& [key, mOpts] : muteMap) {
@@ -1045,68 +1109,197 @@ size_t AudioEngine::GetVgmDataSize() const {
 }
 
 void AudioEngine::StartPreview(float freq, int mode, float param1, float param2) {
+    StartPreviewNote(0, freq, mode, param1, param2);
+}
+
+void AudioEngine::StopPreview() {
+    StopAllPreviewNotes();
+}
+
+void AudioEngine::StartPreviewNote(int noteId, float freq, int mode, float param1, float param2) {
     if (m_deviceId != 0) SDL_LockAudioDevice(m_deviceId);
+
     m_previewFreq.store(freq);
     m_previewMode.store(mode);
     m_previewParam1.store(param1);
     m_previewParam2.store(param2);
     m_previewActive.store(true);
-    m_previewPhase = 0.0f;
-    for (int i = 0; i < 4; ++i) m_previewOpPhase[i] = 0.0f;
 
-    if (mode == 0 && m_previewFmChip) {
-        // If already keyed on, send Key-Off first to retrigger note attack cleanly
-        if (m_previewFmKeyOn.load()) {
-            ym2203_write(m_previewFmChip, 0, 0x28);
-            ym2203_write(m_previewFmChip, 1, 0x00);
+    // Find voice to assign
+    int voiceIdx = -1;
+
+    // 1. Is noteId already active in a voice? Retrigger it
+    for (int i = 0; i < MAX_PREVIEW_VOICES; ++i) {
+        if (m_previewVoices[i].active && m_previewVoices[i].noteId == noteId) {
+            voiceIdx = i;
+            break;
         }
+    }
 
-        // Calculate Block & F-Number: F-Num = (144 * freq * 2^20 / clock) / 2^(Block - 1)
-        double k = (144.0 * (double)freq * 1048576.0) / (double)m_previewFmClock;
-        int blk = 4;
-        int fn = 1000;
-        for (int b = 0; b <= 7; ++b) {
-            double div = (b == 0) ? 0.5 : (double)(1 << (b - 1));
-            double fVal = k / div;
-            if (fVal >= 250.0 && fVal <= 2047.0) {
-                blk = b;
-                fn = (int)(fVal + 0.5);
+    // 2. Find an inactive voice
+    if (voiceIdx == -1) {
+        for (int i = 0; i < MAX_PREVIEW_VOICES; ++i) {
+            if (!m_previewVoices[i].active) {
+                voiceIdx = i;
                 break;
             }
-            if (b == 7) {
-                blk = 7;
-                fn = std::clamp((int)(fVal + 0.5), 0, 2047);
+        }
+    }
+
+    // 3. Find a voice that is keyed-off (in release phase)
+    if (voiceIdx == -1) {
+        uint64_t oldestTrigger = UINT64_MAX;
+        for (int i = 0; i < MAX_PREVIEW_VOICES; ++i) {
+            if (!m_previewVoices[i].keyOn) {
+                if (m_previewVoices[i].triggerOrder < oldestTrigger) {
+                    oldestTrigger = m_previewVoices[i].triggerOrder;
+                    voiceIdx = i;
+                }
             }
         }
+    }
 
-        // Write Channel 0 frequency
-        ym2203_write(m_previewFmChip, 0, 0xA4);
-        ym2203_write(m_previewFmChip, 1, (blk << 3) | ((fn >> 8) & 7));
-        ym2203_write(m_previewFmChip, 0, 0xA0);
-        ym2203_write(m_previewFmChip, 1, fn & 0xFF);
+    // 4. Steal oldest active voice
+    if (voiceIdx == -1) {
+        uint64_t oldestTrigger = UINT64_MAX;
+        for (int i = 0; i < MAX_PREVIEW_VOICES; ++i) {
+            if (m_previewVoices[i].triggerOrder < oldestTrigger) {
+                oldestTrigger = m_previewVoices[i].triggerOrder;
+                voiceIdx = i;
+            }
+        }
+    }
 
-        // Key-On (All 4 slots active for Channel 0)
-        ym2203_write(m_previewFmChip, 0, 0x28);
-        ym2203_write(m_previewFmChip, 1, 0xF0);
+    if (voiceIdx >= 0 && voiceIdx < MAX_PREVIEW_VOICES) {
+        auto& v = m_previewVoices[voiceIdx];
 
-        m_previewFmKeyOn.store(true);
-        m_previewFmReleaseFrames = 0;
+        if (mode == 0 && m_previewFmChip) {
+            // Find a hardware FM channel (0..5) not currently held by another keyOn voice
+            bool chOccupied[6] = { false, false, false, false, false, false };
+            for (int i = 0; i < MAX_PREVIEW_VOICES; ++i) {
+                if (i != voiceIdx && m_previewVoices[i].active && m_previewVoices[i].keyOn) {
+                    int c = m_previewVoices[i].fmHardwareCh;
+                    if (c >= 0 && c < 6) chOccupied[c] = true;
+                }
+            }
+            int chosenCh = -1;
+            for (int c = 0; c < 6; ++c) {
+                if (!chOccupied[c]) {
+                    chosenCh = c;
+                    break;
+                }
+            }
+            if (chosenCh == -1) {
+                chosenCh = (v.fmHardwareCh >= 0 && v.fmHardwareCh < 6) ? v.fmHardwareCh : (voiceIdx % 6);
+            }
+
+            v.fmHardwareCh = chosenCh;
+            int ch = v.fmHardwareCh;
+            int port = (ch < 3) ? 0 : 2;
+            int dataPort = (ch < 3) ? 1 : 3;
+            int chOffset = (ch < 3) ? ch : (ch - 3);
+            int r28Ch = (ch < 3) ? ch : (ch + 1); // YM2612 skips channel 3 in Key-On reg 0x28
+
+            // Send Key-Off on this hardware channel first to retrigger note attack cleanly
+            ym2612_write(m_previewFmChip, 0, 0x28);
+            ym2612_write(m_previewFmChip, 1, 0x00 | r28Ch);
+
+            // Calculate Block & F-Number: F-Num = (144 * freq * 2^20 / clock) / 2^(Block - 1)
+            double k = (144.0 * (double)freq * 1048576.0) / (double)m_previewFmClock;
+            int blk = 4;
+            int fn = 1000;
+            for (int b = 0; b <= 7; ++b) {
+                double div = (b == 0) ? 0.5 : (double)(1 << (b - 1));
+                double fVal = k / div;
+                if (fVal >= 250.0 && fVal <= 2047.0) {
+                    blk = b;
+                    fn = (int)(fVal + 0.5);
+                    break;
+                }
+                if (b == 7) {
+                    blk = 7;
+                    fn = std::clamp((int)(fVal + 0.5), 0, 2047);
+                }
+            }
+
+            // Write Channel frequency
+            ym2612_write(m_previewFmChip, port, 0xA4 + chOffset);
+            ym2612_write(m_previewFmChip, dataPort, (blk << 3) | ((fn >> 8) & 7));
+            ym2612_write(m_previewFmChip, port, 0xA0 + chOffset);
+            ym2612_write(m_previewFmChip, dataPort, fn & 0xFF);
+
+            // Key-On (all 4 operator slots active)
+            ym2612_write(m_previewFmChip, 0, 0x28);
+            ym2612_write(m_previewFmChip, 1, 0xF0 | r28Ch);
+
+            m_previewFmKeyOn.store(true);
+            m_previewFmReleaseFrames = 0;
+        }
+
+        v.noteId = noteId;
+        v.freq = freq;
+        v.active = true;
+        v.keyOn = true;
+        v.releaseFrames = 0;
+        v.phase = 0.0f;
+        v.duty = (param1 > 0.05f && param1 < 0.95f) ? param1 : 0.5f;
+        v.volume = (param2 > 0.0f) ? param2 : 1.0f;
+        v.triggerOrder = ++m_voiceTriggerCounter;
     }
 
     if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
 }
 
-void AudioEngine::StopPreview() {
+void AudioEngine::StopPreviewNote(int noteId) {
     if (m_deviceId != 0) SDL_LockAudioDevice(m_deviceId);
-    if (m_previewMode.load() == 0 && m_previewFmChip && m_previewFmKeyOn.load()) {
-        // Send Key-Off, letting release envelope ring out naturally
-        ym2203_write(m_previewFmChip, 0, 0x28);
-        ym2203_write(m_previewFmChip, 1, 0x00);
-        m_previewFmKeyOn.store(false);
-        m_previewFmReleaseFrames = 0;
-    } else if (m_previewMode.load() != 0) {
+
+    for (auto& v : m_previewVoices) {
+        if (v.active && v.noteId == noteId) {
+            v.keyOn = false;
+            v.releaseFrames = 0;
+            if (m_previewMode.load() == 0 && m_previewFmChip && v.fmHardwareCh >= 0) {
+                int r28Ch = (v.fmHardwareCh < 3) ? v.fmHardwareCh : (v.fmHardwareCh + 1);
+                ym2612_write(m_previewFmChip, 0, 0x28);
+                ym2612_write(m_previewFmChip, 1, 0x00 | r28Ch);
+            } else if (m_previewMode.load() != 0) {
+                v.active = false;
+            }
+        }
+    }
+
+    bool anyKeyOn = false;
+    bool anyActive = false;
+    for (const auto& v : m_previewVoices) {
+        if (v.active) {
+            anyActive = true;
+            if (v.keyOn) anyKeyOn = true;
+        }
+    }
+    m_previewFmKeyOn.store(anyKeyOn);
+    if (!anyActive) {
         m_previewActive.store(false);
     }
+
+    if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
+}
+
+void AudioEngine::StopAllPreviewNotes() {
+    if (m_deviceId != 0) SDL_LockAudioDevice(m_deviceId);
+
+    for (auto& v : m_previewVoices) {
+        if (v.active) {
+            v.keyOn = false;
+            if (m_previewMode.load() == 0 && m_previewFmChip && v.fmHardwareCh >= 0) {
+                int r28Ch = (v.fmHardwareCh < 3) ? v.fmHardwareCh : (v.fmHardwareCh + 1);
+                ym2612_write(m_previewFmChip, 0, 0x28);
+                ym2612_write(m_previewFmChip, 1, 0x00 | r28Ch);
+            }
+            v.active = false;
+        }
+    }
+    m_previewFmKeyOn.store(false);
+    m_previewActive.store(false);
+
     if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
 }
 
@@ -1176,9 +1369,6 @@ void AudioEngine::SetPreviewWavetable(const std::vector<float>& wavetable) {
 void AudioEngine::SetPreviewFmPatch(const FmPresetData& fm, const std::string& chipName) {
     if (m_deviceId != 0) SDL_LockAudioDevice(m_deviceId);
 
-    m_previewFmPatch = fm;
-    m_previewFmChipName = chipName;
-
     uint32_t targetClock = 4000000;
     if (chipName == "YM2612") {
         targetClock = 7670453;
@@ -1206,59 +1396,75 @@ void AudioEngine::SetPreviewFmPatch(const FmPresetData& fm, const std::string& c
         }
     }
 
+    // If identical patch is already loaded on this chip and clock, avoid redundant hardware writes
+    if (m_previewFmChip && m_previewFmClock == targetClock && m_previewFmChipName == chipName && m_previewFmPatch == fm) {
+        if (m_deviceId != 0) SDL_UnlockAudioDevice(m_deviceId);
+        return;
+    }
+
+    m_previewFmPatch = fm;
+    m_previewFmChipName = chipName;
+
     if (!m_previewFmChip || m_previewFmClock != targetClock) {
-        if (m_previewFmChip) ym2203_shutdown(m_previewFmChip);
+        if (m_previewFmChip) ym2612_shutdown(m_previewFmChip);
         m_previewFmClock = targetClock;
-        m_previewFmChip = ym2203_init(NULL, m_previewFmClock, m_sampleRate, NULL, NULL);
-        if (m_previewFmChip) ym2203_reset_chip(m_previewFmChip);
+        m_previewFmChip = ym2612_init(NULL, m_previewFmClock, m_sampleRate, NULL, NULL);
+        if (m_previewFmChip) ym2612_reset_chip(m_previewFmChip);
     }
 
     if (m_previewFmChip) {
-        // Algorithm & Feedback (Reg 0xB0)
-        ym2203_write(m_previewFmChip, 0, 0xB0);
-        ym2203_write(m_previewFmChip, 1, ((fm.feedback & 7) << 3) | (fm.algorithm & 7));
-
-        // AMS & PMS (Reg 0xB4)
-        ym2203_write(m_previewFmChip, 0, 0xB4);
-        ym2203_write(m_previewFmChip, 1, ((fm.ams & 3) << 4) | (fm.pms & 7));
-
-        // Operator registers: Slot 1 (0x00), Slot 2 (0x08), Slot 3 (0x04), Slot 4 (0x0C)
         const int regOffsets[4] = { 0x00, 0x08, 0x04, 0x0C };
-        for (int k = 0; k < 4; ++k) {
-            int ro = regOffsets[k];
-            const auto& op = fm.ops[k];
 
-            int dtCode = 0;
-            if (op.dt > 0) dtCode = std::min(op.dt, 3);
-            else if (op.dt < 0) dtCode = (op.dt <= -3) ? 7 : (op.dt == -2 ? 6 : 5);
+        for (int ch = 0; ch < 6; ++ch) {
+            int port = (ch < 3) ? 0 : 2;
+            int dataPort = (ch < 3) ? 1 : 3;
+            int chOffset = (ch < 3) ? ch : (ch - 3);
 
-            // 0x30: DT / MULT
-            ym2203_write(m_previewFmChip, 0, 0x30 + ro);
-            ym2203_write(m_previewFmChip, 1, ((dtCode & 7) << 4) | (op.mult & 0x0F));
+            // Algorithm & Feedback (Reg 0xB0)
+            ym2612_write(m_previewFmChip, port, 0xB0 + chOffset);
+            ym2612_write(m_previewFmChip, dataPort, ((fm.feedback & 7) << 3) | (fm.algorithm & 7));
 
-            // 0x40: TL
-            ym2203_write(m_previewFmChip, 0, 0x40 + ro);
-            ym2203_write(m_previewFmChip, 1, op.tl & 0x7F);
+            // Pan (L+R = 0xC0), AMS & PMS (Reg 0xB4)
+            ym2612_write(m_previewFmChip, port, 0xB4 + chOffset);
+            ym2612_write(m_previewFmChip, dataPort, 0xC0 | ((fm.ams & 3) << 4) | (fm.pms & 7));
 
-            // 0x50: RS / AR
-            ym2203_write(m_previewFmChip, 0, 0x50 + ro);
-            ym2203_write(m_previewFmChip, 1, ((op.rs & 3) << 6) | (op.ar & 0x1F));
+            // Operator registers: Slot 1 (0x00), Slot 2 (0x08), Slot 3 (0x04), Slot 4 (0x0C)
+            for (int k = 0; k < 4; ++k) {
+                int ro = regOffsets[k] + chOffset;
+                const auto& op = fm.ops[k];
 
-            // 0x60: AM / DR
-            ym2203_write(m_previewFmChip, 0, 0x60 + ro);
-            ym2203_write(m_previewFmChip, 1, (op.am ? 0x80 : 0) | (op.dr & 0x1F));
+                int dtCode = 0;
+                if (op.dt > 0) dtCode = std::min(op.dt, 3);
+                else if (op.dt < 0) dtCode = (op.dt <= -3) ? 7 : (op.dt == -2 ? 6 : 5);
 
-            // 0x70: SR
-            ym2203_write(m_previewFmChip, 0, 0x70 + ro);
-            ym2203_write(m_previewFmChip, 1, op.sr & 0x1F);
+                // 0x30: DT / MULT
+                ym2612_write(m_previewFmChip, port, 0x30 + ro);
+                ym2612_write(m_previewFmChip, dataPort, ((dtCode & 7) << 4) | (op.mult & 0x0F));
 
-            // 0x80: SL / RR
-            ym2203_write(m_previewFmChip, 0, 0x80 + ro);
-            ym2203_write(m_previewFmChip, 1, ((op.sl & 0x0F) << 4) | (op.rr & 0x0F));
+                // 0x40: TL
+                ym2612_write(m_previewFmChip, port, 0x40 + ro);
+                ym2612_write(m_previewFmChip, dataPort, op.tl & 0x7F);
 
-            // 0x90: SSG-EG
-            ym2203_write(m_previewFmChip, 0, 0x90 + ro);
-            ym2203_write(m_previewFmChip, 1, op.ssg & 0x0F);
+                // 0x50: RS / AR
+                ym2612_write(m_previewFmChip, port, 0x50 + ro);
+                ym2612_write(m_previewFmChip, dataPort, ((op.rs & 3) << 6) | (op.ar & 0x1F));
+
+                // 0x60: AM / DR
+                ym2612_write(m_previewFmChip, port, 0x60 + ro);
+                ym2612_write(m_previewFmChip, dataPort, (op.am ? 0x80 : 0) | (op.dr & 0x1F));
+
+                // 0x70: SR
+                ym2612_write(m_previewFmChip, port, 0x70 + ro);
+                ym2612_write(m_previewFmChip, dataPort, op.sr & 0x1F);
+
+                // 0x80: SL / RR
+                ym2612_write(m_previewFmChip, port, 0x80 + ro);
+                ym2612_write(m_previewFmChip, dataPort, ((op.sl & 0x0F) << 4) | (op.rr & 0x0F));
+
+                // 0x90: SSG-EG
+                ym2612_write(m_previewFmChip, port, 0x90 + ro);
+                ym2612_write(m_previewFmChip, dataPort, op.ssg & 0x0F);
+            }
         }
     }
 

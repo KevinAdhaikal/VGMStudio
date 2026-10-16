@@ -1,4 +1,5 @@
 #include "vgm_disassembly.hpp"
+#include "note_tracker.hpp"
 #include <cstring>
 #include <cstdio>
 #include <set>
@@ -74,7 +75,7 @@ int VgmDisassembly::FindInstructionIndexAtOffset(uint32_t offset) const {
     return -1;
 }
 
-bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
+bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize, const std::vector<TrackedChannel>* songChannels) {
     Clear();
 
     if (!vgmData || dataSize < 0x40) return false;
@@ -100,6 +101,10 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
     uint32_t curSample = 0;
     uint32_t instIdx = 0;
     int rf5cDisasmCurCh = 0;
+    int sn76489LastCh = 0;
+    int multiPcmCurSlot = 0;
+    int multiPcmCurReg = 0;
+    int pceCurCh = 0;
 
     while (filePos < eofOfs && filePos < dataSize) {
         uint8_t cmd = vgmData[filePos];
@@ -186,21 +191,26 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
 
                 if (d & 0x80) {
                     int ch = (d >> 5) & 3;
+                    sn76489LastCh = ch;
+                    const char* chName = (ch < 3) ? (ch == 0 ? "Square 1" : (ch == 1 ? "Square 2" : "Square 3")) : "Noise";
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[SN76489] %s", chName);
                     if (d & 0x10) {
                         int atten = d & 0x0F;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Volume = %d (%s)", 
-                                      ch + 1, atten, (atten == 15 ? "Muted" : (atten == 0 ? "Max / 0dB" : "Active")));
+                        std::snprintf(inst.desc, sizeof(inst.desc), "%s Volume = %d (%s)", 
+                                      chName, atten, (atten == 15 ? "Muted" : (atten == 0 ? "Max / 0dB" : "Active")));
                         if (atten == 15) inst.isKeyOff = true;
                         else inst.isKeyOn = true;
                     } else {
                         if (ch < 3) {
-                            std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Tone Period Low = 0x%X", ch + 1, d & 0x0F);
+                            std::snprintf(inst.desc, sizeof(inst.desc), "%s Tone Period Low = 0x%X", chName, d & 0x0F);
                         } else {
-                            std::snprintf(inst.desc, sizeof(inst.desc), "Noise Control = 0x%X (%s)", d & 0x07, (d & 4) ? "White" : "Periodic");
+                            std::snprintf(inst.desc, sizeof(inst.desc), "%s Control = 0x%X (%s)", chName, d & 0x07, (d & 4) ? "White" : "Periodic");
                         }
                     }
                 } else {
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Tone Period High = 0x%X", d & 0x3F);
+                    const char* chName = (sn76489LastCh < 3) ? (sn76489LastCh == 0 ? "Square 1" : (sn76489LastCh == 1 ? "Square 2" : "Square 3")) : "Noise";
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[SN76489] %s", chName);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "%s Tone Period High = 0x%X", chName, d & 0x3F);
                 }
             }
             break;
@@ -219,19 +229,24 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
 
                 if (reg >= 0x10 && reg <= 0x18) {
                     int ch = reg - 0x10 + 1;
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d F-Num Low = 0x%02X", ch, val);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2413] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d F-Num Low = 0x%02X", ch, val);
                 } else if (reg >= 0x20 && reg <= 0x28) {
                     int ch = reg - 0x20 + 1;
                     bool kon = (val & 0x10) != 0;
                     int blk = (val >> 1) & 7;
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d %s [Blk %d, F-NumH %d]", ch, kon ? "Key On" : "Key Off", blk, val & 1);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2413] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d %s [Blk %d, F-NumH %d]", ch, kon ? "Key On" : "Key Off", blk, val & 1);
                     if (kon) inst.isKeyOn = true; else inst.isKeyOff = true;
                 } else if (reg >= 0x30 && reg <= 0x38) {
                     int ch = reg - 0x30 + 1;
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Inst=%d, Vol=%d", ch, (val >> 4) & 0x0F, val & 0x0F);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2413] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Inst=%d, Vol=%d", ch, (val >> 4) & 0x0F, val & 0x0F);
                 } else if (reg == 0x0E) {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2413] Global");
                     std::snprintf(inst.desc, sizeof(inst.desc), "Rhythm Control = 0x%02X", val);
                 } else {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2413] Global");
                     std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                 }
             }
@@ -254,39 +269,53 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 if (port == 0 && reg == 0x28) {
                     int ch = val & 0x03;
                     if (val & 0x04) ch += 3;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] FM %d", ch + 1);
                     uint8_t ops = (val >> 4) & 0x0F;
                     if (ops != 0) {
                         inst.isKeyOn = true;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Key On [Ops:%s%s%s%s]", ch + 1,
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key On [Ops:%s%s%s%s]", ch + 1,
                                       (ops & 1) ? " 1" : "", (ops & 2) ? " 2" : "", (ops & 4) ? " 3" : "", (ops & 8) ? " 4" : "");
                     } else {
                         inst.isKeyOff = true;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Key Off", ch + 1);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key Off", ch + 1);
                     }
                 } else if (port == 0 && reg == 0x2A) {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] Ch 6 / DAC");
                     std::snprintf(inst.desc, sizeof(inst.desc), "DAC Out = 0x%02X (%d)", val, (int8_t)val);
                 } else if (port == 0 && reg == 0x2B) {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] Ch 6 / DAC");
                     std::snprintf(inst.desc, sizeof(inst.desc), "DAC Enable = %s", (val & 0x80) ? "ON" : "OFF");
                 } else if (reg >= 0xA0 && reg <= 0xA2) {
                     int ch = (reg - 0xA0) + (port ? 4 : 1);
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d F-Num Low = 0x%02X", ch, val);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d F-Num Low = 0x%02X", ch, val);
                 } else if (reg >= 0xA4 && reg <= 0xA6) {
                     int ch = (reg - 0xA4) + (port ? 4 : 1);
                     int blk = (val >> 3) & 7;
                     int fnh = val & 7;
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Block %d, F-Num High 0x%X", ch, blk, fnh);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Block %d, F-Num High 0x%X", ch, blk, fnh);
                 } else if (reg >= 0xB0 && reg <= 0xB2) {
                     int ch = (reg - 0xB0) + (port ? 4 : 1);
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d FB=%d, Alg=%d", ch, (val >> 3) & 7, val & 7);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d FB=%d, Alg=%d", ch, (val >> 3) & 7, val & 7);
                 } else if (reg >= 0xB4 && reg <= 0xB6) {
                     int ch = (reg - 0xB4) + (port ? 4 : 1);
                     const char* pan = ((val & 0xC0) == 0xC0) ? "L+R" : ((val & 0x80) ? "L" : ((val & 0x40) ? "R" : "Mute"));
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Pan: %s (AMS:%d, FMS:%d)", ch, pan, (val >> 4) & 3, val & 7);
-                } else if (reg >= 0x40 && reg <= 0x4F) {
-                    int ch = (reg & 3) + (port ? 4 : 1);
-                    int op = ((reg >> 2) & 3) + 1;
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Op %d TL = %d", ch, op, val & 0x7F);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Pan: %s (AMS:%d, FMS:%d)", ch, pan, (val >> 4) & 3, val & 7);
+                } else if (reg >= 0x30 && reg <= 0x9E) {
+                    if ((reg & 3) < 3) {
+                        int ch = (reg & 3) + (port ? 4 : 1);
+                        int op = ((reg >> 2) & 3) + 1;
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] FM %d", ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Op %d TL = %d", ch, op, val & 0x7F);
+                    } else {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] Global");
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
+                    }
                 } else {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] Global");
                     std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                 }
             }
@@ -306,34 +335,49 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
 
                 if (reg == 0x08) {
                     int ch = (val & 0x07) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] FM %d", ch);
                     uint8_t ops = (val >> 3) & 0x0F;
                     if (ops != 0) {
                         inst.isKeyOn = true;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Key On [Ops:%s%s%s%s]", ch,
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key On [Ops:%s%s%s%s]", ch,
                                       (ops & 1) ? " M1" : "", (ops & 2) ? " C1" : "", (ops & 4) ? " M2" : "", (ops & 8) ? " C2" : "");
                     } else {
                         inst.isKeyOff = true;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Key Off", ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key Off", ch);
                     }
                 } else if (reg >= 0x20 && reg <= 0x27) {
                     int ch = (reg - 0x20) + 1;
                     const char* pan = ((val & 0xC0) == 0xC0) ? "L+R" : ((val & 0x80) ? "L" : ((val & 0x40) ? "R" : "Mute"));
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Pan: %s, FB:%d, Alg:%d", ch, pan, (val >> 3) & 7, val & 7);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Pan: %s, FB:%d, Alg:%d", ch, pan, (val >> 3) & 7, val & 7);
                 } else if (reg >= 0x28 && reg <= 0x2F) {
                     int ch = (reg - 0x28) + 1;
                     int oct = (val >> 4) & 7;
                     const char* nName = YM2151_NoteName(val & 0x0F);
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Key Code 0x%02X (%s%d)", ch, val, nName, oct);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key Code 0x%02X (%s%d)", ch, val, nName, oct);
                 } else if (reg >= 0x30 && reg <= 0x37) {
                     int ch = (reg - 0x30) + 1;
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Key Fraction = %d", ch, val >> 2);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key Fraction = %d", ch, val >> 2);
+                } else if (reg >= 0x38 && reg <= 0x3F) {
+                    int ch = (reg - 0x38) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d PMS=%d, AMS=%d", ch, (val >> 4) & 7, val & 3);
                 } else if (reg >= 0x60 && reg <= 0x7F) {
                     int ch = (reg & 7) + 1;
                     int op = ((reg - 0x60) >> 3) + 1;
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Op %d TL = %d", ch, op, val & 0x7F);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Op %d TL = %d", ch, op, val & 0x7F);
+                } else if (reg >= 0x40 && reg <= 0xFF) {
+                    int ch = (reg & 7) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Param (0x%02X) = %d", ch, reg, val);
                 } else if (reg == 0x0F) {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] Global");
                     std::snprintf(inst.desc, sizeof(inst.desc), "Noise Freq=%d, NE=%d", val & 0x1F, (val >> 7) & 1);
                 } else {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2151] Global");
                     std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                 }
             }
@@ -352,23 +396,53 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 uniqueChips.insert("YM2203");
 
                 if (reg < 0x06) {
-                    char ch = 'A' + (reg / 2);
-                    std::snprintf(inst.desc, sizeof(inst.desc), "SSG Ch %c Period %s = 0x%02X", ch, (reg & 1) ? "High" : "Low", val);
+                    int ch = (reg / 2) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] SSG %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "SSG %d Period %s = 0x%02X", ch, (reg & 1) ? "High" : "Low", val);
                 } else if (reg >= 0x08 && reg <= 0x0A) {
-                    char ch = 'A' + (reg - 0x08);
-                    std::snprintf(inst.desc, sizeof(inst.desc), "SSG Ch %c Volume = %d", ch, val & 0x1F);
+                    int ch = (reg - 0x08) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] SSG %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "SSG %d Volume = %d", ch, val & 0x1F);
                 } else if (reg == 0x28) {
                     int ch = (val & 3) + 1;
+                    if (ch <= 3) {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] FM %d", ch);
+                    } else {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] Global");
+                    }
                     uint8_t ops = (val >> 4) & 0x0F;
                     if (ops != 0) {
                         inst.isKeyOn = true;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "FM Ch %d Key On [Ops:%s%s%s%s]", ch,
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key On [Ops:%s%s%s%s]", ch,
                                       (ops & 1) ? " 1" : "", (ops & 2) ? " 2" : "", (ops & 4) ? " 3" : "", (ops & 8) ? " 4" : "");
                     } else {
                         inst.isKeyOff = true;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "FM Ch %d Key Off", ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key Off", ch);
+                    }
+                } else if (reg >= 0xA0 && reg <= 0xA2) {
+                    int ch = (reg - 0xA0) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d F-Num Low = 0x%02X", ch, val);
+                } else if (reg >= 0xA4 && reg <= 0xA6) {
+                    int ch = (reg - 0xA4) + 1;
+                    int blk = (val >> 3) & 7;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Block %d, F-Num High 0x%X", ch, blk, val & 7);
+                } else if (reg >= 0xB0 && reg <= 0xB2) {
+                    int ch = (reg - 0xB0) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] FM %d", ch);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "FM %d FB=%d, Alg=%d", ch, (val >> 3) & 7, val & 7);
+                } else if (reg >= 0x30 && reg <= 0x9E) {
+                    int ch = (reg & 3) + 1;
+                    if (ch <= 3) {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] FM %d", ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Op Param (0x%02X) = %d", ch, reg, val);
+                    } else {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] Global");
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                     }
                 } else {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[YM2203] Global");
                     std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                 }
             }
@@ -384,8 +458,11 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 uint8_t reg = vgmData[filePos + 1];
                 uint8_t val = vgmData[filePos + 2];
                 const char* chipName = "FM Chip";
-                if (cmd == 0x56 || cmd == 0x57) chipName = "YM2608";
-                else if (cmd == 0x58 || cmd == 0x59) chipName = "YM2610";
+                bool is2608 = (cmd == 0x56 || cmd == 0x57);
+                bool is2610 = (cmd == 0x58 || cmd == 0x59);
+                bool port1 = (cmd == 0x57 || cmd == 0x59);
+                if (is2608) chipName = "YM2608";
+                else if (is2610) chipName = "YM2610";
                 else if (cmd == 0x5A) chipName = "YM3812";
                 else if (cmd == 0x5B) chipName = "YM3526";
                 else if (cmd == 0x5C) chipName = "Y8950";
@@ -394,9 +471,50 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
 
                 std::snprintf(inst.hexBytes, sizeof(inst.hexBytes), "%02X %02X %02X", cmd, reg, val);
                 std::snprintf(inst.chip, sizeof(inst.chip), "%s", chipName);
-                std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                 inst.category = InstCategory::FM;
                 uniqueChips.insert(chipName);
+
+                if (is2608 || is2610) {
+                    if (!port1 && reg < 0x06) {
+                        int ch = (reg / 2) + 1;
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] SSG %d", chipName, ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "SSG %d Period %s = 0x%02X", ch, (reg & 1) ? "High" : "Low", val);
+                    } else if (!port1 && reg >= 0x08 && reg <= 0x0A) {
+                        int ch = (reg - 0x08) + 1;
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] SSG %d", chipName, ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "SSG %d Volume = %d", ch, val & 0x1F);
+                    } else if (!port1 && reg == 0x28) {
+                        int ch = (val & 3) + 1;
+                        if (val & 4) ch += 3;
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] FM %d", chipName, ch);
+                        uint8_t ops = (val >> 4) & 0x0F;
+                        if (ops != 0) {
+                            inst.isKeyOn = true;
+                            std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key On", ch);
+                        } else {
+                            inst.isKeyOff = true;
+                            std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Key Off", ch);
+                        }
+                    } else if (reg >= 0xA0 && reg <= 0xA2) {
+                        int ch = (reg - 0xA0) + (port1 ? 4 : 1);
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] FM %d", chipName, ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d F-Num Low = 0x%02X", ch, val);
+                    } else if (reg >= 0xA4 && reg <= 0xA6) {
+                        int ch = (reg - 0xA4) + (port1 ? 4 : 1);
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] FM %d", chipName, ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Block %d, F-Num High 0x%X", ch, (val >> 3) & 7, val & 7);
+                    } else if (reg >= 0x30 && reg <= 0x9E && (reg & 3) < 3) {
+                        int ch = (reg & 3) + (port1 ? 4 : 1);
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] FM %d", chipName, ch);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "FM %d Param (0x%02X) = %d", ch, reg, val);
+                    } else {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] Global", chipName);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
+                    }
+                } else {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[%s] Global", chipName);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
+                }
             }
             break;
         }
@@ -501,9 +619,11 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
             uint32_t waitSmpl = cmd & 0x0F;
             std::snprintf(inst.hexBytes, sizeof(inst.hexBytes), "%02X", cmd);
             std::snprintf(inst.chip, sizeof(inst.chip), "YM2612 DAC");
+            std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] Ch 6 / DAC");
             std::snprintf(inst.desc, sizeof(inst.desc), "DAC Stream Sample & Wait %u samples", waitSmpl);
             inst.category = InstCategory::FM;
             uniqueChips.insert("YM2612 DAC");
+            uniqueChannels.insert("[YM2612] Ch 6 / DAC");
             if (waitSmpl > 0) curSample += waitSmpl;
             break;
         }
@@ -556,12 +676,15 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 uniqueChips.insert("AY-3-8910");
 
                 if (reg <= 0x05) {
-                    char ch = 'A' + (reg / 2);
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %c Period %s = 0x%02X", ch, (reg & 1) ? "High" : "Low", val);
+                    int chNum = (reg / 2) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[AY-3-8910] SSG %d", chNum);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "SSG %d Period %s = 0x%02X", chNum, (reg & 1) ? "High" : "Low", val);
                 } else if (reg >= 0x08 && reg <= 0x0A) {
-                    char ch = 'A' + (reg - 0x08);
-                    std::snprintf(inst.desc, sizeof(inst.desc), "Ch %c Volume = %d", ch, val & 0x1F);
+                    int chNum = (reg - 0x08) + 1;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[AY-3-8910] SSG %d", chNum);
+                    std::snprintf(inst.desc, sizeof(inst.desc), "SSG %d Volume = %d", chNum, val & 0x1F);
                 } else {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[AY-3-8910] Global");
                     std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                 }
             }
@@ -588,34 +711,34 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 if (reg == 0x07) {
                     if (val & 0x40) {
                         rf5cDisasmCurCh = val & 7;
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Channel Select: Ch %d", rf5cDisasmCurCh + 1);
-                        std::snprintf(inst.channel, sizeof(inst.channel), "Ch %d", rf5cDisasmCurCh + 1);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Channel Select: PCM %d", rf5cDisasmCurCh + 1);
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] PCM %d", chipName, rf5cDisasmCurCh + 1);
                     } else {
                         std::snprintf(inst.desc, sizeof(inst.desc), "RAM Bank Select = %d", val & 0x0F);
-                        std::snprintf(inst.channel, sizeof(inst.channel), "RAM Bank");
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[%s] Global", chipName);
                     }
                 } else if (reg == 0x08) {
                     std::snprintf(inst.desc, sizeof(inst.desc), "Channel On/Off Mask = 0x%02X", val);
-                    std::snprintf(inst.channel, sizeof(inst.channel), "Control");
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[%s] Global", chipName);
                     if (val == 0xFF) inst.isKeyOff = true;
                     else inst.isKeyOn = true;
                 } else {
                     int chNum = rf5cDisasmCurCh + 1;
-                    std::snprintf(inst.channel, sizeof(inst.channel), "Ch %d", chNum);
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[%s] PCM %d", chipName, chNum);
                     if (reg == 0x00) {
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Envelope = %d", chNum, val);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Envelope = %d", chNum, val);
                     } else if (reg == 0x01) {
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Pan = 0x%02X (L:%d R:%d)", chNum, val, val & 0x0F, (val >> 4) & 0x0F);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Pan = 0x%02X (L:%d R:%d)", chNum, val, val & 0x0F, (val >> 4) & 0x0F);
                     } else if (reg == 0x02) {
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Freq Step Low = 0x%02X", chNum, val);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Freq Step Low = 0x%02X", chNum, val);
                     } else if (reg == 0x03) {
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Freq Step High = 0x%02X", chNum, val);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Freq Step High = 0x%02X", chNum, val);
                     } else if (reg == 0x04) {
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Loop Low = 0x%02X", chNum, val);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Loop Low = 0x%02X", chNum, val);
                     } else if (reg == 0x05) {
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Loop High = 0x%02X", chNum, val);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Loop High = 0x%02X", chNum, val);
                     } else if (reg == 0x06) {
-                        std::snprintf(inst.desc, sizeof(inst.desc), "Ch %d Start Addr = 0x%02X", chNum, val);
+                        std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Start Addr = 0x%02X", chNum, val);
                     } else {
                         std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
                     }
@@ -633,18 +756,112 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 uint8_t reg = vgmData[filePos + 1];
                 uint8_t val = vgmData[filePos + 2];
                 const char* chipName = "Chip";
-                if (cmd == 0xB3) { chipName = "GB DMG"; inst.category = InstCategory::PSG_Square; }
-                else if (cmd == 0xB4) { chipName = "NES APU"; inst.category = InstCategory::PSG_Square; }
-                else if (cmd == 0xB5) { chipName = "MultiPCM"; inst.category = InstCategory::Other; }
-                else if (cmd == 0xB8) { chipName = "OKIM6295"; inst.category = InstCategory::Other; }
-                else if (cmd == 0xB9) { chipName = "HuC6280"; inst.category = InstCategory::PSG_Square; }
-                else if (cmd == 0xBA) { chipName = "K053260"; inst.category = InstCategory::Other; }
-                else if (cmd == 0xBD) { chipName = "SAA1099"; inst.category = InstCategory::PSG_Square; }
-                else { chipName = "Sound Chip"; inst.category = InstCategory::SoundChips; }
+                if (cmd == 0xB3) {
+                    chipName = "GB DMG";
+                    inst.category = InstCategory::PSG_Square;
+                    if (reg >= 0x10 && reg <= 0x14) std::snprintf(inst.channel, sizeof(inst.channel), "[GB DMG] Square 1");
+                    else if (reg >= 0x16 && reg <= 0x19) std::snprintf(inst.channel, sizeof(inst.channel), "[GB DMG] Square 2");
+                    else if (reg >= 0x1A && reg <= 0x1E) std::snprintf(inst.channel, sizeof(inst.channel), "[GB DMG] Wave");
+                    else if (reg >= 0x20 && reg <= 0x23) std::snprintf(inst.channel, sizeof(inst.channel), "[GB DMG] Noise");
+                    else std::snprintf(inst.channel, sizeof(inst.channel), "[GB DMG] Global");
+                }
+                else if (cmd == 0xB4) {
+                    chipName = "NES APU";
+                    inst.category = InstCategory::PSG_Square;
+                    if (reg <= 0x03) std::snprintf(inst.channel, sizeof(inst.channel), "[NES APU] Pulse 1");
+                    else if (reg >= 0x04 && reg <= 0x07) std::snprintf(inst.channel, sizeof(inst.channel), "[NES APU] Pulse 2");
+                    else if (reg >= 0x08 && reg <= 0x0B) std::snprintf(inst.channel, sizeof(inst.channel), "[NES APU] Triangle");
+                    else if (reg >= 0x0C && reg <= 0x0F) std::snprintf(inst.channel, sizeof(inst.channel), "[NES APU] Noise");
+                    else if (reg >= 0x10 && reg <= 0x13) std::snprintf(inst.channel, sizeof(inst.channel), "[NES APU] DMC");
+                    else if (reg >= 0x20) std::snprintf(inst.channel, sizeof(inst.channel), "[NES APU] FDS");
+                    else std::snprintf(inst.channel, sizeof(inst.channel), "[NES APU] Global");
+                }
+                else if (cmd == 0xB5) {
+                    chipName = "MultiPCM";
+                    inst.category = InstCategory::Other;
+                    if (reg == 1) {
+                        static const int VALUE_TO_CHANNEL[32] = {
+                            0, 1, 2, 3, 4, 5, 6, -1,
+                            7, 8, 9, 10, 11, 12, 13, -1,
+                            14, 15, 16, 17, 18, 19, 20, -1,
+                            21, 22, 23, 24, 25, 26, 27, -1
+                        };
+                        multiPcmCurSlot = VALUE_TO_CHANNEL[val & 0x1F];
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Select Slot: Voice %d", multiPcmCurSlot >= 0 ? multiPcmCurSlot + 1 : 0);
+                        if (multiPcmCurSlot >= 0) std::snprintf(inst.channel, sizeof(inst.channel), "[MultiPCM] Voice %d", multiPcmCurSlot + 1);
+                        else std::snprintf(inst.channel, sizeof(inst.channel), "[MultiPCM] Global");
+                    } else if (reg == 2) {
+                        multiPcmCurReg = (val > 7) ? 7 : val;
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Select Reg: %d", multiPcmCurReg);
+                        if (multiPcmCurSlot >= 0) std::snprintf(inst.channel, sizeof(inst.channel), "[MultiPCM] Voice %d", multiPcmCurSlot + 1);
+                        else std::snprintf(inst.channel, sizeof(inst.channel), "[MultiPCM] Global");
+                    } else if (reg == 0) {
+                        if (multiPcmCurSlot >= 0 && multiPcmCurSlot < 28) {
+                            std::snprintf(inst.channel, sizeof(inst.channel), "[MultiPCM] Voice %d", multiPcmCurSlot + 1);
+                            if (multiPcmCurReg == 4) {
+                                if (val & 0x80) { inst.isKeyOn = true; std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Key On", multiPcmCurSlot + 1); }
+                                else { inst.isKeyOff = true; std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Key Off", multiPcmCurSlot + 1); }
+                            } else {
+                                std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Reg %d = 0x%02X", multiPcmCurSlot + 1, multiPcmCurReg, val);
+                            }
+                        } else {
+                            std::snprintf(inst.channel, sizeof(inst.channel), "[MultiPCM] Global");
+                            std::snprintf(inst.desc, sizeof(inst.desc), "Reg Data = 0x%02X", val);
+                        }
+                    } else {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[MultiPCM] Global");
+                    }
+                }
+                else if (cmd == 0xB8) {
+                    chipName = "OKIM6295";
+                    inst.category = InstCategory::Other;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[OKIM6295] Global");
+                }
+                else if (cmd == 0xB9) {
+                    chipName = "HuC6280";
+                    inst.category = InstCategory::PSG_Square;
+                    if (reg == 0) {
+                        pceCurCh = val & 7;
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Channel Select: Voice %d", pceCurCh + 1);
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[HuC6280] Voice %d", pceCurCh + 1);
+                    } else if (reg == 1) {
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Global Balance = 0x%02X", val);
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[HuC6280] Global");
+                    } else if (reg >= 2 && reg <= 7) {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[HuC6280] Voice %d", pceCurCh + 1);
+                        if (reg == 2) std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Freq Low = 0x%02X", pceCurCh + 1, val);
+                        else if (reg == 3) std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Freq High = 0x%02X", pceCurCh + 1, val & 0x0F);
+                        else if (reg == 4) {
+                            std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Control = 0x%02X (%s, Vol:%d)", pceCurCh + 1, val, (val & 0x80) ? "On" : "Off", val & 0x1F);
+                            if (val & 0x80) inst.isKeyOn = true; else inst.isKeyOff = true;
+                        } else if (reg == 5) std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Balance = 0x%02X", pceCurCh + 1, val);
+                        else if (reg == 6) std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Wave Data = 0x%02X", pceCurCh + 1, val & 0x1F);
+                        else std::snprintf(inst.desc, sizeof(inst.desc), "Voice %d Noise = 0x%02X", pceCurCh + 1, val);
+                    } else {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[HuC6280] Global");
+                    }
+                }
+                else if (cmd == 0xBA) {
+                    chipName = "K053260";
+                    inst.category = InstCategory::Other;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[K053260] Global");
+                }
+                else if (cmd == 0xBD) {
+                    chipName = "SAA1099";
+                    inst.category = InstCategory::PSG_Square;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[SAA1099] Global");
+                }
+                else {
+                    chipName = "Sound Chip";
+                    inst.category = InstCategory::SoundChips;
+                    std::snprintf(inst.channel, sizeof(inst.channel), "Global");
+                }
 
                 std::snprintf(inst.hexBytes, sizeof(inst.hexBytes), "%02X %02X %02X", cmd, reg, val);
                 std::snprintf(inst.chip, sizeof(inst.chip), "%s", chipName);
-                std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
+                if (inst.desc[0] == '\0') {
+                    std::snprintf(inst.desc, sizeof(inst.desc), "Reg 0x%02X = 0x%02X", reg, val);
+                }
                 uniqueChips.insert(chipName);
             }
             break;
@@ -659,7 +876,7 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 uint8_t p2 = vgmData[filePos + 2];
                 uint8_t p3 = vgmData[filePos + 3];
                 const char* chipName = "Chip";
-                if (cmd == 0xC0) chipName = "SegaPCM";
+                if (cmd == 0xC0) chipName = "Sega PCM";
                 else if (cmd == 0xC1) chipName = "RF5C68";
                 else if (cmd == 0xC2) chipName = "RF5C164";
                 else if (cmd == 0xC4) chipName = "QSound";
@@ -668,11 +885,39 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
 
                 std::snprintf(inst.hexBytes, sizeof(inst.hexBytes), "%02X %02X %02X %02X", cmd, p1, p2, p3);
                 std::snprintf(inst.chip, sizeof(inst.chip), "%s", chipName);
-                if (cmd == 0xC1 || cmd == 0xC2) {
+                if (cmd == 0xC0) {
+                    uint16_t addr = (uint16_t)p1 | ((uint16_t)p2 << 8);
+                    if (addr < 0x0100) {
+                        int ch = (addr & 0x7F) / 8;
+                        int reg = addr & 0x07;
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[Sega PCM] PCM %d", ch + 1);
+                        if (addr >= 0x80) {
+                            if (reg == 6) {
+                                bool disabled = (p3 & 0x01) != 0;
+                                std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Status (0x%02X, %s)", ch + 1, p3, disabled ? "Stop" : "Key On");
+                                if (disabled) inst.isKeyOff = true; else inst.isKeyOn = true;
+                            } else {
+                                std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d High Reg %d = 0x%02X", ch + 1, reg, p3);
+                            }
+                        } else {
+                            if (reg == 2 || reg == 3) {
+                                std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Vol %s = %d", ch + 1, (reg == 2 ? "L" : "R"), p3 & 0x7F);
+                            } else if (reg == 7) {
+                                std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Pitch = %d", ch + 1, p3);
+                            } else {
+                                std::snprintf(inst.desc, sizeof(inst.desc), "PCM %d Low Reg %d = 0x%02X", ch + 1, reg, p3);
+                            }
+                        }
+                    } else {
+                        std::snprintf(inst.channel, sizeof(inst.channel), "[Sega PCM] Global");
+                        std::snprintf(inst.desc, sizeof(inst.desc), "Addr 0x%04X = 0x%02X", addr, p3);
+                    }
+                } else if (cmd == 0xC1 || cmd == 0xC2) {
                     uint16_t mOfs = (uint16_t)p1 | ((uint16_t)p2 << 8);
                     std::snprintf(inst.desc, sizeof(inst.desc), "RAM [0x%04X] = 0x%02X", mOfs, p3);
-                    std::snprintf(inst.channel, sizeof(inst.channel), "RAM");
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[%s] Global", chipName);
                 } else {
+                    std::snprintf(inst.channel, sizeof(inst.channel), "[%s] Global", chipName);
                     std::snprintf(inst.desc, sizeof(inst.desc), "Data 0x%02X 0x%02X 0x%02X", p1, p2, p3);
                 }
                 inst.category = InstCategory::SoundChips;
@@ -688,6 +933,7 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
                 uint32_t seekOfs = ReadLE32(&vgmData[filePos + 1]);
                 std::snprintf(inst.hexBytes, sizeof(inst.hexBytes), "E0 %02X %02X ..", vgmData[filePos + 1], vgmData[filePos + 2]);
                 std::snprintf(inst.chip, sizeof(inst.chip), "YM2612 PCM");
+                std::snprintf(inst.channel, sizeof(inst.channel), "[YM2612] Ch 6 / DAC");
                 std::snprintf(inst.desc, sizeof(inst.desc), "PCM Data Offset = 0x%08X", seekOfs);
                 inst.category = InstCategory::FM;
                 uniqueChips.insert("YM2612 PCM");
@@ -751,8 +997,20 @@ bool VgmDisassembly::Disassemble(const uint8_t* vgmData, size_t dataSize) {
     for (const auto& ch : uniqueChips) {
         m_detectedChips.push_back(ch);
     }
+    if (songChannels && !songChannels->empty()) {
+        for (const auto& ch : *songChannels) {
+            std::string formatted = "[" + ch.chipName + "] " + ch.name;
+            if (std::find(m_detectedChannels.begin(), m_detectedChannels.end(), formatted) == m_detectedChannels.end()) {
+                m_detectedChannels.push_back(formatted);
+            }
+        }
+    }
     for (const auto& chn : uniqueChannels) {
-        m_detectedChannels.push_back(chn);
+        if (chn != "Global" && chn != "Timing" && chn != "Data Block" && chn.find("Global") == std::string::npos) {
+            if (std::find(m_detectedChannels.begin(), m_detectedChannels.end(), chn) == m_detectedChannels.end()) {
+                m_detectedChannels.push_back(chn);
+            }
+        }
     }
 
     return !m_instructions.empty();
